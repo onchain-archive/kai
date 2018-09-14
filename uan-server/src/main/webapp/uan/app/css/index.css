@@ -1,0 +1,242 @@
+html, body, #app, #app>div, section, section>div {
+  height: 100%;
+}
+body {
+  background-color: #ececec;
+  font-size: 18px;
+  font-family: Pingfang SC,Microsoft Yahei,SJSONG;
+  letter-spacing: 2px;
+}
+
+/* the initial position of the next div */
+
+.k-fx-swap.k-fx-start .k-fx-next {
+  -webkit-transform: translatex(100%);
+  -moz-transform: translatex(100%);
+  transform: translatex(100%);
+}
+
+/* the final position of the current div */
+
+.k-fx-swap.k-fx-end .k-fx-current {
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+header,
+footer {
+  width: 100%;
+  height: 50px;
+  background-color: #03b3b2;
+  text-align: center;
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+}
+
+.header-bar {
+  padding: 20px 10px;
+  /* width: 100%; */
+  /* height: 4%; */
+  background-color: #fafafa;
+  text-align: center
+}
+.fix-top {
+  position: fixed;
+  top: 0px;
+}
+.header-bar .prev-btn {
+  margin-left: 10px;
+  color: #03b3b2;
+  float:left;
+}
+.header-bar .header-title {
+  /* margin: 10px auto;
+  width: 30%; */
+}
+.container-fluid {
+  /* background-color: #fff; */
+  padding: 0 10px;
+  overflow-y: auto;
+}
+.article-horizontal {
+  margin-bottom: 10px;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.form-horizontal {
+  position: relative;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.form-horizontal .form-remove {
+  position: absolute;
+  top:10px;
+  right:10px;
+  color: #cbcbcb;
+}
+.form-horizontal .form-remove:hover,
+.form-horizontal .form-remove:active {
+  color: #026867;
+}
+.form-group {
+  /* padding: 10px;
+    background-color: #fff;
+    border-radius: 5px; */
+}
+.form-group>div>label {
+  margin: 13px auto;
+  width: 100%;
+  text-align: center;
+  font-weight: normal;
+}
+.form-group .col-xs-8 {
+  border-bottom: 1px #ececec solid;
+}
+.form-login {
+  background-color:inherit;
+}
+.form-login .form-group .col-xs-8 {
+  border-bottom: 1px #cccccc solid;
+}
+.form-login .form-control {
+  background-color:inherit;
+}
+
+.form-control {
+  height: 50px !important;
+  font-size: 18px;
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  line-height: 46px !important;
+  text-indent: 8px !important;
+  letter-spacing: 2px;
+}
+.form-control[disabled], input:-webkit-autofill {
+  background-color: #fff !important;
+}
+.k-dropdown-wrap.k-state-disabled .k-input {
+  color: #000000;
+  font-weight: normal;
+}
+.k-dropdown-wrap.k-state-disabled .k-select {
+  display: none;
+}
+
+.form-control:not(.k-widget):not(.k-input):focus {
+  outline-color: initial;
+  border-color: initial;
+  box-shadow: initial;
+}
+
+.form-group .k-widget.k-dropdown.k-header {
+  width: 100%;
+  height: 50px;
+  border: none;
+  background-color: initial;
+}
+.form-group .k-dropdown-wrap {
+  height: 50px;
+  border: none;
+  background-color: initial;
+}
+.k-widget.k-dropdown.k-header .k-dropdown-wrap.k-state-focused {
+  outline-color: initial;
+  border-color: initial !important;
+  box-shadow:initial;
+}
+.form-group .k-dropdown-wrap span.k-input {
+  height: 50px;
+  border: none;
+  line-height: 45px;
+  text-indent: 8px;
+}
+.k-dropdown-wrap .k-select {
+  height: 50px;
+}
+.k-dropdown-wrap .k-select .k-icon {
+  margin-top: 16px
+}
+.k-tooltip-validation {
+  z-index: 999;
+}
+.login-bar, .add-bar {
+  width: 100%;
+  margin: 20px auto 30px auto;
+  text-align: center;
+}
+.btn-login, .btn-add {
+  padding:6px 0;
+  height: 50px;
+  width: 100%;
+  font-size: 18px;
+  letter-spacing: 2px;
+  border-radius: 2px;
+}
+/* .add-bar {
+  width: 206px;
+  margin: 20px auto 30px auto;
+}
+.btn-add {
+  height: 50px;
+  width: 180px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  border-radius: 2px;
+} */
+.checkbox-bar {
+  padding: 0 15px 10px 15px;
+  width: 100%;
+  line-height: 35px;
+}
+.checkbox-bar input[type="checkbox"] {
+  height: 18px;
+  width: 18px;
+  margin-top: -2px;
+  margin-bottom: 1px;
+  vertical-align: middle;
+}
+.checkbox-bar label {
+  float: initial;
+  margin-left: 10px;
+  font-weight: normal;
+}
+.fix-bottom {
+  position: fixed;
+  bottom: 0px;
+}
+
+.btn-bar {
+  width: 100%;
+  /* height: 65px; */
+  height: 10%;
+  background-color: #ececec;
+}
+
+.btn-bar .btn {
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+  width: 50%;
+  border: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 18px;
+  /* font-weight: bold; */
+  letter-spacing: 2px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-bar .btn-full {
+  width: 100%;
+}

@@ -1,0 +1,31 @@
+{
+  "appId": "uan",
+  "data": [
+    {
+      "masterId": "110110200001011234",
+      "order": 2,
+      "phone": "13800002222",
+      "relationship": "女",
+      "slaveId": "330330200001011234",
+      "slaveName": "张女儿"
+    },
+    {
+      "masterId": "11011020000101123X",
+      "order": 3,
+      "phone": "13800002222",
+      "relationship": "父",
+      "slaveId": "330330200001011234",
+      "slaveName": "张爸爸"
+    },
+    {
+      "masterId": "110110200001011235",
+      "order": 4,
+      "phone": "13800002222",
+      "relationship": "儿",
+      "slaveId": "330330200001011234",
+      "slaveName": "张儿砸"
+    }
+  ],
+  "message": "请求成功",
+  "statusCode": "200"
+}

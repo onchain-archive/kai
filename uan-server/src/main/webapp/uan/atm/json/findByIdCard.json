@@ -1,0 +1,23 @@
+{
+  "appId": "uan",
+  "data": [
+    {
+      "amt": 88388,
+      "bankOfDeposit": "abc",
+      "code": "622800000000999",
+      "customerInformation": {
+        "id": "1",
+        "idCard": "110110200001011234",
+        "name": "张三",
+        "phone": "13822223333",
+        "state": "ON",
+        "type": "PERSONAL"
+      },
+      "id": "2",
+      "idCard": "110110200001011234",
+      "state": "NORMAL"
+    }
+  ],
+  "message": "请求成功",
+  "statusCode": "200"
+}

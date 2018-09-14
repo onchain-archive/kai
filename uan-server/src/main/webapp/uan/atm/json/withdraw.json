@@ -1,0 +1,10 @@
+{
+  "appId": "uan",
+  "data": {
+    "cardNum": "622800000000999",
+    "info": "取款金額：500",
+    "masterName": "张三"
+  },
+  "message": "请求成功",
+  "statusCode": "200"
+}

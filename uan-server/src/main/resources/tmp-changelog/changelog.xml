@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<property name="autoIncrement" value="true" dbms="h2" />
+	<changeSet id="init-schema" author="jinzhe">
+		<comment>init schema</comment>
+
+		<createTable tableName="user">
+			<column name="id" type="bigint" autoIncrement="${autoIncrement}">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="username" type="varchar(20)">
+				<constraints nullable="false" uniqueConstraintName="username" />
+			</column>
+			<column name="password" type="varchar(20)">
+				<constraints nullable="false" />
+			</column>
+			<column name="email" type="varchar(20)">
+				<constraints nullable="false" />
+			</column>
+			<column name="phone" type="varchar(11)">
+				<constraints nullable="false" />
+			</column>
+			<column name="sex" type="varchar(2)">
+				<constraints nullable="false" />
+			</column>
+			<column name="creat_time" type="java.util.Date">
+				<constraints nullable="false" />
+			</column>
+			<column name="update_time" type="java.util.Date">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+</databaseChangeLog>

@@ -1,0 +1,12 @@
+{
+  "appId": "uan",
+  "data": {
+    "bankOfDeposit": "abc",
+    "code": "622800000000999",
+    "deviceNum": "ATM模拟器",
+    "idCard": "110110200001011234",
+    "party": "330330200001011234",
+    "state": "ABNORMAL"
+  },
+  "userId": "330330200001011234"
+}

@@ -1,0 +1,13 @@
+{
+  "appId": "uan",
+  "data": {
+    "id": "11",
+    "idCard": "330330200001011234",
+    "name": "张最小",
+    "phone": "123456789000",
+    "state": "ON",
+    "type": "PERSONAL"
+  },
+  "message": "请求成功",
+  "statusCode": "200"
+}

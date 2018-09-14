@@ -1,0 +1,7 @@
+---
+applications:
+ - name: uan-server
+   random-route: true
+   path: target/uan-server.war
+   memory: 512M
+   instances: 1

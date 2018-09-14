@@ -1,0 +1,41 @@
+{
+  "appId": "uan",
+  "data": [
+    {
+      "amt": 88888,
+      "bankOfDeposit": "abchina",
+      "code": "6228000000009999",
+      "customerInformation": {
+        "id": "1",
+        "idCard": "110110200001011234",
+        "name": "张三",
+        "phone": "13822223333",
+        "state": "ON",
+        "type": "PERSONAL"
+      },
+      "id": "2",
+      "idCard": "110110200001011234",
+      "state": "NORMAL"
+    },
+    {
+      "amt": 5000,
+      "bankOfDeposit": "boc",
+      "code": "622812345678999",
+      "customerInformation": {
+        "idCard": "110110200001011234"
+      },
+      "state": "NORMAL"
+    },
+    {
+      "amt": 123456,
+      "bankOfDeposit": "icbc",
+      "code": "622811111111999",
+      "customerInformation": {
+        "idCard": "110110200001011234"
+      },
+      "state": "NORMAL"
+    }
+  ],
+  "message": "请求成功",
+  "statusCode": "200"
+}

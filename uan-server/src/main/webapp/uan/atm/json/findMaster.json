@@ -1,0 +1,15 @@
+{
+  "appId": "uan",
+  "data": [
+    {
+      "masterId": "110110200001011234",
+      "order": 2,
+      "phone": "13800002222",
+      "relationship": "女",
+      "slaveId": "330330200001011234",
+      "slaveName": "张女儿"
+    }
+  ],
+  "message": "请求成功",
+  "statusCode": "200"
+}

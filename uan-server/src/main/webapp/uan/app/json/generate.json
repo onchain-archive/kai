@@ -1,0 +1,6 @@
+{
+  "appId": "uan",
+  "data": "{\"id\":\"1\",\"idCard\":\"110110200001011234\",\"name\":\"张三\",\"phone\":\"13822223333\",\"state\":\"ON\",\"type\":\"PERSONAL\"}",
+  "message": "请求成功",
+  "statusCode": "200"
+}

@@ -1,0 +1,58 @@
+1.取款交易
+1.1、faceID 刷脸登录
+请求报文：
+{"appId":"uan","data":{"idCard":"330330200001011234","faceBytes":"base64string"},"userId":"330330200001011234"}
+应答报文：
+{"appId":"uan","data":{"id":"11","idCard":"330330200001011234","name":"张最小","phone":"123456789000","state":"ON","type":"PERSONAL"},"message":"请求成功","statusCode":"200"}
+
+1.2、withdraw  取款
+请求报文：
+{"appId":"uan","data":{"amt":500,"deviceNum":"ATM模拟器","party":"330330200001011234"},"userId":"330330200001011234"}
+应答报文：
+{"appId":"uan","data":{"cardNum":"622800000000999","info":"取款金額：500","masterName":"张三"},"message":"请求成功","statusCode":"200"}
+
+
+2.查询资产交易
+2.1、faceID 刷脸登录
+请求报文：
+{"appId":"uan","data":{"idCard":"330330200001011234","faceBytes":"base64string"},"userId":"330330200001011234"}
+应答报文：
+{"appId":"uan","data":{"id":"11","idCard":"330330200001011234","name":"张最小","phone":"123456789000","state":"ON","type":"PERSONAL"},"message":"请求成功","statusCode":"200"}
+
+2.2、findMasters 帮助人列表
+请求报文：
+{"appId":"uan","data":"330330200001011234","userId":"330330200001011234"}
+应答报文：
+{"appId":"uan","data":[{"masterId":"110110200001011234","order":2,"phone":"13800002222","relationship":"女","slaveId":"330330200001011234","slaveName":"张女儿"}],"message":"请求成功","statusCode":"200"}
+
+2.3、inquireAssets 某帮助人的资产情况（卡列表）
+请求报文：
+{"appId":"uan","data":{"customer":"110110200001011234","deviceNum":"ATM模拟器","party":"330330200001011234"},"userId":"330330200001011234"}
+应答报文：
+{"appId":"uan","data":[{"amt":88388,"bankOfDeposit":"abc","code":"622800000000999","customerInformation":{"id":"1","idCard":"110110200001011234","name":"张三","phone":"13822223333","state":"ON","type":"PERSONAL"},"id":"2","idCard":"110110200001011234","state":"ABNORMAL"}],"message":"请求成功","statusCode":"200"}
+
+
+3.挂失
+3.1、faceID 刷脸登录
+请求报文：
+{"appId":"uan","data":{"idCard":"330330200001011234","faceBytes":"base64string"},"userId":"330330200001011234"}
+应答报文：
+{"appId":"uan","data":{"id":"11","idCard":"330330200001011234","name":"张最小","phone":"123456789000","state":"ON","type":"PERSONAL"},"message":"请求成功","statusCode":"200"}
+
+3.2、findMasters 帮助人列表
+请求报文：
+{"appId":"uan","data":"330330200001011234","userId":"330330200001011234"}
+应答报文：
+{"appId":"uan","data":[{"masterId":"110110200001011234","order":2,"phone":"13800002222","relationship":"女","slaveId":"330330200001011234","slaveName":"张女儿"}],"message":"请求成功","statusCode":"200"}
+
+3.3、findByIdCard 某帮助人的卡列表
+请求报文：
+{"appId":"uan","data":"110110200001011234","userId":"330330200001011234"}
+应答报文：
+{"appId":"uan","data":[{"amt":88388,"bankOfDeposit":"abc","code":"622800000000999","customerInformation":{"id":"1","idCard":"110110200001011234","name":"张三","phone":"13822223333","state":"ON","type":"PERSONAL"},"id":"2","idCard":"110110200001011234","state":"NORMAL"}],"message":"请求成功","statusCode":"200"}
+
+3.4、reportLoss  挂失卡
+请求报文：
+{"appId":"uan","data":{"bankOfDeposit":"abc","code":"622800000000999","deviceNum":"ATM模拟器","idCard":"110110200001011234","party":"330330200001011234","state":"ABNORMAL"},"userId":"330330200001011234"}
+应答报文：
+{"appId":"uan","data":{"cardNum":"622800000000999","info":"挂失成功","masterName":"张三"},"message":"请求成功","statusCode":"200"}
