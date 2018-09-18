@@ -37,12 +37,14 @@
     layoutSelector = app.layoutSelector;
   
     // 构造视图DOM模板
-    var idcardloginDomTemplate = '<a class="atm-btn btn-left btn-bg btn-row-4" data-bind="click: prevPage">退&nbsp;&nbsp;出</a>\
-    <a class="atm-btn btn-right btn-bg btn-row-3" data-bind="click: clear">更&nbsp;&nbsp;正</a>\
-    <a class="atm-btn btn-right btn-bg btn-row-4" data-bind="click: idcardlogin">确&nbsp;&nbsp;认</a>\
+    var idcardloginDomTemplate = '<a class="atm-btn btn-right btn-row-2" data-bind="click: clear">更正/Clear</a>\
+    <a class="atm-btn btn-right btn-row-3" data-bind="click: idcardlogin">确认/OK</a>\
+    <a class="atm-btn btn-right btn-row-4" data-bind="click: prevPage">取消/Cancle</a>\
     <div class="container-fluid">\
-      <h1 style="margin: 21px auto; width: 340px;">请输入身份证号</h1>\
-      <br/><br/><br/>\
+      <div class="title">\
+        <div class="zh-CN">请输入身份证号码</div>\
+        <div class="en-US">Please input your idCard Number.</div>\
+      </div>\
       <div class="amt-bar" style="width:600px;">\
         <input type="text" class="form-control" name="amt" autocomplete="off"\
           data-bind="value: idCard">\

@@ -36,44 +36,36 @@
     layoutSelector = app.layoutSelector;
 
     // 构造视图DOM模板
-    var loginDomTemplate = '<div class="header-bar">\
-    <a class="prev-btn" data-bind="click: prevPage"><i class="fa fa-chevron-left"></i></a>\
-    <span class="header-title">登&nbsp;&nbsp;录</span>\
-    </div>\
+    var loginDomTemplate = '<header>\
+      <div class="prev-btn" data-bind="click: prevPage"><i class="fa fa-chevron-left"></i></div>\
+      <div class="header-title">Login</div>\
+    </header>\
     \
-    <div class="container-fluid" style="margin-top:15%;">\
-  \
+    <div class="container-fluid">\
     <form class="form-horizontal form-login">\
   \
       <div class="form-group">\
-        <div class="col-xs-12"><br></div>\
+        <div class="col-xs-12">\
+          <div class="avatar"><img src="image/avatar.png" /></div>\
+        </div>\
       </div>\
       <div class="form-group">\
-      <div class="col-xs-3"><label>账&nbsp;&nbsp;&nbsp;号</label></div>\
-      <div class="col-xs-8">\
-        <input type="text" class="form-control" name="idCard"\
-          placeholder="请输入掌银账号"\
-          data-bind="value:userId" required validationMessage="请输入正确格式的掌银账号!">\
-      </div>\
+        <div class="col-xs-12 user-name">\
+          <input type="text" class="form-control" name="idCard"\
+            placeholder="请输入掌银账号"\
+            data-bind="value:userId" required validationMessage="请输入正确格式的掌银账号!">\
+        </div>\
       </div>\
     \
       <div class="form-group">\
-      <div class="col-xs-3"><label>密&nbsp;&nbsp;&nbsp;码</label></div>\
-      <div class="col-xs-8">\
-        <input type="password" class="form-control" name="password"\
-          placeholder="请输入密码"\
-          data-bind="value: password" required validationMessage="请输入密码!">\
-      </div>\
-      </div>\
-      <div class="form-group">\
-        <div class="col-xs-12"><br></div>\
-      </div>\
-  </form>\
-  \
-  <br/><br/><br/>\
-    <div class="login-bar">\
-      <button class="btn btn-theme btn-login" data-bind="click: login"><b>登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</b></button>\
+        <div class="col-xs-12">\
+          <div class="fingerprint" data-bind="click: login">\
+            <img src="image/fingerprintUnlock.png" />\
+            <div class="tip">Fingerprint Unlock</div>\
+          </div>\
+        </div>\
     </div>\
+  </form>\
   \
   </div>';
 
@@ -107,8 +99,8 @@
         data: JSON.stringify({
           appId: this.appId,
           userId: this.userId,
-          data:this.userId
-//          password: this.password
+          password: this.password,
+          data: this.userId
         }),
       })
       .done(function(res) {
@@ -138,6 +130,7 @@
 
   // login视图view，从字符串变量loginDomString中加载DOM结构，绑定ViewModel
   var loginV = new kendo.View(loginDomString, {
+    wrap: false,
     model: loginVM,
     // init: loginVM.init.bind(loginVM),
     // show: loginVM.show.bind(loginVM),
@@ -148,7 +141,7 @@
 
   // agreement视图路由，渲染指定view
   router.route('/login', function () {
-    layout.showIn(layoutSelector, loginV);
+    layout.showIn(layoutSelector, loginV, 'slide');
   });
 
 

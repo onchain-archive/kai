@@ -36,40 +36,59 @@
       layoutSelector = app.layoutSelector;
   
       // 构造视图DOM模板
-      var reportLossCheckInfoDomTemplate = '<a class="atm-btn btn-left btn-row-4" data-bind="click: prevPage">返回修改</a>\
-      <a class="atm-btn btn-right btn-row-4" data-bind="click: reportLoss">确定挂失</a>\
+      var reportLossCheckInfoDomTemplate = '<a class="atm-btn btn-left btn-row-4" data-bind="click: prevPage">取消/Cancle</a>\
+      <a class="atm-btn btn-right btn-row-4" data-bind="click: reportLoss">\
+        <span class="zh-CN">确认挂失</span>\
+        <span class="en-US">Confirm to Report Loss</span>\
+      </a>\
       <div class="container-fluid">\
-        <h1 style="margin: 21px auto; width: 580px;">您选择挂失的账户信息如下：</h1>\
-        <br/><br/>\
-        <div class="amt-checkinfo-bar form-horizontal">\
-          <div class="form-group">\
-            <div class="col-xs-4"><span>姓   名</span></div>\
-            <div class="col-xs-8">\
-              <div class="info-value" data-bind="text:customerInformation.name"></div>\
-            </div>\
-          </div>\
 \
-          <div class="form-group">\
-            <div class="col-xs-4"><span>账   号</span></div>\
-            <div class="col-xs-8">\
-              <div class="info-value" data-bind="text:code"></div>\
+      <div class="title">\
+        <div class="zh-CN">请核对授权人账户信息</div>\
+        <div class="en-US">Pleace check the information of the contracted account.</div>\
+      </div>\
+\
+      <div class="amt-checkinfo-bar form-horizontal">\
+        <div class="form-group">\
+          <div class="col-xs-5 info-key">\
+            <div class="zh-CN">姓&nbsp;&nbsp;&nbsp;名</div><div class="en-US">Full Name</div>\
             </div>\
+          <div class="col-xs-7">\
+            <div class="info-value" data-bind="text:customerInformation.name"></div>\
           </div>\
+        </div>\
+\
+        <div class="form-group">\
+          <div class="col-xs-5 info-key">\
+            <div class="zh-CN">账&nbsp;&nbsp;&nbsp;号</div><div class="en-US">Account No.</div>\
+            </div>\
+          <div class="col-xs-7">\
+            <div class="info-value" data-bind="text:code"></div>\
+          </div>\
+        </div>\
   \
-          <div class="form-group">\
-            <div class="col-xs-4"><span>电   话</span></div>\
-            <div class="col-xs-8">\
-              <div class="info-value" data-bind="text:customerInformation.phone"></div>\
-            </div>\
+        <div class="form-group">\
+          <div class="col-xs-5 info-key">\
+            <div class="zh-CN">电&nbsp;&nbsp;&nbsp;话</div><div class="en-US">Phone</div>\
           </div>\
-\
-          <div class="form-group">\
-            <div class="col-xs-4"><span>开户行</span></div>\
-            <div class="col-xs-8">\
-              <div class="info-value" data-bind="text:bankOfDeposit"></div>\
-            </div>\
+          <div class="col-xs-7">\
+            <div class="info-value" data-bind="text:customerInformation.phone"></div>\
           </div>\
+        </div>\
 \
+        <div class="form-group">\
+          <div class="col-xs-5 info-key">\
+            <div class="zh-CN">开户行</div><div class="en-US">Bank Of Deposit</div>\
+          </div>\
+          <div class="col-xs-7">\
+            <div class="info-value" data-bind="text:bankOfDeposit"></div>\
+          </div>\
+        </div>\
+\
+        <div class="text">\
+          <div class="zh-CN">请核对上述信息是否正确，按<b>[确认挂失]</b>键继续</div>\
+          <div class="en-US">Please check if the above information is correct,<br> then press <b>[Confirm to Report Loss]</b> to continue.</div>\
+        </div>\
       </div>';
   
   
@@ -136,7 +155,7 @@
         // this.set('party', '');
       },
       prevPage: function () {
-        router.navigate('/queryrelativeasset');
+        router.navigate('/reportlossasset');
       },
       reportLoss: function () {
         var _this = this,

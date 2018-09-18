@@ -32,13 +32,24 @@ public class CatastropheRestApiControllor extends AbstractController {
 		return resp.createSuccessJson(catastrophePojos, request);
 	}
 
-	@RequestMapping(value = "/findByWhere", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public String findByWhere(@RequestBody String reqJson, HttpServletRequest req) {
-		Request<String> request = Request.create(reqJson, req, String.class);
+	@RequestMapping(value = "/findByWhere", method = RequestMethod.GET)
+	public String findByWhere(String name, Request<String> request, HttpServletRequest req) {
+		request = Request.create(name, request, req);
 		List<CatastrophePojo> catastrophePojos = catastropheService.findByWhere(request.getData());
 		Response<List> resp = new Response<List>();
 		return resp.createSuccessJson(catastrophePojos, request);
 	}
+
+	// @RequestMapping(value = "/findByWhere", method = RequestMethod.POST, produces
+	// = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	// public String findByWhere(@RequestBody String reqJson, HttpServletRequest
+	// req) {
+	// Request<String> request = Request.create(reqJson, req, String.class);
+	// List<CatastrophePojo> catastrophePojos =
+	// catastropheService.findByWhere(request.getData());
+	// Response<List> resp = new Response<List>();
+	// return resp.createSuccessJson(catastrophePojos, request);
+	// }
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String create(@RequestBody String reqJson, HttpServletRequest req) {

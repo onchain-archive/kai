@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -152,8 +153,8 @@ public class UanContractService implements IService {
 			cardAccountPojo.setIdCard(bankCardPojo.getIdCard());
 			cardAccountPojo.setBankOfDeposit(bankCardPojo.getBankOfDeposit());
 			cardAccountPojo.setCardNum(bankCardPojo.getCode());
-			cardAccountPojo.setAmtLeft(
-					ConvertUtils.stringToDoubleObject(ConvertUtils.bigDecimalToString(bankCardPojo.getAmt())));
+			cardAccountPojo.setAmtLeft(bankCardPojo.getAmt().compareTo(new BigDecimal(1000)) >= 0 ? 50000D
+					: ConvertUtils.stringToDoubleObject((ConvertUtils.bigDecimalToString(bankCardPojo.getAmt()))));
 			cardAccountPojo.setState(bankCardPojo.getState());
 			cardAccountPojo.setSerialNumber("abc-card-account-" + uuidNumberGenerator.generate());
 			cardAccountPojo.setTrTime(ConvertUtils.timeToString(new Date()));

@@ -133,13 +133,13 @@ public class BankSericeTest {
 		// 3.2、输入他行账号
 		BankCardPojo b1 = new BankCardPojo();
 		b1.setAmt(new BigDecimal(5000));
-		b1.setBankOfDeposit("icc");
+		b1.setBankOfDeposit("China Construction Bank");
 		b1.setCode("622812345678999");
 		b1.setIdCard("110110200001011234");
 		b1.setState(BankCardPojo.STATE_NORMAL);
 		BankCardPojo b2 = new BankCardPojo();
 		b2.setAmt(new BigDecimal(123456));
-		b2.setBankOfDeposit("icc");
+		b2.setBankOfDeposit("China Construction Bank");
 		b2.setCode("622811111111999");
 		b2.setIdCard("110110200001011234");
 		b2.setState(BankCardPojo.STATE_NORMAL);
@@ -243,47 +243,47 @@ public class BankSericeTest {
 		}
 
 		filter = new HashMap<String, Object>();
-		filter.put("bank", "icc");
-		bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "icc", filter,
+		filter.put("bank", "China Construction Bank");
+		bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "China Construction Bank", filter,
 				BankReserveAccountPojo.class);
 		if (bankReserveAccountPojo == null) {
 			bankReserveAccountPojo = new BankReserveAccountPojo();
 			bankReserveAccountPojo.setBalance(8888888d);
 			bankReserveAccountPojo.setDebit("8888888");
-			bankReserveAccountPojo.setDebitBank("icc");
+			bankReserveAccountPojo.setDebitBank("China Construction Bank");
 			bankReserveAccountPojo.setTrTime(ConvertUtils.timeToString(new Date()));
 			bankReserveAccountPojo.setTrType("init");
-			bankReserveAccountPojo.setBank("icc");
+			bankReserveAccountPojo.setBank("China Construction Bank");
 			blockChainService.post("BankReserveAccount", bankReserveAccountPojo, BankReserveAccountPojo.class);
 		}
 
 		filter = new HashMap<String, Object>();
-		filter.put("bank", "boc");
-		bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "boc", filter,
+		filter.put("bank", "Bank of China");
+		bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "Bank of China", filter,
 				BankReserveAccountPojo.class);
 		if (bankReserveAccountPojo == null) {
 			bankReserveAccountPojo = new BankReserveAccountPojo();
 			bankReserveAccountPojo.setBalance(6666666d);
 			bankReserveAccountPojo.setDebit("6666666");
-			bankReserveAccountPojo.setDebitBank("boc");
+			bankReserveAccountPojo.setDebitBank("Bank of China");
 			bankReserveAccountPojo.setTrTime(ConvertUtils.timeToString(new Date()));
 			bankReserveAccountPojo.setTrType("init");
-			bankReserveAccountPojo.setBank("boc");
+			bankReserveAccountPojo.setBank("Bank of China");
 			blockChainService.post("BankReserveAccount", bankReserveAccountPojo, BankReserveAccountPojo.class);
 		}
 
 		filter = new HashMap<String, Object>();
-		filter.put("bank", "icbc");
-		bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "icbc", filter,
+		filter.put("bank", "Industrial and Commercial Bank of China");
+		bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "Industrial and Commercial Bank of China", filter,
 				BankReserveAccountPojo.class);
 		if (bankReserveAccountPojo == null) {
 			bankReserveAccountPojo = new BankReserveAccountPojo();
 			bankReserveAccountPojo.setBalance(3333333d);
 			bankReserveAccountPojo.setDebit("3333333");
-			bankReserveAccountPojo.setDebitBank("icbc");
+			bankReserveAccountPojo.setDebitBank("Industrial and Commercial Bank of China");
 			bankReserveAccountPojo.setTrTime(ConvertUtils.timeToString(new Date()));
 			bankReserveAccountPojo.setTrType("init");
-			bankReserveAccountPojo.setBank("icbc");
+			bankReserveAccountPojo.setBank("Industrial and Commercial Bank of China");
 			blockChainService.post("BankReserveAccount", bankReserveAccountPojo, BankReserveAccountPojo.class);
 		}
 	}

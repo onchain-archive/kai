@@ -37,20 +37,28 @@
     layoutSelector = app.layoutSelector;
   
     // 构造视图DOM模板
-    var uanindexDomTemplate = '<a class="atm-btn btn-left btn-bg btn-row-2" data-bind="click: reportLost">挂失授权人账户</a>\
-      <a class="atm-btn btn-left btn-bg btn-row-4" data-bind="click: prevPage">退&nbsp;&nbsp;出</a>\
-      <a class="atm-btn btn-right btn-bg btn-row-2" data-bind="click: queryRelativeList">查询授权人账户</a>\
-      <a class="atm-btn btn-right btn-bg btn-row-4" data-bind="click: withdraw">小额免密取款</a>\
-      <div class="container-fluid" style="height: 100%;">\
-        <h1 style="margin: 21px auto; width: 340px;">中国农业银行ATM</h1>\
-        <br/><br/><br/>\
-        <div style="width: 460px; margin: 36px auto;"><span style="font-size: 26px;">\
-          欢迎您，<b data-bind="text: name"></b>\
-        </div>\
-        <div style="width: 460px; margin: 36px auto;">\
-          <span style="font-size: 26px;">UAN为您提供应急服务，请选择业务</span>\
-        </div>\
-      </div>';
+    var uanindexDomTemplate = '<a class="atm-btn btn-left btn-bg btn-row-2" data-bind="click: reportLost">\
+      <span class="zh-CN">挂失授权人账户</span>\
+      <span class="en-US">Report Loss of Authorized Accounts</span>\
+    </a>\
+    <a class="atm-btn btn-left btn-bg btn-row-4" data-bind="click: prevPage">\
+      <span class="zh-CN">退出</span>\
+      <span class="en-US">Logout</span>\
+    </a>\
+    <a class="atm-btn btn-right btn-bg btn-row-2" data-bind="click: queryRelativeList">\
+      <span class="zh-CN">查询授权人账户</span>\
+      <span class="en-US">Enquire Authorized Accounts</span>\
+    </a>\
+    <a class="atm-btn btn-right btn-bg btn-row-4" data-bind="click: withdraw">\
+      <span class="zh-CN">小额免密取款</span>\
+      <span class="en-US">Secret-free Cash Withdraw</span>\
+    </a>\
+    <div class="container-fluid">\
+      <div class="title">\
+        <div class="zh-CN">UAN为您提供应急服务，请选择服务项目</div>\
+        <div class="en-US">UAN will provide emergency services for you, please select service item.</div>\
+      </div>\
+    </div>';
   
     // 使用template构造DOM字符串，传入从上一视图读取的变量
     var uanindexDomString = kendo.template(uanindexDomTemplate) ({});

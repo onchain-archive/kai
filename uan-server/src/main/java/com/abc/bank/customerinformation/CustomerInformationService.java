@@ -25,6 +25,7 @@ import com.abc.common.UanException;
 import com.abc.common.util.ConvertUtils;
 import com.abc.common.util.JsonConvertor;
 import com.abc.common.util.UUIDNumberGenerator;
+import com.abc.common.util.XMLConvertor;
 import com.abc.gov.residence.RegisteredResidencePojo;
 import com.abc.uan.blockchain.AgreementPojo;
 import com.abc.uan.blockchain.BankReserveAccountPojo;
@@ -36,7 +37,7 @@ import com.abc.uan.blockchain.TradePojo;
 @Component
 public class CustomerInformationService implements IService {
 
-	private final String OWNER = "abc";
+	private final String OWNER = "Agriculture Bank of China";
 
 	@Autowired
 	private CustomerInformationDAO customerInformationDAO;
@@ -48,6 +49,8 @@ public class CustomerInformationService implements IService {
 	private UUIDNumberGenerator uuidNumberGenerator;
 	@Autowired
 	private JsonConvertor jsonConvertor;
+	@Autowired
+	private XMLConvertor xmlConvertor;
 	@Autowired
 	private BlockChainService blockChainService;
 
@@ -137,13 +140,15 @@ public class CustomerInformationService implements IService {
 						tradesPojo.setTrType("debit");
 						blockChainService.post("Trade", tradesPojo, TradePojo.class);
 
-						Map<String, Object> filter = new HashMap<String, Object>();
-						filter.put("cardNum", c.getCode());
-						CardAccountPojo cardAccountPojo = blockChainService.get("CardAccount", c.getCode(), filter,
-								CardAccountPojo.class);
-						cardAccountPojo.setAmtLeft(ConvertUtils.stringToDouble(
-								ConvertUtils.bigDecimalToString(bankCardService.loadByCode(c.getCode()).getAmt())));
-						blockChainService.post("CardAccount", cardAccountPojo, CardAccountPojo.class);
+						// Map<String, Object> filter = new HashMap<String, Object>();
+						// filter.put("cardNum", c.getCode());
+						// CardAccountPojo cardAccountPojo = blockChainService.get("CardAccount",
+						// c.getCode(), filter,
+						// CardAccountPojo.class);
+						// cardAccountPojo.setAmtLeft(ConvertUtils.stringToDouble(
+						// ConvertUtils.bigDecimalToString(bankCardService.loadByCode(c.getCode()).getAmt())));
+						// blockChainService.post("CardAccount", cardAccountPojo,
+						// CardAccountPojo.class);
 
 						break;
 
@@ -180,13 +185,15 @@ public class CustomerInformationService implements IService {
 											.subtract(bd))));
 							bankReserveAccountPojo.setCredit(ConvertUtils.doubleToString(withdrawCommondPojo.getAmt()));
 							bankReserveAccountPojo.setCreditBank(OWNER);
+							bankReserveAccountPojo.setDebit("None");
 							bankReserveAccountPojo.setDebitBank(c.getBankOfDeposit());
 							bankReserveAccountPojo.setReference(tradesPojo.getSerialNumber());
 							bankReserveAccountPojo.setTrDetail(tradesPojo.toString());
 							bankReserveAccountPojo.setTrTime(ConvertUtils.timeToString(new Date()));
 							bankReserveAccountPojo.setTrType("credit");
-							blockChainService.put("BankReserveAccount", bankReserveAccountPojo.getBank(),
-									bankReserveAccountPojo);
+							String key = bankReserveAccountPojo.getBank();
+							bankReserveAccountPojo.setBank(null);
+							blockChainService.put("BankReserveAccount", key, bankReserveAccountPojo);
 
 							// 智能合约进行卡余额扣减
 							// filter = new HashMap<String, Object>();
@@ -262,18 +269,23 @@ public class CustomerInformationService implements IService {
 			CardAccountPojo cardAccountPojo = blockChainService.get("CardAccount", reportLossCommondPojo.getCode(),
 					filter, CardAccountPojo.class);
 			cardAccountPojo.setState(BankCardPojo.STATE_ABNORMAL);
-			blockChainService.post("CardAccount", cardAccountPojo, CardAccountPojo.class);
+			String key = cardAccountPojo.getCardNum();
+			cardAccountPojo.setCardNum(null);
+			blockChainService.put("CardAccount", key, cardAccountPojo);
 		} else {
 			Map<String, Object> filter = new HashMap<String, Object>();
 			filter.put("cardNum", reportLossCommondPojo.getCode());
 			CardAccountPojo cardAccountPojo = blockChainService.get("CardAccount", reportLossCommondPojo.getCode(),
 					filter, CardAccountPojo.class);
 			cardAccountPojo.setState(BankCardPojo.STATE_ABNORMAL);
-			blockChainService.post("CardAccount", cardAccountPojo, CardAccountPojo.class);
+			String key = cardAccountPojo.getCardNum();
+			cardAccountPojo.setCardNum(null);
+			blockChainService.put("CardAccount", key, cardAccountPojo);
 		}
 		uanTrResultPojo = new UanTrResultPojo();
 		uanTrResultPojo.setCardNum(reportLossCommondPojo.getCode());
-		uanTrResultPojo.setMasterName(tmp.getCustomerInformation().getName());
+		UanContractPojo uanContractPojo = (UanContractPojo) xmlConvertor.toObject(agreementPojo.getTrDetail());
+		uanTrResultPojo.setMasterName(uanContractPojo.getCustomerInformation().getName());
 		uanTrResultPojo.setInfo("挂失成功");
 		return uanTrResultPojo;
 	}

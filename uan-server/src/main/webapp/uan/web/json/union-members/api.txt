@@ -1,0 +1,18 @@
+1、首次进入查询所有表格数据 findAll
+请求报文：
+{"appId":"uan","userId":"110110200001011234"}
+应答报文：
+[{"appId":"uan","data":[{"address":"北京东城区建国门内大街69号","code":"abc","id":"1","joinInTime":1536797288000,"name":"中国农业银行","phone":"95599","state":"OPEN","type":"BANK"},{"address":"中国北京西城区金融大街25号","code":"icc","id":"2","joinInTime":1536797288000,"name":"中国建设银行","phone":"95533","state":"OPEN","type":"BANK"},{"address":"中国北京市西城区复兴门内大街55号","code":"icbc","id":"3","joinInTime":1536797288000,"name":"中国工商银行","phone":"95588","state":"OPEN","type":"BANK"},{"address":"www.bankofchina.com","code":"boc","id":"4","joinInTime":1536797288000,"name":"中国银行","phone":"95566","state":"OPEN","type":"BANK"},{"address":"北京","code":"chinasafety","id":"5","joinInTime":1536797288000,"name":"中国应急管理部","phone":"010-64463685","state":"OPEN","type":"GOV"},{"address":"United Nations Headquarters","code":"un","id":"6","joinInTime":1536797288000,"name":"United Nations","phone":"","state":"OPEN","type":"ORG"},{"address":"United Nations Headquarters","code":"un-hrc","id":"7","joinInTime":1536797288000,"name":"United Nations Human Rights Council","phone":"","state":"OPEN","type":"ORG"},{"address":"北京海淀苏家坨镇三星庄路","code":"bhd","id":"rmae9rn7mlzsekg1zq7fikhy","joinInTime":1536830080826,"name":"稻香湖银行","phone":"010-83438888","state":"OPEN","type":"BANK"}],"message":"请求成功","statusCode":"200"}]
+
+2、查询功能，两个元素 findByWhere
+请求报文：
+{"appId":"uan","data":{"code":"abc","name":"银行"},"userId":"110110200001011234"}
+应答报文：
+{"appId":"uan","data":[{"address":"北京东城区建国门内大街69号","code":"abc","id":"1","joinInTime":1536797288000,"name":"中国农业银行","phone":"95599","state":"OPEN","type":"BANK"}],"message":"请求成功","statusCode":"200"}
+
+3、创建联盟成员 create
+
+请求报文：
+{"appId":"uan","data":{"address":"北京海淀苏家坨镇三星庄路","code":"bhd","id":"rmae9rn7mlzsekg1zq7fikhy","joinInTime":1536830080826,"name":"稻香湖银行","phone":"010-83438888","state":"OPEN","type":"BANK"},"userId":"110110200001011234"}
+应答报文
+{"appId":"uan","message":"请求成功","statusCode":"200"}

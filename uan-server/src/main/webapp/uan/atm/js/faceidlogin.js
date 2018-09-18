@@ -55,28 +55,31 @@
     // </div>';
   
   // 构造视图DOM模板
-  var faceidLoginDomTemplate = '<a class="atm-btn btn-right btn-bg btn-row-4" data-bind="click: faceidLogin">模拟刷脸</a>\
-  <a class="atm-btn btn-left btn-bg btn-row-4" data-bind="click: prevPage">退&nbsp;&nbsp;出</a>\
+  var faceidLoginDomTemplate = '<a class="atm-btn btn-right btn-row-3" data-bind="click: faceidLogin">确认/OK</a>\
+  <a class="atm-btn btn-right btn-row-4" data-bind="click: prevPage">取消/Cancle</a>\
   <div class="container-fluid" style="padding: 40px 50px 50px 50px;">\
 \
-    <div class="faceid-instruction">\
-      <div class="step-1"><img src="image/faceid-login-1.png" />\
-        <div>1.请正视摄像头，然后正脸向右转90度</div>\
-      </div>\
-      <div class="step-2"><img src="image/faceid-login-2.png" />\
-        <div>2.请回正</div>\
-      </div>\
-      <div class="step-3"><img src="image/faceid-login-3.png" />\
-        <div>3.请抬头，眼睛正视摄像头</div>\
-      </div>\
+    <div class="faceid-instruction-img">\
+      <div class="step-1"><img src="image/faceid-login-1.png" /></div>\
+      <div class="step-2"><img src="image/faceid-login-2.png" /></div>\
+      <div class="step-3"><img src="image/faceid-login-3.png" /></div>\
     </div>\
 \
-    <div class="faceid-webcam">\
-      <img src="image/face-scanner.jpg" />\
+    <div class="faceid-instruction-text">\
+      <div class="step-1">\
+        <div class="zh-CN">1. 请正视摄像头，然后正脸向右转90度。</div>\
+        <div class="en-US">1.Please look directly at the camera, then turn your face to the RIGHT about 90 degrees.</div>\
+      </div>\
+      <div class="step-2">\
+        <div class="zh-CN">2. 请回正。</div>\
+        <div class="en-US">2. Please turn your face back to the original direction.</div>\
+      </div>\
+      <div class="step-3">\
+        <div class="zh-CN">3. 请正视摄像头。</div>\
+        <div class="en-US">3. Please look directly at the camera.</div>\
+      </div>\
     </div>\
   </div>';
-
-
 
     // 使用template构造DOM字符串，传入从上一视图读取的变量
     var faceidLoginDomString = kendo.template(faceidLoginDomTemplate) ({});

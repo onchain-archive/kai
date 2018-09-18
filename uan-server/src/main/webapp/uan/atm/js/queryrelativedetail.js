@@ -36,41 +36,60 @@
       layoutSelector = app.layoutSelector;
   
       // 构造视图DOM模板
-      var queryRelativeDetailDomTemplate = '<a class="atm-btn btn-left btn-row-4" data-bind="click: prevPage">继续查询</a>\
-      <a class="atm-btn btn-right btn-row-4" data-bind="click: returnToIndex">返&nbsp;&nbsp;回</a>\
+      var queryRelativeDetailDomTemplate = '<a class="atm-btn btn-left btn-row-4" data-bind="click: prevPage">\
+        <span class="zh-CN">查看其他账户</span>\
+        <span class="en-US">View Other Accounts</span>\
+      </a>\
+      <a class="atm-btn btn-right btn-row-4" data-bind="click: returnToIndex">返回/return</a>\
       <div class="container-fluid">\
-        <h1 style="margin: 21px auto; width: 580px;">您查询的授权人账户信息如下：</h1>\
-        <br/>\
+\
+        <div class="title">\
+          <div class="zh-CN">请查看授权人账户信息</div>\
+          <div class="en-US">Pleace check the information of the contracted account.</div>\
+        </div>\
+\
         <div class="amt-checkinfo-bar form-horizontal">\
           <div class="form-group">\
-            <div class="col-xs-4"><span>姓   名</span></div>\
-            <div class="col-xs-8">\
+            <div class="col-xs-5 info-key">\
+              <div class="zh-CN">姓&nbsp;&nbsp;&nbsp;名</div><div class="en-US">Full Name</div>\
+            </div>\
+            <div class="col-xs-7 info-value">\
               <div class="info-value" data-bind="text:customerInformation.name"></div>\
             </div>\
           </div>\
 \
           <div class="form-group">\
-            <div class="col-xs-4"><span>账   号</span></div>\
-            <div class="col-xs-8">\
+            <div class="col-xs-5 info-key">\
+              <div class="zh-CN">账&nbsp;&nbsp;&nbsp;号</div><div class="en-US">Account No.</div>\
+            </div>\
+            <div class="col-xs-7 info-value">\
               <div class="info-value" data-bind="text:code"></div>\
             </div>\
           </div>\
   \
           <div class="form-group">\
-            <div class="col-xs-4"><span>电   话</span></div>\
-            <div class="col-xs-8">\
-              <div class="info-value" data-bind="text:customerInformation.phone"></div>\
+            <div class="col-xs-5 info-key">\
+              <div class="zh-CN">电&nbsp;&nbsp;&nbsp;话</div><div class="en-US">Phone</div>\
+            </div>\
+            <div class="col-xs-7 info-value"><div class="info-value" data-bind="text:customerInformation.phone"></div></div>\
+          </div>\
+\
+          <div class="form-group">\
+            <div class="col-xs-5 info-key">\
+              <div class="zh-CN">余&nbsp;&nbsp;&nbsp;额</div><div class="en-US">Balance</div>\
+            </div>\
+            <div class="col-xs-7 info-value">\
+              <div class="info-value">\
+              CNY <span data-bind="text:amt"></span>.00\
+              </div>\
             </div>\
           </div>\
 \
           <div class="form-group">\
-            <div class="col-xs-4"><span>余   额</span></div>\
-            <div class="col-xs-8"><div class="info-value" data-bind="text:amt"></div></div>\
-          </div>\
-\
-          <div class="form-group">\
-            <div class="col-xs-4"><span>开户行</span></div>\
-            <div class="col-xs-8">\
+            <div class="col-xs-5 info-key">\
+              <div class="zh-CN">开户行</div><div class="en-US">Bank Of Deposit</div>\
+            </div>\
+            <div class="col-xs-7 info-value">\
               <div class="info-value" data-bind="text:bankOfDeposit"></div>\
             </div>\
           </div>\

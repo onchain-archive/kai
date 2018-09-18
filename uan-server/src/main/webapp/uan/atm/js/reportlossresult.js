@@ -36,25 +36,29 @@
     layoutSelector = app.layoutSelector;
 
     // 构造视图DOM模板
-    var reportLossResultDomTemplate = '<a class="atm-btn btn-right btn-row-4" data-bind="click: returnToIndex">返&nbsp;&nbsp;回</a>\
+    var reportLossResultDomTemplate = '<a class="atm-btn btn-right btn-row-4" data-bind="click: returnToIndex">返回/Return</a>\
     <div class="container-fluid" style="height: 100%;">\
-      <h1 style="margin: 21px auto; width: 420px;">挂失成功！</h1>\
-      <br/><br/><br/>\
+      <div class="title">\
+        <div class="zh-CN">挂失成功</div>\
+        <div class="en-US">Success to report loss of contracted account.</div>\
+      </div>\
+\
       <div class="amt-checkinfo-bar form-horizontal">\
 \
         <div class="form-group">\
-          <div class="col-xs-4"><label>授权人姓名</label></div>\
+          <div class="col-xs-4 info-key">\
+            <div class="zh-CN">授权人姓名</div><div class="en-US">Authorizer Name</div>\
+          </div>\
           <div class="col-xs-8"><div class="info-value" data-bind="text:masterName"></div></div>\
         </div>\
 \
         <div class="form-group">\
-          <div class="col-xs-4"><label>授权人账号</label></div>\
+          <div class="col-xs-4 info-key">\
+            <div class="zh-CN">授权人账号</div><div class="en-US">Authorizer Account</div>\
+          </div>\
           <div class="col-xs-8"><div class="info-value" data-bind="text:cardNum"></div></div>\
         </div>\
 \
-        <div class="form-group">\
-          <div class="col-xs-12"><div class="info-value" data-bind="text:info"></div></div>\
-        </div>\
       </div>\
 \
     </div>';

@@ -69,7 +69,7 @@ public class Response<T> extends AbstractOutputHeader {
 		response.setAppId(NodeDeploymentDescriptor.getInstance().getApp());
 		response.setStatusCode("200");
 		response.setMessage("请求成功");
-		response.setUniqueId(inputHeader.getUniqueId());
+		response.setUniqueId(inputHeader == null ? null : inputHeader.getUniqueId());
 
 		String respJson = new JsonConvertor().toJson(response);
 		LogWriter.trace(Response.class, "SuccessResponse: [{}]", respJson);

@@ -50,78 +50,79 @@
   //     }
   // });
 
-    //构造单个签约账户Form DOM模板
-    var accountFormDomTemplate = '<form class="form-horizontal" data-bind="attr: {data-index: index}">\
+//   <div class="form-group">\
+//   <div class="col-xs-3">\
+//     <label><span style="color:red;">*</span>Full Name</label>\
+//   </div>\
+//   <div class="col-xs-8">\
+//     <input type="text" class="form-control" name="name" placeholder="请输入姓名"\
+//       data-bind="value: customerInformation.name" disabled="disabled" autocomplete="off"\
+//       required validationMessage="请输入姓名!">\
+//   </div>\
+// </div>\
+// \
+// <div class="form-group">\
+//   <div class="col-xs-3">\
+//     <label><span style="color:red;">*</span>ID Card</label>\
+//   </div>\
+//   <div class="col-xs-8">\
+//     <input type="text" class="form-control" name="idCard" placeholder="请输入身份证"\
+//       data-bind="value:customerInformation.idCard" disabled="disabled" autocomplete="off"\
+//       required pattern="[0-9Xx]{18}" validationMessage="请输入正确格式的身份证!">\
+//   </div>\
+// </div>\
+
+  //构造单个签约账户Form DOM模板
+  var accountFormDomTemplate = '<form class="form-horizontal form-account" data-bind="attr: {data-index: index}">\
     <a class="fa fa-remove form-remove" data-bind="click: removeAccount"></a>\
+\
     <div class="form-group">\
       <div class="col-xs-3">\
-        <label><i style="color:red;">*</i>姓&nbsp;&nbsp;&nbsp;名</label>\
+        <label><span style="color:red;">*</span>Account No.</label>\
       </div>\
       <div class="col-xs-8">\
-        <input type="text" class="form-control" name="name" placeholder="请输入姓名"\
-          data-bind="value: customerInformation.name" disabled="disabled" autocomplete="off"\
-          required validationMessage="请输入姓名!">\
-      </div>\
-    </div>\
-    \
-    <div class="form-group">\
-      <div class="col-xs-3">\
-        <label><i style="color:red;">*</i>身份证</label>\
-      </div>\
-      <div class="col-xs-8">\
-        <input type="text" class="form-control" name="idCard" placeholder="请输入身份证"\
-          data-bind="value:customerInformation.idCard" disabled="disabled" autocomplete="off"\
-          required pattern="[0-9Xx]{18}" validationMessage="请输入正确格式的身份证!">\
-      </div>\
-    </div>\
-    \
-    <div class="form-group">\
-      <div class="col-xs-3">\
-        <label><i style="color:red;">*</i>账&nbsp;&nbsp;&nbsp;号</label>\
-      </div>\
-      <div class="col-xs-8">\
-        <input type="text" class="form-control" name="code" placeholder="请输入账号"\
+        <input type="text" class="form-control" name="code" placeholder="Account No."\
           data-bind="value:code, disabled: disabled" autocomplete="off"\
-          required pattern="[0-9]{16,19}" validationMessage="请输入正确格式的账号!">\
+          required pattern="[0-9]{16,19}" validationMessage="Please input account number!">\
       </div>\
     </div>\
-    \
-    \
+\
     <div class="form-group">\
         <div class="col-xs-3">\
-          <label><i style="color:red;">*</i>开户行</label>\
+          <label><span style="color:red;">*</span>Bank of Deposit</label>\
         </div>\
         <div class="col-xs-8">\
           <input name="bankOfDeposit" autocomplete="off"\
             data-role="dropdownlist"\
             data-value-primitive="true"\
-            data-text-field="name"\
-            data-value-field="id"\
             data-bind="value: bankOfDeposit, source: products, disabled: disabled"\
             style="width: 100%;"\
-            required validationMessage="请选择开户行!"\
+            required validationMessage="Please select a bank!"\
           />\
-          <!-- 加入此span以解决验证提示框显示位置问题，data-for属性必须与input的name属性一致 -->\
           <span class="k-invalid-msg" data-for="bankOfDeposit"></span>\
     \
       </div>\
     </div>\
-    </form>';
+\
+  </form>';
 
 
   // 构造视图DOM模板
-  var addaccountDomTemplate = '<div class="container-fluid" style="max-height: 90%;"> \
-  <h1>请添加授权账户</h1>\
-  \
+  var addaccountDomTemplate = '<header>\
+  <div class="prev-btn" data-bind="click: prevPage"><i class="fa fa-chevron-left"></i></div>\
+  <div class="header-title">Binding Accounts</div>\
+</header>\
+<div class="container-fluid with-bottom" style="padding-top: 15px;"> \
+\
   <div class="add-bar add-account">\
-    <button class="btn btn-theme btn-add" data-bind="click: addAccount">添加新账户</button>\
-  </div><br><br><br>\
+    <button class="btn btn-theme btn-add" data-bind="click: addAccount">Add Account</button>\
+  </div>\
 \
 </div>\
 \
 <div class="btn-bar fix-bottom">\
-  <button class="btn btn-default" data-bind="click: prevPage">上一步</button>\
-  <button class="btn btn-theme pull-right" data-bind="click: nextPage">下一步</button>\
+  <button class="btn btn-default" data-bind="click: prevPage">Previous</button>\
+  <button class="btn btn-theme pull-right" data-bind="click: nextPage">Next</button>\
 </div>';
 
   // 使用template构造单个Form DOM字符串
@@ -169,7 +170,14 @@
         $('.container-fluid').last().niceScroll({cursorcolor:'#7f7f7f'});
       }
     },
-
+    show: function() {
+      if(!window.app.loginV.model.get('name')) {
+        console.error('No login information!');
+        // route to /login
+        app.redirectTo('/login');
+        return;
+      }
+    },
     prevPage: function () {
       router.navigate('/agreement');
     },
@@ -223,6 +231,7 @@
           phone: card.customerInformation.phone || '',
           state: card.customerInformation.state || '',
           type: card.customerInformation.type || '',
+          faceBytes: card.customerInformation.type || 'base64string',
         },
         id: card.id || card.customerInformation.id || '',
         idCard: card.idCard || card.customerInformation.idCard || defaultIdCard,
@@ -241,14 +250,16 @@
         }, // END OF removeAccount
         // 下拉菜单相关数据
         products: [
-          { id: 'abc', name: '中国农业银行' },
-          { id: 'ccb', name: '中国建设银行' },
-          { id: 'icbc', name: '中国工商银行' },
-          { id: 'boc', name: '中国银行' }
+          'Agriculture Bank of China',
+          'China Construction Bank',
+          'Industrial and Commercial Bank of China',
+          'Bank of China',
+          'Bank of Communications'
         ],
-       }); // END OF newFormVM
+      }); // END OF newFormVM
 
       var newFormV = new kendo.View(accountFormDomString, {
+        wrap: false,
         model: newFormVM,
         removeAccount: newFormVM.removeAccount.bind(newFormVM),
       }); // END OF newFormV
@@ -289,9 +300,10 @@
 
   // addaccount视图view，从字符串变量addaccountDomString中加载DOM结构，绑定ViewModel
   var addaccountV = new kendo.View(addaccountDomString, {
+    wrap: false,
     model: addaccountVM, 
     init: addaccountVM.init.bind(addaccountVM),
-    // show: addaccountVM.show.bind(addaccountVM),
+    show: addaccountVM.show.bind(addaccountVM),
     // hide: addaccountVM.hide.bind(addaccountVM),
     prevPage: addaccountVM.prevPage.bind(addaccountVM),
     nextPage: addaccountVM.nextPage.bind(addaccountVM),
@@ -300,7 +312,7 @@
 
   // addaccount视图路由，渲染指定view
   router.route('/addaccount', function () {
-    layout.showIn(layoutSelector, addaccountV);
+    layout.showIn(layoutSelector, addaccountV, 'swap');
   });
 
 

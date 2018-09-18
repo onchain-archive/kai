@@ -1,0 +1,18 @@
+{
+  "appId": "uan",
+  "data": [
+    {
+      "account": "resource:org.acme.mynetwork.CardAccount#622800000000999",
+      "amt": 100,
+      "cardNum": "622800000000999",
+      "customer": "110110200001011234",
+      "party": "330330200001011234",
+      "serialNumber": "abc-withdraw-rmae9rjjt6efekgv4fzssqi0",
+      "trDetail": "{\"cardNum\":\"622800000000999\",\"info\":\"取款金額：100.0\",\"masterName\":\"张三\"}",
+      "trTime": "2018-09-14 11:15:34.652 CST",
+      "trType": "debit"
+    }
+  ],
+  "message": "请求成功",
+  "statusCode": "200"
+}

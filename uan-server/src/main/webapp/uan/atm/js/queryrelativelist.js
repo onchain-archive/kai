@@ -36,23 +36,30 @@
       layoutSelector = app.layoutSelector;
   
     // 构造视图DOM模板
-    var queryRelativeListDomTemplate = '<a class="atm-btn btn-left btn-row-4" data-bind="click: prevPage">返&nbsp;&nbsp;回</a>\
-    <a class="atm-btn btn-right btn-row-1" data-bind="click: rowMoveUp"><i class="fa fa-arrow-up"></i></a>\
+    var queryRelativeListDomTemplate = '<a class="atm-btn btn-right btn-row-1" data-bind="click: rowMoveUp"><i class="fa fa-arrow-up"></i></a>\
     <a class="atm-btn btn-right btn-row-2" data-bind="click: rowMoveDown"><i class="fa fa-arrow-down"></i></a>\
-    <a class="atm-btn btn-right btn-row-4 btn-confirm" data-bind="click: queryRelativeAsset">查看签约账户</a>\
+    <a class="atm-btn btn-right btn-row-4 btn-confirm" data-bind="click: queryRelativeAsset">选择/Select</a>\
+    <a class="atm-btn btn-left btn-row-4" data-bind="click: prevPage">取消/Cancle</a>\
     <div class="container-fluid">\
-      <br><br><br><br>\
-      <h2 style="margin: 15px auto; width: 55%;">授权人列表</h2>\
-      <div class="grid-relatives" style="margin: 15px auto; width: 55%;"></div>\
+      <div class="title">\
+        <div class="zh-CN">请选择授权人</div>\
+        <div class="en-US">Please select the authorizer.</div>\
+      </div>\
+      <div class="grid-relatives"></div>\
+\
+      <div class="text">\
+        <div class="zh-CN">请使用<b>[↑] [↓]</b>键选择授权人<br>按<b>[选择]</b>键继续</div>\
+        <div class="en-US">Please use <b>[↑] [↓]</b> to select the authorizer,<br> then press <b>[Select]</b> to continue.</div>\
+      </div>\
     </div>';
   
     var gridRelativesTemplate = '<div data-role="grid"\
       data-selectable="row"\
       data-columns="[\
-        {field: \'order\', title: \'序号\', width: 65},\
-        {field: \'slaveName\', title: \'姓名\', width: 120},\
-        {field: \'relationship\', title: \'关系\', width: 100},\
-        {field: \'masterId\', title: \'身份证\'}\
+        {field: \'order\', title: \'No.\', width: 55},\
+        {field: \'slaveName\', title: \'姓名/Name\', width: 125},\
+        {field: \'relationship\', title: \'关系/Relationship\', width: 180},\
+        {field: \'masterId\', title: \'身份证号/IdCard No.\'}\
       ]"\
       data-bind="source: datasource"\
     ></div>';

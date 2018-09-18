@@ -1,0 +1,19 @@
+1、首次进入查询所有表格数据 findAll
+请求报文：
+{"appId":"uan","userId":"110110200001011234"}
+应答报文：
+{"appId":"uan","data":[{"areas":"0816,028","begin":1189642088000,"end":1192234088000,"id":"1","name":"test"},{"areas":"+81 043","begin":1535731200000,"end":1538323200000,"id":"rmae9sm6wh39ekg3gdfoflb6","name":"北海道地址2018-09-13 18:23:26.195 CST"}],"message":"请求成功","statusCode":"200"}
+
+
+2、查询功能，1个元素 findByWhere
+请求报文：
+{"appId":"uan","data":"北海道","userId":"110110200001011234"}
+应答报文：
+{"appId":"uan","data":[{"areas":"+81 043","begin":1535731200000,"end":1538323200000,"id":"rmae9sm6wh39ekg3gdfoflb6","name":"北海道地址2018-09-13 18:23:26.195 CST"}],"message":"请求成功","statusCode":"200"}
+
+
+3、创建联盟成员 create
+请求报文：
+{"appId":"uan","data":{"areas":"+81 043","begin":1535731200000,"end":1538323200000,"id":"rmae9sm6wh39ekg3gdfoflb6","name":"北海道地址2018-09-13 18:23:26.195 CST"},"userId":"110110200001011234"}
+应答报文：
+{"appId":"uan","message":"请求成功","statusCode":"200"}

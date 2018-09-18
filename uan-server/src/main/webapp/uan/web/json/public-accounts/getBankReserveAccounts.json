@@ -1,0 +1,59 @@
+{
+  "appId": "uan",
+  "data": [
+    {
+      "balance": 5555555,
+      "bank": "abc",
+      "credit": "None",
+      "creditBank": "None",
+      "debit": "5555555",
+      "debitBank": "abc",
+      "reference": "None",
+      "serialNumber": "rmae9r7eeql9ekgv3l760txb",
+      "trDetail": "None",
+      "trTime": "2018-09-14 11:14:27.616 CST",
+      "trType": "init"
+    },
+    {
+      "balance": 6666666,
+      "bank": "boc",
+      "credit": "None",
+      "creditBank": "None",
+      "debit": "6666666",
+      "debitBank": "boc",
+      "reference": "None",
+      "serialNumber": "rmae9sn3mf4kekgv3nym3vld",
+      "trDetail": "None",
+      "trTime": "2018-09-14 11:14:33.629 CST",
+      "trType": "init"
+    },
+    {
+      "balance": 3333333,
+      "bank": "icbc",
+      "credit": "None",
+      "creditBank": "None",
+      "debit": "3333333",
+      "debitBank": "icbc",
+      "reference": "None",
+      "serialNumber": "rmae9rd188w7ekgv3p7y3xg8",
+      "trDetail": "None",
+      "trTime": "2018-09-14 11:14:36.370 CST",
+      "trType": "init"
+    },
+    {
+      "balance": 8888888,
+      "bank": "icc",
+      "credit": "None",
+      "creditBank": "None",
+      "debit": "8888888",
+      "debitBank": "icc",
+      "reference": "None",
+      "serialNumber": "rmae9rcr4374ekgv3molccrf",
+      "trDetail": "None",
+      "trTime": "2018-09-14 11:14:30.846 CST",
+      "trType": "init"
+    }
+  ],
+  "message": "请求成功",
+  "statusCode": "200"
+}

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name='viewport' 
+    content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
+  <link rel='shortcut icon' href='./favicon.ico' type="image/vnd.microsoft.icon">
+  <link rel="stylesheet" 
+    href="../vendor/bootswatch/3.3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" 
+    href="../vendor/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" 
+    href="../vendor/kendoui/2016.2.504/styles/kendo.bootstrap.min.css">
+  <link rel="stylesheet" 
+    href="../vendor/kendoui/2016.2.504/styles/kendo.common-bootstrap.min.css">
+  <link rel="stylesheet" 
+    href="../framework/3.4.0/udesk.min.css">
+  <link rel="stylesheet" 
+    href="../framework/3.4.0/udesk.app.min.css">
+  <link rel="stylesheet" 
+    href="../framework/3.4.0/skins/skin-blue.min.css" id="styleLink">
+   
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="../vendor/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="../vendor/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <title>UAN - Public Accounts Monitor</title>
+ 
+  <!-- 自定义CSS区域开始 -->
+ <style> 
+ body {
+  font-family: Microsoft Yahei,SJSONG, 'Times New Roman', Times, serif;
+ }
+ .theme2 {
+  height: 35px;
+  border-left: 4px solid #0072c6;
+  margin-top: 30px;
+  margin-bottom: -10px;
+}
+.page-title {
+  font-family: Microsoft Yahei, 'Times New Roman', Times, serif;
+  font-size: 18px;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-left: 5px;
+} 
+ </style>
+  <!-- 自定义CSS区域结束 -->
+</head>
+<body>
+<!--应用界面开始-->
+<div class="container-fluid">
+ 
+  <div class="theme2">
+    <h2 class="page-title">
+      <span>Bank Reserve Accounts</span>
+    </h2>
+  </div>
+  <hr>
+  <div id="bankReserveAccounts"></div>
+ 
+  <div class="theme2">
+    <h2 class="page-title">
+      <span>Transaction details</span>
+    </h2>
+  </div>
+
+  <hr>
+  <div id="trade"></div> 
+
+  <script id="userGridToolbar" type="text/x-kendo-template">
+    <div class="btn-toolbar">
+      <button class="pull-right btn btn-default" data-toggle="modal"
+              data-target="" data-backdrop="static">Filter</button>
+    </div>
+  </script>
+   
+ 
+</div> <!-- END of div.container-fluid -->
+<!--应用界面结束-->
+ 
+<!--[if lt IE 9]>
+  <script src="../vendor/JSON-js/2015.05.03/json2.js"></script>
+<![endif]-->  
+<script src="../vendor/jquery/1.11.2/jquery.min.js"></script>
+<script src="../vendor/jquery-nicescroll/3.6.6/jquery.nicescroll.min.js"></script>  
+<script src="../vendor/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="../vendor/kendoui/2016.2.504/js/kendo.web.min.js"></script>
+<script src="../framework/3.4.0/udesk.min.js"></script>
+<script src="../framework/3.4.0/messages/udesk.messages.en-US.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    // 框架初始化配置
+    udesk.init({
+      notice: {
+        autoHideAfter: 0
+      }
+    }); // end of udesk.init
+  });
+</script>
+ 
+<!-- 自定义JS区域开始 -->
+<script>
+// 定义表格组件构造方法
+function bindGrid(selector, readURL, columns) {
+  var $grid = $(selector);
+ 
+  // 组件单例验证，防止重复构造
+  if($grid.data('kendoGrid')) {
+    // 如果已存在 kendoGrid 实例，则将其销毁，重新建一个
+    $grid.empty().data('kendoGrid').destroy();
+  }
+ 
+  var dataSource = new kendo.data.DataSource({
+    transport: {
+      read: {
+        url: readURL,
+        dataType: 'json',
+        cache: false // 解决IE不刷新问题
+      },
+      parameterMap: function (options, operation) {
+        if (operation != 'read' && options) {
+          return kendo.stringify(options);
+        } else {
+          return $('#userSearchForm').serialize() + '&pageInfo.currentPageNum='
+                 + options.page + '&pageInfo.rowsOfPage=' + options.pageSize + '&userId=110110200001011234';
+        }
+      }
+    },
+    // serverPaging: true,
+    pageSize: 10,
+    schema: {
+      data: function(response) {
+        // 若业务数据不在data字段，则返回整个response
+        return response.data || response;
+      },
+      total: function(response) {
+        // 若行数据不在totalRowCount字段，则返回response的长度
+        return response.data.length || response.length;
+      }
+    }
+  });
+ 
+  $grid.kendoGrid({
+    toolbar: [{
+      template: kendo.template($('#userGridToolbar').html())
+    }],
+    columns: columns,
+    selectable: 'row', // 若使用 multiple 模式，则点击单元格会出现滚动条自动定位的问题
+    change: function(e) {
+      var grid = $grid.getKendoGrid();
+      var items = grid.items();
+      for(var i=0; i<items.length; i++) {
+        var $item = $(items[i]);
+        var $checkbox = $item.find('.grid_checkbox');
+        var checked = $item.hasClass('k-state-selected');
+        if(checked) {
+          $checkbox.prop('checked', true);
+        } else {
+          $checkbox.prop('checked', false);
+        }
+      }
+ 
+      var checkedNum = 0;
+      $('.grid_checkbox').each(function() {
+        if($(this).prop('checked')) {
+          checkedNum++;
+        } 
+      });
+ 
+      if(checkedNum == $('.grid_checkbox').length) {
+        $('.grid_checkbox_all').prop('indeterminate', false);
+        $('.grid_checkbox_all').prop('checked', true);
+      } else if(checkedNum == 0) {
+        $('.grid_checkbox_all').prop('indeterminate', false);
+        $('.grid_checkbox_all').prop('checked', false);
+      } else {
+        $('.grid_checkbox_all').prop('indeterminate', true);
+      }
+    }, // END OF change()
+    // 数据绑定事件
+    dataBound : function(e) {
+      // 在dataBound事件中实现按内容自适应每一列的宽度
+      var gridInstance = e.sender;
+      $.each(gridInstance.columns, function(column) {
+        if(!column.width) {
+          // 如果该列没有定义固定width，则按内容自适应调整宽度
+          gridInstance.autoFitColumn(column);
+        }
+      });
+
+        // 给表格区域加入滚动条美化效果，需要配合jquery.nicescroll.min.js
+      if(jQuery.fn.niceScroll) {
+        $('.k-grid-content').niceScroll({
+          cursorcolor:'#7f7f7f',
+          //autohidemode: false,
+          zindex: 100
+        });
+      }
+    }, // END OF dataBound
+
+    dataSource: dataSource,
+    pageable: {
+      //input: true,
+      refresh:true,
+      pageSizes:[5,10,20,50,'all'],
+      buttonCount:5,
+    },
+    // serverPaging: true,
+    // serverSorting: true,
+    // 允许拖拽列头修改列顺序
+    reorderable: true,
+    // 允许拖拽列头边缘修改列宽
+    resizable: true,
+    // 列头显示下拉菜单（设置升降排序、列可见性）
+    columnMenu: true,
+    // 列头显示过滤菜单
+    filterable: {
+      extra: false // 设置为只有一个过滤条件
+    },
+
+  }); // END of $grid.kendoGrid()
+ 
+  $grid.on('click', '.grid_checkbox_all', function() {
+    var checked = this.checked;
+    if(checked) {
+      $grid.getKendoGrid().items().addClass('k-state-selected');
+      $('.grid_checkbox').prop('checked', true);
+    } else {
+      $grid.getKendoGrid().items().removeClass('k-state-selected');
+      $('.grid_checkbox').prop('checked', false);
+    }
+  }); // END of .grid_checkbox_all onClick
+ 
+  $grid.on('click', '.grid_checkbox', function() {
+    var checked = this.checked;
+    var row = $(this).closest('tr');
+    if(checked) {
+      row.addClass('k-state-selected');
+    } else {
+      row.removeClass('k-state-selected');
+    }
+ 
+    var checkedNum = 0;
+    $('.grid_checkbox').each(function() {
+      if ($(this).prop('checked')) {
+        checkedNum++;
+      } 
+    });
+ 
+    if(checkedNum == $('.grid_checkbox').length) {
+      $('.grid_checkbox_all').prop('indeterminate', false);
+      $('.grid_checkbox_all').prop('checked', true);
+    } else if(checkedNum == 0) {
+      $('.grid_checkbox_all').prop('indeterminate', false);
+      $('.grid_checkbox_all').prop('checked', false);
+    } else {
+      $('.grid_checkbox_all').prop('indeterminate', true);
+    }
+  }); // END of .grid_checkbox onClick
+ 
+} // END of function bindGrid
+ 
+ 
+// 定义 document 的 ready 事件
+$(function() {
+  // 初始化kendoGrid表格
+  bindGrid('#bankReserveAccounts',  udesk.getRootPath() + 'api/rest/hyp/getBankReserveAccounts', [
+   {
+      title: "<input type='checkbox' class='grid_checkbox_all checkbox15'>",
+      width: 35,
+      template: '<input type="checkbox" class="grid_checkbox checkbox15">'
+    }, {
+      field: 'serialNumber',
+      title: 'Serial No.'
+    }, {
+      field: 'bank',
+      title: 'Bank'
+    }, {
+      field: 'credit',
+      title: 'Credit'
+    }, {
+      field: 'creditBank',
+      title: 'Credit Bank'
+    }, {
+      field: 'debit',
+      title: 'Debit'
+    }, {
+      field: 'debitBank',
+      title: 'Debit Bank'
+    }, {
+      field: 'balance',
+      title: 'Balance'
+    }, {
+      field: 'reference',
+      title: 'Reference'
+    }
+  ]);
+  bindGrid('#trade',   udesk.getRootPath() + 'api/rest/hyp/getTrades', [
+    {
+      title: "<input type='checkbox' class='grid_checkbox_all checkbox15'>",
+      width: 35,
+      template: '<input type="checkbox" class="grid_checkbox checkbox15">'
+    }, {
+      field: 'serialNumber',
+      title: 'Serial No.'
+    }, {
+      field: 'account',
+      title: 'Account'
+    }, {
+      field: 'cardNum',
+      title: 'card No.'
+    }, {
+      field: 'customer',
+      title: 'Customer'
+    }, {
+      field: 'party',
+      title: 'Party'
+    }, {
+      field: 'amt',
+      title: 'Balance'
+    }
+  ]);
+ 
+  $('#userCreateOKButton').click(function(event) {
+    event.preventDefault(); // 阻止按钮可能触发 <form> 的 submit 事件
+      return; // TODO - 
+    udesk.ajax({
+      url: './json/union-members/create.json',
+      method: 'POST',
+      showDefaultNotice: true, // 后端返回 void 时右上角也强制显示绿色成功提示框
+      data: $('#userCreateForm').serialize(),
+    }).done(function(res, textStatus, jqXHR) {
+      // 使用 promise 方式定义 AJAX 成功回调，效果同 success
+      $('#userCreateModal').modal('hide');
+      $('#userGrid').data('kendoGrid').dataSource.read();
+    });
+  }); // END of #userCreateOKButton onClick
+ 
+ 
+  $('#userEditModal').on('show.bs.modal', function(e) {
+    return; // TODO - 
+    var grid = $('#userGrid').data('kendoGrid');
+    var tr = grid.select();
+    if (tr.length == 1) {
+      var item = grid.dataItem(tr[0]);
+      $('#userIdEdit').val(item.userId);
+      $('#staffIdEdit').val(item.staffId);
+      $('#userNameEdit').val(item.userName);
+      $('#passwordEdit').val(item.password);
+      $('#emailEdit').val(item.email);
+    } else if(tr.length > 1) {
+       udesk.showWarning('Please select one selection at most!');
+      return e.preventDefault(); // 阻止 userEditModal 显示
+    } else {
+      udesk.showWarning('Please select one selection at least!');
+      return e.preventDefault(); // 阻止 userEditModal 显示
+    }
+  }); // END of #userEditModal onShow
+ 
+ 
+  $('#userEditOKButton').click(function(e) {
+    e.preventDefault();
+    return; // TODO - 
+    udesk.ajax({
+      url: './json/union-members/edit.json',
+      method: 'POST',
+      showDefaultNotice: true, // 后端返回 void 时右上角也强制显示绿色成功提示框
+      data: $('#userEditForm').serialize(),
+    }).done(function(res, textStatus, jqXHR) {
+      // 使用 promise 方式定义 AJAX 成功回调，效果同 success
+      $('#userEditModal').modal('hide');
+      $('#userGrid').data('kendoGrid').dataSource.read();
+    });
+  }); // END of #userEditOKButton onClick
+ 
+ 
+  $('#userDeleteModal').on('show.bs.modal', function(e) {
+    return; // TODO - 
+    var grid = $('#userGrid').data('kendoGrid');
+    var tr = grid.select();
+    if (tr.length < 1) {
+      udesk.showWarning('请选择一条记录!');
+      return e.preventDefault(); // 阻止 userDeleteModal 显示
+    }
+  }); // END of #userDeleteModal onShow
+ 
+ 
+  $('#userDeleteOKButton').click(function(event) {
+    return; // TODO - 
+    var userIds = new Array();
+    var grid = $('#userGrid').data('kendoGrid');
+    var tr = grid.select();
+    for(var i = 0; i < tr.length; i++) {
+      var item = grid.dataItem(tr[i]);
+      userIds.push(item.userId);
+    }
+ 
+    udesk.ajax({
+      url: './json/union-members/delete.json',
+      data: $.param({'userIds': userIds}, true),
+      showDefaultNotice: true, // 后端返回void时右上角也强制显示绿色成功提示框
+    }).done(function(res, textStatus, jqXHR) {
+      // 使用 promise 方式定义 AJAX 成功回调，效果同 success
+      $('#userDeleteModal').modal('hide');
+      $('#userGrid').data('kendoGrid').dataSource.read(); // 重新读取表格数据
+    });
+  }); // END of #userDeleteOKButton onClick
+ 
+ 
+  $('#userSearchForm').submit(function(event) {
+    event.preventDefault(); // 阻止按钮可能触发 <form> 的 submit 事件
+    bindGrid('#userGrid'); // 调用
+  }); // END of #userSearchForm onSubmit
+ 
+ 
+  $('#resetButton').click(function(e) {
+    $('#codeSearch').val('');
+    $('#nameSearch').val('');
+ 
+    return; // TODO - 
+    udesk.ajax({
+      url: './json/union-members/reset.json'
+    }).done(function(res, textStatus, jqXHR) {
+      // 使用 promise 方式定义 AJAX 成功回调，效果同 success
+      $('#userGrid').data('kendoGrid').dataSource.read();
+    });
+  }); // END of #resetButton onClick
+ 
+ 
+  $('#userShowModal').on('show.bs.modal', function(e) {
+    return; // TODO - 
+    var userId=$(e.relatedTarget).data('user-id');
+    
+    udesk.ajax({
+      url: './json/union-members/findByWhere.json',
+      data: {userId: userId}
+    }).done(function(res, textStatus, jqXHR) {
+      // 使用 promise 方式定义 AJAX 成功回调，效果同 success
+      $('#userIdShow').val(userVO.userId);
+      $('#staffIdShow').val(userVO.staffId);
+      $('#userNameShow').val(userVO.userName);
+      $('#passwordShow').val(userVO.password);
+      $('#emailShow').val(userVO.email);
+      $('#notesIdShow').val(userVO.notesId);
+      $('#orgIdShow').val(userVO.orgId);
+      $('#idCardShow').val(userVO.idCard);
+      $('#phoneNoShow').val(userVO.phoneNo);
+    });
+  }); // END of userShowModal onShow
+ 
+  // 给body加入滚动条美化效果，需要配合jquery.nicescroll.min.js
+  if(jQuery.fn.niceScroll) {
+    $('body').niceScroll({
+      cursorcolor:'#7f7f7f',
+      autohidemode: false,
+      zindex: 100
+    });
+  }
+
+}); // END of $(function(){})
+ 
+</script>
+<!-- 自定义JS区域结束 -->
+ 
+</body>
+</html>

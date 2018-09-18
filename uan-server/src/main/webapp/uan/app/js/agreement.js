@@ -37,15 +37,19 @@
 
 
   // 构造视图DOM模板
-  var domTemplate = '<div class="container-fluid" style="max-height: 82.5%;"> \
-<h1>签阅条款</h1> \
+  var domTemplate = '<header>\
+  <div class="prev-btn" data-bind="click: prevPage"><i class="fa fa-chevron-left"></i></div>\
+  <div class="header-title">License Agreement</div>\
+</header>\
+\
+  <div class="container-fluid with-bottom with-checkbox"  style="padding-top: 15px;"> \
 <div class="article-horizontal"> \
   <p> \
-    欢迎使用UAN服务！您的个人信息如下：<br> \
- <br>\
-姓名：<span data-bind="text: name"></span> <br> \
-身份证号：<span data-bind="text: idCard"></span> <br> \
-联系方式：<span data-bind="text: phone"></span><br> \
+    Welcome to UAN Emergency Service! Your information is as follows:<br> \
+<br>\
+Full Name：<span data-bind="text: name"></span> <br> \
+ID Card No.：<span data-bind="text: idCard"></span> <br> \
+Phone：<span data-bind="text: phone"></span><br> \
   \
     <br>为使用UAN服务（简称为：本服务），您应当阅读并遵守《UAN服务协议》（简称为：本协议）。请您务必审慎阅读、充分理解各条款内容，特别是免除或限制责任的相应条款，以及开通或使用某项服务的单独协议，并选择接受或不接受。免除或限制责任条款可能以加粗形式提示您注意。\
 除非您已阅读并接受本协议所有条款，否则您无权使用本服务。<br>\
@@ -63,13 +67,13 @@
 </p>\
 </div>\
 </div>\
-<div class="checkbox-bar fix-bottom" style="bottom:10%; height: 5%;">\
-<input type="checkbox" name="isAgree" id="isAgreeCheckbox" data-bind="checked: agreeWithUan">\
-<label for="isAgreeCheckbox" style="float: initial;">我已阅读《UAN服务须知》条款协议，并确定签约。</label>\
+<div class="checkbox-bar fix-bottom" style="bottom: 90px">\
+<input type="checkbox" name="isAgree" id="isAgreeCheckbox" data-bind="checked: agreeWithUan" autocomplete="off">\
+<label for="isAgreeCheckbox" style="float: initial;">I\'ve read through the Licence Agreement above.</label>\
 </div>\
 <div class="btn-bar fix-bottom">\
-<button class="btn btn-default" data-bind="click: prevPage">部分不符合</button>\
-<button class="btn btn-theme pull-right" data-bind="click: nextPage,  enabled: agreeWithUan">符合条件，继续</button>\
+<button class="btn btn-default" data-bind="click: prevPage">I don\'t agree.</button>\
+<button class="btn btn-theme pull-right" data-bind="click: nextPage,  enabled: agreeWithUan">I agree.</button>\
 </div>';
 
   // 使用template构造DOM字符串，传入从上一视图读取的变量
@@ -92,7 +96,7 @@
     agreeWithUan: false,
     init: function () {
     //  var data = window.app.loginV.model;
-     
+
     //  this.set('appId', data.appId);
     //  this.set('userId', data.userId);
     //  this.set('password', data.password);
@@ -103,13 +107,19 @@
     //  this.set('state', data.state);
     //  this.set('type', data.type);
 
-     if(jQuery.fn.niceScroll) {
+    if(jQuery.fn.niceScroll) {
       $('.container-fluid').last().niceScroll({cursorcolor:'#7f7f7f'});
     }
 
     },
     show: function () {
       this.updateData();
+      if(!this.get('name')) {
+        console.error('No login information!');
+        // route to /login
+        app.redirectTo('/login');
+        return;
+      }
     },
     // hide: function () {
     //   console.log("view hide", this.customerName);
@@ -139,6 +149,7 @@
 
   // agreement视图view，从字符串变量domString中加载DOM结构，绑定ViewModel
   var agreementV = new kendo.View(domString, {
+    wrap: false,
     model: agreementVM, 
     init: agreementVM.init.bind(agreementVM),
     show: agreementVM.show.bind(agreementVM),
@@ -149,7 +160,7 @@
 
   // agreement视图路由，渲染指定view
   router.route("/agreement", function () {
-    layout.showIn(layoutSelector, agreementV);
+    layout.showIn(layoutSelector, agreementV, 'swap');
   });
 
 

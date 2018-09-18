@@ -4,7 +4,7 @@
 	<groupId>com.abc</groupId>
 	<artifactId>uan-server</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.2.0-SNAPSHOT</version>
 	<name>uan-server</name>
 
 	<parent>

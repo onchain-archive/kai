@@ -24,11 +24,19 @@
   <![endif]-->
 
   <title>中国农业银行掌上银行</title>
+  <script>
+    function load() {
+      setTimeout(function() {
+        $('#starter').fadeOut(1000);
+      }, 2000); // remove starter after 3s
+    }
+  </script>
 </head>
 
-<body>
+<body onload="load()">
   <!-- 应用界面开始 -->
   <div id="app"></div>
+  <div id="starter"><div class="logo"></div></div>
   <!-- 应用界面结束 -->
 
   <!--[if lt IE 9]>
@@ -38,9 +46,8 @@
   <script src="../vendor/jquery-nicescroll/3.6.6/jquery.nicescroll.min.js"></script>
   <script src="../vendor/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <script src="../vendor/kendoui/2016.2.504/js/kendo.web.min.js"></script>
-  <script src="../vendor/kendoui/2016.2.504/js/messages/kendo.messages.zh-CN.min.js"></script>
-  <script src="../vendor/kendoui/2016.2.504/js/cultures/kendo.culture.zh-CN.min.js"></script>
   <script src="../framework/3.4.0/udesk.min.js"></script>
+  <script src="../framework/3.4.0/messages/udesk.messages.en-US.min.js"></script>
   <!-- 加载单页应用视图  -->
   <script src="js/index.js"></script>
   <script src="js/login.js"></script>

@@ -1,9 +1,5 @@
 package com.abc.uan;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.junit.Assert;
@@ -15,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.abc.bank.VisualRecognitionService;
 import com.abc.common.starter.UanApplication;
+import com.abc.common.util.FileUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = UanApplication.class)
@@ -27,7 +24,7 @@ public class VisualRecognitionTest {
 	public void testConnection() {
 		byte[] faceImg = null;
 		try {
-			faceImg = file2byte("src/test/java/com/abc/uan/face.jpg");
+			faceImg = FileUtils.file2byte("src/test/java/com/abc/uan/face.gif");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -38,22 +35,16 @@ public class VisualRecognitionTest {
 
 	}
 
-	private byte[] file2byte(String filePath) throws IOException {
-		byte[] buffer = null;
-
-		File file = new File(filePath);
-		FileInputStream fis = new FileInputStream(file);
-		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		byte[] b = new byte[1024];
-		int n;
-		while ((n = fis.read(b)) != -1) {
-			bos.write(b, 0, n);
+	@Test
+	public void test1() {
+		try {
+			String path = this.getClass().getResource("").getPath() + "/face.jpg";
+			System.out.println(FileUtils.file2Base64(path));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Assert.fail(e.getMessage());
 		}
-		fis.close();
-		bos.close();
-		buffer = bos.toByteArray();
-
-		return buffer;
 	}
 
 }

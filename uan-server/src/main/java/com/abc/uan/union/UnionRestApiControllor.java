@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abc.common.AbstractController;
@@ -30,13 +31,24 @@ public class UnionRestApiControllor extends AbstractController {
 		return resp.createSuccessJson(unionPojos, request);
 	}
 
-	@RequestMapping(value = "/findByWhere", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public String findByWhere(@RequestBody String reqJson, HttpServletRequest req) {
-		Request<UnionQuery> request = Request.create(reqJson, req, UnionQuery.class);
+	@RequestMapping(value = "/findByWhere", method = RequestMethod.GET)
+	public String findByWhere(UnionQuery unionQuery, Request<UnionQuery> request,
+			HttpServletRequest req) {
+		request = Request.create(unionQuery, request, req);
 		List<UnionPojo> unionPojos = unionService.findByWhere(request.getData());
 		Response<List> resp = new Response<List>();
 		return resp.createSuccessJson(unionPojos, request);
 	}
+
+	// @RequestMapping(value = "/findByWhere", method = RequestMethod.POST, produces
+	// = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	// public String findByWhere(@RequestBody String reqJson, HttpServletRequest
+	// req) {
+	// Request<UnionQuery> request = Request.create(reqJson, req, UnionQuery.class);
+	// List<UnionPojo> unionPojos = unionService.findByWhere(request.getData());
+	// Response<List> resp = new Response<List>();
+	// return resp.createSuccessJson(unionPojos, request);
+	// }
 
 	@RequestMapping(value = "/loadByCode", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String loadByCode(@RequestBody String reqJson, HttpServletRequest req) {

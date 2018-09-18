@@ -1,0 +1,37 @@
+{
+  "data":[
+  {
+    "shortName":"Union Members",
+    "pinyin": "Union Membesr",
+    "sysId":null,
+    "menuId":"0100000000",
+    "submenuUrl": null,
+    "tabUrl":"union-members.html",
+    "tabMode": "iframe",
+    "icon":"fa fa-group",
+    "items": null
+  }, {
+    "shortName":"Public Accounts",
+    "pinyin": "Public Accounts",
+    "sysId": null,
+    "menuId":"0200000000",
+    "submenuUrl": null,
+    "tabUrl": "public-accounts.html",
+    "tabMode": "iframe",
+    "icon":"fa fa-archive",
+    "items": null
+  }, {
+    "shortName":"Catastrophe Model",
+    "pinyin": "Catastrophe Model",
+    "sysId": null,
+    "menuId":"0300000000",
+    "submenuUrl": null,
+    "tabUrl": "catastrophe-model.html",
+    "tabMode": "iframe",
+    "icon":"fa fa-sitemap",
+    "items": null
+  }],
+  "success": true,
+  "message": null,
+  "detail": null
+}

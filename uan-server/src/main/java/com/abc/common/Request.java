@@ -32,6 +32,15 @@ public class Request<T> extends AbstractInputHeader {
 		this.data = data;
 	}
 
+	public static Request create(Object requestObj, Request request, HttpServletRequest req) {
+		if (StringUtils.isNotEmpty(request.getUserId())) {
+			((RequestBus) ThreadContext.getContext().getAttribute(RequestBus.REQUEST_BUS)).getAttributes()
+					.put(RequestBus.USER, request.getUserId());
+		}
+		request.setData(requestObj);
+		return request;
+	}
+
 	public static Request create(String requestStr, HttpServletRequest req, Class dataClass) {
 		LogWriter.info(Request.class, "请求报文：" + requestStr);
 		if (requestStr == null) {

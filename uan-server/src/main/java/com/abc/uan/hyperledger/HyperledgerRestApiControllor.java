@@ -23,19 +23,40 @@ public class HyperledgerRestApiControllor extends AbstractController {
 	@Autowired
 	private HyperledgerService hyperledgerService;
 
-	@RequestMapping(value = "/getBankReserveAccounts", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public String getBankReserveAccounts(@RequestBody String reqJson, HttpServletRequest req) {
-		Request request = Request.create(reqJson, req, null);
+	@RequestMapping(value = "/getBankReserveAccounts", method = RequestMethod.GET)
+	public String getBankReserveAccounts(Request request, HttpServletRequest req) {
+		request = Request.create(null, request, req);
 		List<BankReserveAccountPojo> bankReserveAccounts = hyperledgerService.getBankReserveAccounts();
 		Response<List> resp = new Response<List>();
 		return resp.createSuccessJson(bankReserveAccounts, request);
 	}
 
-	@RequestMapping(value = "/getTrades", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public String getTrades(@RequestBody String reqJson, HttpServletRequest req) {
-		Request request = Request.create(reqJson, req, null);
+	@RequestMapping(value = "/getTrades", method = RequestMethod.GET)
+	public String getTrades(Request request, HttpServletRequest req) {
+		request = Request.create(null, request, req);
 		List<TradePojo> tradePojos = hyperledgerService.getTrades();
 		Response<List> resp = new Response<List>();
 		return resp.createSuccessJson(tradePojos, request);
 	}
+
+	// @RequestMapping(value = "/getBankReserveAccounts", method =
+	// RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	// public String getBankReserveAccounts(@RequestBody String reqJson,
+	// HttpServletRequest req) {
+	// Request request = Request.create(reqJson, req, null);
+	// List<BankReserveAccountPojo> bankReserveAccounts =
+	// hyperledgerService.getBankReserveAccounts();
+	// Response<List> resp = new Response<List>();
+	// return resp.createSuccessJson(bankReserveAccounts, request);
+	// }
+	//
+	// @RequestMapping(value = "/getTrades", method = RequestMethod.POST, produces =
+	// MediaType.APPLICATION_JSON_UTF8_VALUE)
+	// public String getTrades(@RequestBody String reqJson, HttpServletRequest req)
+	// {
+	// Request request = Request.create(reqJson, req, null);
+	// List<TradePojo> tradePojos = hyperledgerService.getTrades();
+	// Response<List> resp = new Response<List>();
+	// return resp.createSuccessJson(tradePojos, request);
+	// }
 }

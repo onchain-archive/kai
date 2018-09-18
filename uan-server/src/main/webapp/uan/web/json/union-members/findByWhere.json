@@ -1,0 +1,17 @@
+{
+  "appId": "uan",
+  "data": [
+    {
+      "address": "北京东城区建国门内大街69号",
+      "code": "abc",
+      "id": "1",
+      "joinInTime": 1536797288000,
+      "name": "中国农业银行",
+      "phone": "95599",
+      "state": "OPEN",
+      "type": "BANK"
+    }
+  ],
+  "message": "请求成功",
+  "statusCode": "200"
+}

@@ -36,45 +36,45 @@
     layoutSelector = app.layoutSelector;
 
     //构造单个互助人账户Form DOM模板
-    var relativeFormDomTemplate = '<form class="form-horizontal" data-bind="attr: {data-index: index}">\
+    var relativeFormDomTemplate = '<form class="form-horizontal form-relative" data-bind="attr: {data-index: index}">\
     <a class="fa fa-remove form-remove" data-bind="click: removeAccount"></a>\
     <div class="form-group">\
       <div class="col-xs-3">\
-        <label><i style="color:red;">*</i>姓&nbsp;&nbsp;&nbsp;名</label>\
+        <label><span style="color:red;">*</span>Full Name</label>\
       </div>\
       <div class="col-xs-8">\
-        <input type="text" class="form-control" name="slaveName" placeholder="请输入姓名"\
+        <input type="text" class="form-control" name="slaveName" placeholder="Full Name"\
           data-bind="value: slaveName, disabled: disabled" autocomplete="off"\
-          required validationMessage="请输入姓名!">\
+          required validationMessage="Please input full name!">\
       </div>\
     </div>\
     \
     <div class="form-group">\
       <div class="col-xs-3">\
-        <label><i style="color:red;">*</i>身份证</label>\
+        <label><span style="color:red;">*</span>ID Card No.</label>\
       </div>\
       <div class="col-xs-8">\
-        <input type="text" class="form-control" name="slaveId" placeholder="请输入身份证"\
+        <input type="text" class="form-control" name="slaveId" placeholder="ID Card No."\
           data-bind="value: slaveId, disabled: disabled" autocomplete="off"\
-          required pattern="[0-9Xx]{18}" validationMessage="请输入正确格式的身份证!">\
+          required pattern="[0-9Xx]{18}" validationMessage="Please input correct ID card number!">\
       </div>\
     </div>\
     \
     <div class="form-group">\
       <div class="col-xs-3">\
-      <label><i style="color:red;">*</i>电&nbsp;&nbsp;&nbsp;话</label>\
+      <label><span style="color:red;">*</span>Phone</label>\
       </div>\
       <div class="col-xs-8">\
-        <input type="text" class="form-control" name="phone" placeholder="请输入电话"\
+        <input type="text" class="form-control" name="phone" placeholder="Phone"\
           data-bind="value: phone, disabled: disabled" autocomplete="off"\
-          required pattern="[0-9]{11}" validationMessage="请输入正确格式的电话!">\
+          required pattern="[0-9]{11}" validationMessage="Please input correct phone number!">\
       </div>\
     </div>\
     \
     \
     <div class="form-group">\
         <div class="col-xs-3">\
-          <label><i style="color:red;">*</i>关&nbsp;&nbsp;&nbsp;系</label>\
+          <label><span style="color:red;">*</span>Relationship</label>\
         </div>\
         <div class="col-xs-8">\
           <input name="relationship" autocomplete="off"\
@@ -84,29 +84,42 @@
             data-value-field="id"\
             data-bind="value: relationship, source: relations, disabled: disabled"\
             style="width: 100%;"\
-            required validationMessage="请选择关系!"\
+            required validationMessage="Please select relationship!"\
           />\
-          <!-- 加入此span以解决验证提示框显示位置问题，data-for属性必须与input的name属性一致 -->\
           <span class="k-invalid-msg" data-for="bankOfDeposit"></span>\
     \
       </div>\
     </div>\
+    \
+    <div class="form-group">\
+      <div class="col-xs-3">\
+        <label>Face ID</label>\
+      </div>\
+      <div class="col-xs-8 faceid">\
+        <button type="button" class="btn btn-default" name="faceBytes" data-bind="disabled: disabled" >Add Face ID</button>\
+      </div>\
+    </div>\
+    \
     </form>';
 
 
   // 构造视图DOM模板
-  var addrelativeDomTemplate = '<div class="container-fluid" style="max-height: 90%;"> \
-  <h1>请添加受助人</h1>\
+  var addrelativeDomTemplate =  '<header>\
+  <div class="prev-btn" data-bind="click: prevPage"><i class="fa fa-chevron-left"></i></div>\
+  <div class="header-title">Authorizing Relatives</div>\
+</header>\
+\
+<div class="container-fluid with-bottom" style="padding-top: 15px;"> \
 \
   <div class="add-bar add-relative">\
-    <button class="btn btn-theme btn-add" data-bind="click: addAccount">添加新互助人</button>\
+    <button class="btn btn-theme btn-add" data-bind="click: addAccount">Add Relatives</button>\
   </div>\
 \
 </div>\
 \
 <div class="btn-bar fix-bottom">\
-  <button class="btn btn-default" data-bind="click: prevPage">上一步</button>\
-  <button class="btn btn-theme pull-right" data-bind="click: nextPage">下一步</button>\
+  <button class="btn btn-default" data-bind="click: prevPage">Previous</button>\
+  <button class="btn btn-theme pull-right" data-bind="click: nextPage">Next</button>\
 </div>';
 
   // 使用template构造单个Form DOM字符串
@@ -126,10 +139,12 @@
     },
     // transitionEnd: function() {},
     show: function () {
-      // if(!this.getCurrentViewsNumber()) {
-      //   // 如果当前没有受助人信息，则新增一个空表
-      //   this.addAccount({}, undefined);
-      // }
+      if(!window.app.loginV.model.get('name')) {
+        console.error('No login information!');
+        // route to /login
+        app.redirectTo('/login');
+        return;
+      }
 
       // 当/addrelative视图不存在form时，添加一个空form
       var addrelativeVM = window.app.addrelativeV.model;
@@ -137,10 +152,10 @@
         addrelativeVM.addAccount({
           // "masterId": "110110200001011234",
           // "order": 1,
-          "phone": "13800001111",
-          "relationship": "子",
-          "slaveId": "220220200001011234",
-          "slaveName": "张儿砸"
+          // "phone": "13800001111",
+          // "relationship": "Son",
+          // "slaveId": "220220200001011234",
+          // "slaveName": "John Snow"
         }, false);
       }
     },
@@ -158,7 +173,7 @@
         udesk.messageBox({
           // title: '校验失败',
           // icon: 'fa ',
-          message: '表单校验失败，请完善个人账户信息！'
+          message: 'Form validation failed, please check if your input is correct!'
         });
       }
     },
@@ -188,6 +203,7 @@
         relationship: card.relationship || '',
         slaveId: card.slaveId || '',
         slaveName: card.slaveName  || '',
+        faceBytes: card.faceBytes || 'base64string',
         disabled: disabled || false,
         validator: null,
         removeAccount: function() {
@@ -201,16 +217,17 @@
         // 下拉菜单相关数据
         relationship: card.relationship || '',
         relations: [
-          { id: '夫', name: '丈夫' },
-          { id: '妻', name: '妻子' },
-          { id: '父', name: '父亲' },
-          { id: '母', name: '母亲' },
-          { id: '子', name: '儿子' },
-          { id: '女', name: '女儿' },
+          { id: 'Husband', name: 'Husband' },
+          { id: 'Wife', name: 'Wife' },
+          { id: 'Father', name: 'Father' },
+          { id: 'Mother', name: 'Mother' },
+          { id: 'Son', name: 'Son' },
+          { id: 'Daughter', name: 'Daughter' },
         ],
       }); // END OF newFormVM
 
       var newFormV = new kendo.View(relativeFormDomString, {
+        wrap: false,
         model: newFormVM,
         removeAccount: newFormVM.removeAccount.bind(newFormVM),
       }); // END OF newFormV
@@ -255,6 +272,7 @@
 
   // addrelative视图view，从字符串变量addrelativeDomString中加载DOM结构，绑定ViewModel
   var addrelativeV = new kendo.View(addrelativeDomString, {
+    wrap: false,
     model: addrelativeVM, 
     init: addrelativeVM.init.bind(addrelativeVM),
     show: addrelativeVM.show.bind(addrelativeVM),
@@ -267,7 +285,7 @@
 
   // addrelative视图路由，渲染指定view
   router.route("/addrelative", function () {
-    layout.showIn(layoutSelector, addrelativeV);
+    layout.showIn(layoutSelector, addrelativeV, 'swap');
   });
 
   

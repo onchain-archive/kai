@@ -36,22 +36,33 @@
       layoutSelector = app.layoutSelector;
   
     // 构造视图DOM模板
-    var queryRelativeAssetDomTemplate = '<a class="atm-btn btn-left btn-row-4" data-bind="click: prevPage">选择授权人</a>\
-    <a class="atm-btn btn-right btn-row-1" data-bind="click: rowMoveUp"><i class="fa fa-arrow-up"></i></a>\
+    var queryRelativeAssetDomTemplate = '<a class="atm-btn btn-right btn-row-1" data-bind="click: rowMoveUp"><i class="fa fa-arrow-up"></i></a>\
     <a class="atm-btn btn-right btn-row-2" data-bind="click: rowMoveDown"><i class="fa fa-arrow-down"></i></a>\
-    <a class="atm-btn btn-right btn-row-4 btn-confirm" data-bind="click: queryRelativeDetail">查看账户信息</a>\
+    <a class="atm-btn btn-right btn-row-4 btn-confirm" data-bind="click: queryRelativeDetail">\
+      <span class="zh-CN">查看</span>\
+      <span class="en-US">View Detail</span>\
+    </a>\
+    <a class="atm-btn btn-left btn-row-4" data-bind="click: prevPage">取消/Cancle</a>\
     <div class="container-fluid">\
-      <br><br><br><br>\
-      <h2 style="margin: 15px auto; width: 55%;">授权人签约账户</h2>\
-      <div class="grid-asset" style="margin: 15px auto; width: 55%;"></div>\
+      <div class="title">\
+        <div class="zh-CN">请选择签约账户</div>\
+        <div class="en-US">Please select the contracted account.</div>\
+      </div>\
+\
+      <div class="grid-asset"></div>\
+\
+      <div class="text">\
+        <div class="zh-CN">请使用<b>[↑] [↓]</b>键选择账户<br>按<b>[查看]</b>键继续</div>\
+        <div class="en-US">Please use <b>[↑] [↓]</b> to select the account,<br> then press <b>[View Detail]</b> to continue.</div>\
+      </div>\
     </div>';
   
     var gridRelativesTemplate = '<div data-role="grid"\
       data-selectable="row"\
       data-columns="[\
-        {field: \'customerInformation.name\', title: \'姓名\', width: 120},\
-        {field: \'code\', title: \'账号\'},\
-        {field: \'bankOfDeposit\', title: \'开户行\', width: 200}\
+        {field: \'customerInformation.name\', title: \'姓名/Name\', width: 125},\
+        {field: \'code\', title: \'账号/Account No.\'},\
+        {field: \'bankOfDeposit\', title: \'开户行/Bank of Deposit\', width: 240}\
       ]"\
       data-bind="source: datasource"\
     ></div>';

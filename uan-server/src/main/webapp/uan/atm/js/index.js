@@ -36,7 +36,10 @@
     var layoutDomTemplate = ' <header>\
       <div class="header-left"></div><div class="header-right"></div>\
     </header>\
-    <section id="content"></section>',
+    <section id="content"></section>\
+    <footer class="webside">\
+      欢迎光临中国农业银行  www.abchina.com\
+    </footer>',
       layoutSelector = '#content',
       rootSelector = '#app';
     
@@ -74,39 +77,40 @@
 				// 对应withCheckInfo.js，发送本行账户请求，返回账户信息
 				type : 'POST',
 				url : 'api/rest/cusinf/withdraw', // TODO -
-													// 待修改为后端取款URL
+				// 待修改为后端取款URL
 				contentType : 'application/json',
 			},
 			findMasters : {
 				// 对应queryrelativelist.js，发送户主身份证信息，返回受助人列表
 				type : 'POST',
-				url : 'api/rest/uancon/findMasters', // TODO- 待修改为后端帮助人列表URL
+				url : 'api/rest/uancon/findMasters', // TODO-
+														// 待修改为后端帮助人列表URL
 				contentType : 'application/json',
 			},
 			inquireAssets : {
 				// 对应checkinfo.js，发送签约账户和互助人信息，返回签约结果
 				type : 'POST',
 				url : 'api/rest/cusinf/inquireAssets', // TODO-
-													// 待修改为后端某帮助人的资产情况（卡列表）URL
+				// 待修改为后端某帮助人的资产情况（卡列表）URL
 				contentType : 'application/json',
 			},
 			findByIdCard : {
 				// 对应checkinfo.js，发送签约账户和互助人信息，返回签约结果
 				type : 'POST',
 				url : 'api/rest/uancon/findBindingCards', // TODO-
-												// 待修改为后端某帮助人的卡列表URL
+				// 待修改为后端某帮助人的卡列表URL
 				contentType : 'application/json',
 			},
 			reportLoss : {
 				// 对应checkinfo.js，发送签约账户和互助人信息，返回签约结果
 				type : 'POST',
-				url : 'api/rest/cusinf/reportLoss', // TODO- 待修改为后端挂失卡URL
+				url : 'api/rest/cusinf/reportLoss', // TODO-
+													// 待修改为后端挂失卡URL
 				contentType : 'application/json',
 			},
       },
       redirectTo: function(path) {
-        window.location.href = window.location.href.split('#')[0] +
-         '#' + (path || '/');
+        window.location.href = window.location.href.split('#')[0] + '#' + (path || '/');
       }
     });
   
@@ -119,21 +123,36 @@
       layoutSelector = app.layoutSelector;
   
     // 构造视图DOM模板
-    var indexDomTemplate = '<a class="atm-btn btn-right btn-bg btn-row-3" data-bind="click: nextPage">UAN应急服务</a>\
+    var indexDomTemplate = '<a class="atm-btn btn-right btn-bg btn-row-3" data-bind="click: nextPage">\
+      <span class="zh-CN">UAN应急服务</span>\
+      <span class="en-US">UAN Emergency Service</span>\
+    </a>\
     <div class="container-fluid no-logo" style="bottom: 80px;">\
       <div class="ad"><img src="image/green-shield.jpg"/></div>\
       <div class="index-instruction">\
-        <span style="display:block;">欢迎您使用中国农业银行<br>\
+        <div>欢迎您使用中国农业银行<br>\
           自动柜员机<br>\
           请插入银行卡或刷存折\
-        </span>\
-        <span style="display:block; font-size: 15px;">Welcome to the ATM system<br>\
-          at Agriculture Bank of China<br>\
-          PLEASE INSERT CARD/PASSBOOK\
-        </span>\
+        </div>\
+        <div style="font-size: 15px;">Welcome to the ATM system<br>\
+          of Agriculture Bank of China<br>\
+          PLEASE INSERT CARD\
+        </div>\
+        <div class="card-image"><img src="image/card/card.png"/></div>\
       </div>\
     </div>\
-    <footer>\
+    <footer class="index">\
+      <div class="footer-upper">\
+        <img src="image/card/unionPay.png"/>\
+        <img src="image/card/visa1.png"/>\
+        <img src="image/card/visa2.png"/>\
+        <img src="image/card/plus.png"/>\
+        <img src="image/card/masterCard.png"/>\
+        <img src="image/card/maestro.png"/>\
+        <img src="image/card/cirrus.png"/>\
+      </div>\
+      <div class="footer-left">www.abchina.com</div>\
+      <div class="footer-middle">NO.18010101 SOFTVER:V10.0.0.0</div>\
       <div class="footer-right"></div>\
     </footer>';
   

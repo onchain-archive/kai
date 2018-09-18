@@ -37,31 +37,44 @@
     layoutSelector = app.layoutSelector;
   
     // 构造视图DOM模板
-    var withdrawCheckInfoDomTemplate = '<a class="atm-btn btn-left btn-row-4" data-bind="click: prevPage">返回修改</a>\
-    <a class="atm-btn btn-right btn-confirm btn-row-4" data-bind="click: withdraw">确认取款</a>\
+    var withdrawCheckInfoDomTemplate = '<a class="atm-btn btn-right btn-row-4" data-bind="click: prevPage">取消/Cancle</a>\
+    <a class="atm-btn btn-right btn-confirm btn-row-3" data-bind="click: withdraw">确认/Confirm</a>\
     <div class="container-fluid">\
-      <h1 style="margin: 21px auto; width: 340px;">请核对取款信息</h1>\
-      <br/><br/><br/>\
+\
+      <div class="title">\
+        <div class="zh-CN">请核对姓名和身份证号码</div>\
+        <div class="en-US">Pleace check your name and idcard number.</div>\
+      </div>\
       <div class="amt-checkinfo-bar form-horizontal">\
 \
         <div class="form-group">\
-          <div class="col-xs-4"><label>姓&nbsp;&nbsp;&nbsp;&nbsp;名</label></div>\
-          <div class="col-xs-8"><div class="info-value" data-bind="text:name"></div></div>\
+          <div class="col-xs-5 info-key">\
+            <div class="zh-CN">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</div><div class="en-US">Full Name</div>\
+          </div>\
+          <div class="col-xs-7"><div class="info-value" data-bind="text:name"></div></div>\
         </div>\
 \
         <div class="form-group">\
-          <div class="col-xs-4"><label>身份证号</label></div>\
-          <div class="col-xs-8"><div class="info-value" data-bind="text:userId"></div></div>\
+          <div class="col-xs-5 info-key">\
+            <div class="zh-CN">身份证号</div><div class="en-US">IdCard No.</div>\
+          </div>\
+          <div class="col-xs-7"><div class="info-value" data-bind="text:userId"></div></div>\
         </div>\
 \
         <div class="form-group">\
-          <div class="col-xs-4"><label>取款金额</label></div>\
-          <div class="col-xs-8">\
+          <div class="col-xs-5 info-key">\
+            <div class="zh-CN">取出金额</div><div class="en-US">Cash Amount</div>\
+          </div>\
+          <div class="col-xs-7">\
             <div class="info-value">\
-            ￥<span data-bind="text:amt"></span>.00\
+            CNY <span data-bind="text:amt"></span>.00\
             </div>\
           </div>\
         </div>\
+      </div>\
+      <div class="text">\
+        <div class="zh-CN">请核对上述信息是否正确，按<b>[确认]</b>键继续</div>\
+        <div class="en-US">Please check if the above information is correct,<br> then press <b>[Confirm]</b> to continue.</div>\
       </div>\
     </div>';
   

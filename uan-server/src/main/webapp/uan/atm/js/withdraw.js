@@ -40,16 +40,26 @@
     var withdrawDomTemplate = '<a class="atm-btn btn-left btn-row-1" data-bind="click: amt100">100</a>\
     <a class="atm-btn btn-left btn-row-2" data-bind="click: amt200">200</a>\
     <a class="atm-btn btn-left btn-row-3" data-bind="click: amt300">300</a>\
-    <a class="atm-btn btn-left btn-row-4" data-bind="click: prevPage">返&nbsp;&nbsp;回</a>\
-    <a class="atm-btn btn-right btn-row-1" data-bind="click: amt500">500</a>\
-    <a class="atm-btn btn-right btn-row-3" data-bind="click: clear">更&nbsp;&nbsp;正</a>\
-    <a class="atm-btn btn-right btn-row-4 btn-confirm" data-bind="click: confirm">确&nbsp;&nbsp;认</a>\
+    <a class="atm-btn btn-left btn-row-4" data-bind="click: amt500">500</a>\
+    <a class="atm-btn btn-right btn-row-2" data-bind="click: clear">更正/Clear</a>\
+    <a class="atm-btn btn-right btn-row-3 btn-confirm" data-bind="click: confirm">确认/OK</a>\
+    <a class="atm-btn btn-right btn-row-4" data-bind="click: prevPage">取消/Cancle</a>\
     <div class="container-fluid">\
-      <h1 style="margin: 21px auto; width: 340px;">请输入取款金额</h1>\
-      <br/><br/><br/>\
+      <div class="title">\
+        <div class="zh-CN">请选择或输入取款金额</div>\
+        <div class="en-US">Please select or input the amount of cash you wish to withdraw.</div>\
+      </div>\
       <div class="amt-bar">\
         <input type="text" class="form-control" name="amt" autocomplete="off"\
           data-bind="value:amt">\
+      </div>\
+      <div class="text">\
+        <div class="zh-CN">涉及异地或跨行交易可能收费<br>请咨询发卡行</div>\
+        <div class="en-US">Please contact the issuing bank for possible charges<br> related to off-site or inter-bank transactions.</div>\
+      </div>\
+      <div class="text" style="margin-top:60px;">\
+        <div class="zh-CN">本机只提供面额  100  元人民币<br>且单笔最多取 3000 元</div>\
+        <div class="en-US">This machine only provides banknotes of CNY 100, <br>and a maximum of CNY 3,000 per transaction.</div>\
       </div>\
     </div>';
   

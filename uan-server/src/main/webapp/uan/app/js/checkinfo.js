@@ -61,155 +61,161 @@
   }  
 
 
-  //构造单个签约账户Form DOM模板
-  var accountFormDomTemplate = '<div class="form-horizontal" data-bind="attr: {data-index: index}">\
-  <div class="form-group">\
-    <div class="col-xs-3">\
-      <label>姓&nbsp;&nbsp;&nbsp;名</label>\
-    </div>\
-    <div class="col-xs-8">\
-      <input type="text" class="form-control" name="name" placeholder="请输入姓名"\
-        data-bind="value: customerInformation.name"\ disabled="disabled"\
-        required validationMessage="请输入姓名!">\
-    </div>\
-  </div>\
-  \
-  <div class="form-group">\
-    <div class="col-xs-3">\
-      <label><i style="color:red;">*</i>身份证</label>\
-    </div>\
-    <div class="col-xs-8">\
-      <input type="text" class="form-control" name="idCard" placeholder="请输入身份证"\
-        data-bind="value:customerInformation.idCard"\ disabled="disabled"\
-        required pattern="[0-9Xx]{18}" validationMessage="请输入正确格式的身份证!">\
-    </div>\
-  </div>\
-  \
-  <div class="form-group">\
-    <div class="col-xs-3">\
-      <label><i style="color:red;">*</i>账&nbsp;&nbsp;&nbsp;号</label>\
-    </div>\
-    <div class="col-xs-8">\
-      <input type="text" class="form-control" name="code" placeholder="请输入账号"\
-        data-bind="value:code"\ disabled="disabled"\
-        required pattern="[0-9]{16,19}" validationMessage="请输入正确格式的账号!">\
-    </div>\
-  </div>\
-  \
-  \
-  <div class="form-group">\
-      <div class="col-xs-3">\
-        <label><i style="color:red;">*</i>开户行</label>\
-      </div>\
-      <div class="col-xs-8">\
-        <input name="bankOfDeposit"\
-          data-role="dropdownlist"\
-          data-value-primitive="true"\
-          data-text-field="name"\
-          data-value-field="id"\
-          data-bind="value: bankOfDeposit, source: products" disabled="disabled"\
-          style="width: 100%;"\
-          required validationMessage="请选择开户行!"\
-        />\
-        <!-- 加入此span以解决验证提示框显示位置问题，data-for属性必须与input的name属性一致 -->\
-        <span class="k-invalid-msg" data-for="bankOfDeposit"></span>\
-  \
-    </div>\
-  </div>\
-  </div>';
+  // //构造单个签约账户Form DOM模板
+  // var accountFormDomTemplate = '<div class="form-horizontal" data-bind="attr: {data-index: index}">\
+  // <div class="form-group">\
+  //   <div class="col-xs-3">\
+  //     <label>姓&nbsp;&nbsp;&nbsp;名</label>\
+  //   </div>\
+  //   <div class="col-xs-8">\
+  //     <input type="text" class="form-control" name="name" placeholder="请输入姓名"\
+  //       data-bind="value: customerInformation.name"\ disabled="disabled"\
+  //       required validationMessage="请输入姓名!">\
+  //   </div>\
+  // </div>\
+  // \
+  // <div class="form-group">\
+  //   <div class="col-xs-3">\
+  //     <label><i style="color:red;">*</i>身份证</label>\
+  //   </div>\
+  //   <div class="col-xs-8">\
+  //     <input type="text" class="form-control" name="idCard" placeholder="请输入身份证"\
+  //       data-bind="value:customerInformation.idCard"\ disabled="disabled"\
+  //       required pattern="[0-9Xx]{18}" validationMessage="请输入正确格式的身份证!">\
+  //   </div>\
+  // </div>\
+  // \
+  // <div class="form-group">\
+  //   <div class="col-xs-3">\
+  //     <label><i style="color:red;">*</i>账&nbsp;&nbsp;&nbsp;号</label>\
+  //   </div>\
+  //   <div class="col-xs-8">\
+  //     <input type="text" class="form-control" name="code" placeholder="请输入账号"\
+  //       data-bind="value:code"\ disabled="disabled"\
+  //       required pattern="[0-9]{16,19}" validationMessage="请输入正确格式的账号!">\
+  //   </div>\
+  // </div>\
+  // \
+  // \
+  // <div class="form-group">\
+  //     <div class="col-xs-3">\
+  //       <label><i style="color:red;">*</i>开户行</label>\
+  //     </div>\
+  //     <div class="col-xs-8">\
+  //       <input name="bankOfDeposit"\
+  //         data-role="dropdownlist"\
+  //         data-value-primitive="true"\
+  //         data-text-field="name"\
+  //         data-value-field="id"\
+  //         data-bind="value: bankOfDeposit, source: products" disabled="disabled"\
+  //         style="width: 100%;"\
+  //         required validationMessage="请选择开户行!"\
+  //       />\
+  //       <!-- 加入此span以解决验证提示框显示位置问题，data-for属性必须与input的name属性一致 -->\
+  //       <span class="k-invalid-msg" data-for="bankOfDeposit"></span>\
+  // \
+  //   </div>\
+  // </div>\
+  // </div>';
 
 
-  //构造单个互助人账户Form DOM模板
-  var relativeFormDomTemplate = '<div class="form-horizontal" data-bind="attr: {data-index: index}">\
-  <div class="form-group">\
-    <div class="col-xs-3">\
-      <label><i style="color:red;">*</i>姓&nbsp;&nbsp;&nbsp;名</label>\
-    </div>\
-    <div class="col-xs-8">\
-      <input type="text" class="form-control" name="slaveName" placeholder="请输入姓名"\
-        data-bind="value: slaveName, disabled: disabled"\
-        required validationMessage="请输入姓名!">\
-    </div>\
-  </div>\
-  \
-  <div class="form-group">\
-    <div class="col-xs-3">\
-      <label><i style="color:red;">*</i>身份证</label>\
-    </div>\
-    <div class="col-xs-8">\
-      <input type="text" class="form-control" name="slaveId" placeholder="请输入身份证"\
-        data-bind="value: slaveId, disabled: disabled"\
-        required pattern="[0-9Xx]{18}" validationMessage="请输入正确格式的身份证!">\
-    </div>\
-  </div>\
-  \
-  <div class="form-group">\
-    <div class="col-xs-3">\
-    <label><i style="color:red;">*</i>电&nbsp;&nbsp;&nbsp;话</label>\
-    </div>\
-    <div class="col-xs-8">\
-      <input type="text" class="form-control" name="phone" placeholder="请输入电话"\
-        data-bind="value: phone, disabled: disabled"\
-        required pattern="[0-9]{11}" validationMessage="请输入正确格式的电话!">\
-    </div>\
-  </div>\
-  \
-  \
-  <div class="form-group">\
-      <div class="col-xs-3">\
-        <label><i style="color:red;">*</i>关&nbsp;&nbsp;&nbsp;系</label>\
-      </div>\
-      <div class="col-xs-8">\
-        <input name="relationship"\
-          data-role="dropdownlist"\
-          data-value-primitive="true"\
-          data-text-field="name"\
-          data-value-field="id"\
-          data-bind="value: relationship, source: relations, disabled: disabled"\
-          style="width: 100%;"\
-          required validationMessage="请选择关系!"\
-        />\
-        <!-- 加入此span以解决验证提示框显示位置问题，data-for属性必须与input的name属性一致 -->\
-        <span class="k-invalid-msg" data-for="bankOfDeposit"></span>\
-  \
-    </div>\
-  </div>\
-  </div>';
+  // //构造单个互助人账户Form DOM模板
+  // var relativeFormDomTemplate = '<div class="form-horizontal" data-bind="attr: {data-index: index}">\
+  // <div class="form-group">\
+  //   <div class="col-xs-3">\
+  //     <label><i style="color:red;">*</i>姓&nbsp;&nbsp;&nbsp;名</label>\
+  //   </div>\
+  //   <div class="col-xs-8">\
+  //     <input type="text" class="form-control" name="slaveName" placeholder="请输入姓名"\
+  //       data-bind="value: slaveName, disabled: disabled"\
+  //       required validationMessage="请输入姓名!">\
+  //   </div>\
+  // </div>\
+  // \
+  // <div class="form-group">\
+  //   <div class="col-xs-3">\
+  //     <label><i style="color:red;">*</i>身份证</label>\
+  //   </div>\
+  //   <div class="col-xs-8">\
+  //     <input type="text" class="form-control" name="slaveId" placeholder="请输入身份证"\
+  //       data-bind="value: slaveId, disabled: disabled"\
+  //       required pattern="[0-9Xx]{18}" validationMessage="请输入正确格式的身份证!">\
+  //   </div>\
+  // </div>\
+  // \
+  // <div class="form-group">\
+  //   <div class="col-xs-3">\
+  //   <label><i style="color:red;">*</i>电&nbsp;&nbsp;&nbsp;话</label>\
+  //   </div>\
+  //   <div class="col-xs-8">\
+  //     <input type="text" class="form-control" name="phone" placeholder="请输入电话"\
+  //       data-bind="value: phone, disabled: disabled"\
+  //       required pattern="[0-9]{11}" validationMessage="请输入正确格式的电话!">\
+  //   </div>\
+  // </div>\
+  // \
+  // \
+  // <div class="form-group">\
+  //     <div class="col-xs-3">\
+  //       <label><i style="color:red;">*</i>关&nbsp;&nbsp;&nbsp;系</label>\
+  //     </div>\
+  //     <div class="col-xs-8">\
+  //       <input name="relationship"\
+  //         data-role="dropdownlist"\
+  //         data-value-primitive="true"\
+  //         data-text-field="name"\
+  //         data-value-field="id"\
+  //         data-bind="value: relationship, source: relations, disabled: disabled"\
+  //         style="width: 100%;"\
+  //         required validationMessage="请选择关系!"\
+  //       />\
+  //       <!-- 加入此span以解决验证提示框显示位置问题，data-for属性必须与input的name属性一致 -->\
+  //       <span class="k-invalid-msg" data-for="bankOfDeposit"></span>\
+  // \
+  //   </div>\
+  // </div>\
+  // </div>';
 
   // 构造视图DOM模板
-  var checkinfoDomTemplate = '<div class="container-fluid" style="height: 90%;">\
-    <h1>请核对以下信息</h1>\
-    <div style="margin: 15px 0 0 0;"><h3><b>签约账户</b></h3></div>\
-    <div class="grid-accounts" style="margin: 0 0 15px 0;">\
+  var checkinfoDomTemplate =  '<header>\
+  <div class="prev-btn" data-bind="click: prevPage"><i class="fa fa-chevron-left"></i></div>\
+  <div class="header-title">Checking Information</div>\
+</header>\
+\
+<div class="container-fluid with-bottom" style="padding-top: 15px;">\
+  <div class="check-info"> \
+    <div class="binding-accounts">\
+      <div class="title">Binding Accounts</div>\
+      <div class="grid-accounts"></div>\
     </div>\
-    <div style="margin: 0 0 0 0;"><h3><b>签约互助人</b></h3></div>\
-    <div class="grid-relatives" style="margin: 15px 0;">\
+    <div class="personal-relationship">\
+      <div class="title">Personal Relationships</div>\
+      <div class="grid-relatives"></div>\
     </div>\
   </div>\
-  <div class="btn-bar fix-bottom">\
-    <button class="btn btn-default" data-bind="click: prevPage">返回修改</button>\
-    <button class="btn btn-theme pull-right" data-bind="click: submit">确定签约</button>\
-  </div>';
+</div>\
+<div class="btn-bar fix-bottom">\
+  <button class="btn btn-default" data-bind="click: prevPage">Previous</button>\
+  <button class="btn btn-theme pull-right" data-bind="click: submit">Confirm & Submit</button>\
+</div>';
 
-  var gridAccountsTemplate = '<div data-role="grid" id="grid-accounts"\
+  var gridAccountsTemplate = '<div data-role="grid"\
     data-scrollable="true"\
     data-columns="[\
-      {field: \'customerInformation.name\', title: \'姓名\', width: 120},\
-      {field: \'code\', title: \'账号\'},\
-      {field: \'bankOfDeposit\', title: \'开户行\'},\
-      {field: \'amt\', title: \'金额\', width: 180}\
+      {field: \'code\', title: \'Account\'},\
+      {field: \'bankOfDeposit\', title: \'Bank of Deposit\'},\
+      {field: \'amt\', title: \'Balance\', width: 180}\
     ]"\
     data-bind="source: datasource"\
   ></div>';
 
-  var gridRelativesTemplate = '<div data-role="grid" id="grid-relatives"\
+  var gridRelativesTemplate = '<div data-role="grid"\
     data-scrollable="true"\
     data-columns="[\
-      {field: \'order\', title: \'序号\', width: 65},\
-      {field: \'slaveName\', title: \'姓名\', width: 120},\
-      {field: \'slaveId\', title: \'身份证\'},\
-      {field: \'phone\', title: \'手机号\'},\
-      {field: \'transactDate\', title: \'签约时间\', width: 180}\
+      {field: \'order\', title: \'No.\', width: 60},\
+      {field: \'slaveName\', title: \'Name\'},\
+      {field: \'slaveId\', title: \'ID Card No.\'},\
+      {field: \'phone\', title: \'Phone\', width: 150}\
     ]"\
     data-bind="source: datasource"\
   ></div>';
@@ -226,8 +232,17 @@
     transactDate: null,
     init: function () {
       this.transactDate = new Date().Format("yyyy-MM-dd");
+      if(jQuery.fn.niceScroll) {
+        $('.container-fluid').last().niceScroll({cursorcolor:'#7f7f7f'});
+      }
     },
     show: function () {
+      if(!window.app.loginV.model.get('name')) {
+        console.error('No login information!');
+        // route to /login
+        app.redirectTo('/login');
+        return;
+      }
       var _this = this;
       if(!_this.accountVMs.length) {
         _this.loadArray(_this.accountVMs, window.app.addaccountV.model, false);
@@ -238,6 +253,7 @@
 
       // 构造账号表
       _this.accountGridView = new kendo.View(gridAccountsTemplate, {
+        wrap: false,
         model: kendo.observable({
           datasource: new kendo.data.DataSource({data: _this.accountVMs})
         })
@@ -246,6 +262,7 @@
 
       //构造受助人
       _this.relativeGridView = new kendo.View(gridRelativesTemplate, {
+        wrap: false,
         model: kendo.observable({
           datasource: new kendo.data.DataSource({data: _this.relativeVMs})
         }),
@@ -257,6 +274,7 @@
     },
     hide: function () {
       // 析构账号表
+      if(!this.accountGridView) {return;}
       this.accountGridView.destroy();
       delete this.accountGridView;
       this.emptyArray(this.accountVMs);
@@ -279,6 +297,10 @@
               validator: 0
             }) : $.extend(true, {}, formViews[i].model);
           delete element.validator;
+          delete element.relations;
+          delete element.disabled;
+          delete element.index;
+          delete element.transactDate;
           array.push(element);
           j++;
         } // END OF if
@@ -342,6 +364,7 @@
 
   // checkinfo视图view，从字符串变量checkinfoDomString中加载DOM结构，绑定ViewModel
   var checkinfoV = new kendo.View(checkinfoDomString, {
+    wrap: false,
     model: checkinfoVM, 
     init: checkinfoVM.init.bind(checkinfoVM),
     show: checkinfoVM.show.bind(checkinfoVM),
@@ -352,7 +375,7 @@
 
   // checkinfo视图路由，渲染指定view
   router.route("/checkinfo", function () {
-    layout.showIn(layoutSelector,checkinfoV);
+    layout.showIn(layoutSelector,checkinfoV, 'swap');
   });
 
     // 输出至全局变量app

@@ -27,7 +27,7 @@ public class NodeDeploymentDescriptor {
 	private String name = "UAN服务";
 	private Date lastStartDate;
 	private String app = "uan";
-	private String version = "0.1.0";
+	private String version = "0.2.0";
 
 	private boolean initFlag = false;
 

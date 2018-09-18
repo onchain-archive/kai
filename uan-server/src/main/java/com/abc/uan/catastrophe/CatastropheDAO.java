@@ -28,7 +28,7 @@ public interface CatastropheDAO extends IDAO {
 
 	@ResultMap("Catastrophe")
 	@Select("<script> " + " select ID,NAME,BIGIN,END,AREAS from UAN_CAT  " + " <where> "
-			+ " <if test=\"name != null\"> NAME LIKE '%${name}%'</if> " + " </where> " + " </script> ")
+			+ " <if test=\"name != null and name != ''\"> NAME LIKE '%${name}%'</if> " + " </where> " + " </script> ")
 	public List<CatastrophePojo> findByWhere(@Param("name") String name);
 
 	@Insert("insert into UAN_CAT ( ID,NAME,BIGIN,END,AREAS ) values ( #{id},#{name},#{begin},#{end},#{areas} )")

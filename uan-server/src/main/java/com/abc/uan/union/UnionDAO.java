@@ -30,8 +30,8 @@ public interface UnionDAO extends IDAO {
 
 	@ResultMap("Union")
 	@Select("<script> " + " select ID,NAME,CODE,JOIN_IN_TIME,STATE,TYPE,PHONE,ADDRESS from UAN_UNI  " + " <where> "
-			+ " <if test=\"code != null\"> CODE=#{code}</if> "
-			+ " <if test=\"name != null\"> AND NAME LIKE '%${name}%'</if> " + " </where> " + " </script> ")
+			+ " <if test=\"code != null and code != ''\"> CODE=#{code}</if> "
+			+ " <if test=\"name != null and name != ''\"> AND NAME LIKE '%${name}%'</if> " + " </where> " + " </script> ")
 	public List<UnionPojo> findByWhere(UnionQuery unionQuery);
 
 	@Insert("insert into UAN_UNI ( ID,NAME,CODE,JOIN_IN_TIME,STATE,TYPE,PHONE,ADDRESS ) values ( #{id},#{name},#{code},#{joinInTime},#{state},#{type},#{phone},#{address} )")
