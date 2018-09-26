@@ -293,14 +293,14 @@
           element = addOrder ?
             $.extend(true, {}, formViews[i].model, {
               order:j,
-              transactDate: _this.transactDate,
+              // transactDate: _this.transactDate,
               validator: 0
             }) : $.extend(true, {}, formViews[i].model);
           delete element.validator;
           delete element.relations;
           delete element.disabled;
           delete element.index;
-          delete element.transactDate;
+          // delete element.transactDate;
           array.push(element);
           j++;
         } // END OF if
@@ -339,7 +339,7 @@
             customerInformation: _this.accountVMs[0].customerInformation,
             personnelRelationships: _this.relativeVMs,
             state: 'SIGNED',
-            transactBank: 'abc',
+            transactBank: 'abchina',
             // transactDate: // 修改为只展示不提交 _this.transactDate
           },
           userId: loginVM.userId

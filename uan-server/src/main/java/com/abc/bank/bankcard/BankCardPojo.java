@@ -19,7 +19,7 @@ public class BankCardPojo extends AbstractPojo {
 	private String code;
 	private String idCard;
 	private CustomerInformationPojo customerInformation;
-	private String state;
+	private String state = STATE_NORMAL;
 	private BigDecimal amt;
 	private String bankOfDeposit;
 

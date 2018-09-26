@@ -8,7 +8,7 @@
  *  后一路由 /addrelative
  *  输出变量 window.app.addaccountV
  * 
- * Copyright Agriculture Bank of China.
+ * Copyright Agricultural Bank of China.
  */
 ;(function(factory) {
   if (typeof define === 'function' && define.amd) {
@@ -94,6 +94,8 @@
         <div class="col-xs-8">\
           <input name="bankOfDeposit" autocomplete="off"\
             data-role="dropdownlist"\
+            data-text-field="name"\
+            data-value-field="name"\
             data-value-primitive="true"\
             data-bind="value: bankOfDeposit, source: products, disabled: disabled"\
             style="width: 100%;"\
@@ -189,7 +191,7 @@
         udesk.messageBox({
           // title: '校验失败',
           // icon: 'fa ',
-          message: '表单校验失败，请完善个人账户信息！'
+          message: 'Form validation failed, please check if your input is correct!'
         });
       }
 
@@ -249,13 +251,22 @@
           delete _this.get('formViews')[this.get('index')];
         }, // END OF removeAccount
         // 下拉菜单相关数据
-        products: [
-          'Agriculture Bank of China',
-          'China Construction Bank',
-          'Industrial and Commercial Bank of China',
-          'Bank of China',
-          'Bank of Communications'
-        ],
+        products: new kendo.data.DataSource({
+          data: [
+            {name: 'Bank-of-America', country: 'USA'},
+            {name: 'Citi-Bank', country: 'USA'},
+            {name: 'JPMorgan-Chase-Bank', country: 'USA'},
+            {name: 'Wachovia', country: 'USA'},
+            {name: 'Wells-Fargo', country: 'USA'},
+            {name: 'Agricultural-Bank-of-China', country: 'China'},
+            {name: 'Bank-of-China', country: 'China'},
+            {name: 'Bank-of-Communications', country: 'China'},
+            {name: 'China-Construction-Bank', country: 'China'},
+            {name: 'Industrial-and-Commercial-Bank-of-China', country: 'China'}
+          ],
+          group: { field: 'country' }
+        }),
+
       }); // END OF newFormVM
 
       var newFormV = new kendo.View(accountFormDomString, {

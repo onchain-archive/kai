@@ -248,7 +248,7 @@ footer .service .name {
   /* background-color: #F8F3F7; */
 }
 .container-fluid.with-bottom.with-checkbox {
-  bottom: 160px;;
+  bottom: 90px;
 }
 .main,
 .secretary,
@@ -379,7 +379,7 @@ footer .service .name {
   box-shadow: none;
   line-height: 46px !important;
   text-indent: 8px !important;
-  letter-spacing: 2px;
+  letter-spacing: 0.5px;
 }
 .form-control[disabled], input:-webkit-autofill {
   background-color: #fff !important;
@@ -420,6 +420,7 @@ footer .service .name {
   border: none;
   line-height: 45px;
   text-indent: 8px;
+  letter-spacing: 0.5px;
 }
 .k-dropdown-wrap .k-select {
   height: 50px;
@@ -445,21 +446,10 @@ footer .service .name {
   letter-spacing: 2px;
   border-radius: 5px;
 }
-/* .add-bar {
-  width: 206px;
-  margin: 20px auto 30px auto;
-}
-.btn-add {
-  height: 50px;
-  width: 180px;
-  font-size: 18px;
-  letter-spacing: 2px;
-  border-radius: 2px;
-} */
 .checkbox-bar {
   height: 70px;
   padding: 0 25px 0 25px;
-  width: 100%;
+  /* width: 100%; */
   line-height: 70px;
   background-color: #f2f2f2;
 }
@@ -519,10 +509,38 @@ footer .service .name {
   margin-top: 2px;
   padding: 6px 0;
   border-radius: 5px;
-  width: 100%;
+  width: 80%;
   height: 35px;
   font-size: 18px;
 }
+.form-group .faceid .image {
+  display: none;
+  float: right;
+  width: 51px;
+  height: 51px;
+}
+
+.modal-dialog {
+  margin-top: 250px;
+}
+.modal-dialog .modal-body.with-loading {
+  height: 200px;
+  background-image: url(../image/dataLoadWait.gif);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.modal-dialog .faceid-camera {
+  display: none;
+  text-align: center;
+  margin: 30px auto;
+}
+.modal-dialog .modal-content {
+  border-radius: 20px;
+}
+.modal-dialog .modal-footer {
+  text-align: center;
+}
+
 
 .check-info {
   background-color: #fff;
@@ -538,6 +556,9 @@ footer .service .name {
   border-top-left-radius: 5px !important;
   border-top-right-radius: 5px !important;
   border-right: hidden;
+}
+.k-grid-header th.k-header {
+  font-weight: 900;
 }
 .k-state-selected {
   background-color: #00d3c4;

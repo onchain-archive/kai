@@ -61,14 +61,14 @@
     	login : {
 			// 对应login.js，发送登录请求，返回签约合同
 			type : 'POST',
-			url : 'api/rest/cusinf/confirmCustomer', // TODO -
+			url : getPath()+'api/rest/cusinf/confirmCustomer', // TODO -
 			// 待修改为后端登录URL
 			contentType : 'application/json',
 		},
 		addaccount : {
 			// 对应addaccount.js，发送本行账户请求，返回账户信息
 			type : 'POST',
-			url : 'api/rest/bancar/findMyCard', // TODO -
+			url : getPath()+'api/rest/bancar/findMyCard', // TODO -
 			// 待修改为后端findMyCard
 			// URL
 			contentType : 'application/json',
@@ -76,7 +76,7 @@
 		checkinfo : {
 			// 对应checkinfo.js，发送签约账户和互助人信息，返回签约结果
 			type : 'POST',
-			url : 'api/rest/uancon/contract', // TODO- 待修改为后端登录URL
+			url : getPath()+'api/rest/uancon/contract', // TODO- 待修改为后端登录URL
 			contentType : 'application/json',
 		}
     },

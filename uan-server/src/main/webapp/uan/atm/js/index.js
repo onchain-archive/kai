@@ -70,41 +70,41 @@
     	  faceidLogin : {
 				// 对应login.js，发送登录请求，返回签约合同
 				type : 'POST',
-				url : 'api/rest/cusinf/faceID', // TODO - 待修改为后端刷脸登录URL
+				url : getPath()+'api/rest/cusinf/faceID', // TODO - 待修改为后端刷脸登录URL
 				contentType : 'application/json',
 			},
 			withdraw : {
 				// 对应withCheckInfo.js，发送本行账户请求，返回账户信息
 				type : 'POST',
-				url : 'api/rest/cusinf/withdraw', // TODO -
+				url : getPath()+'api/rest/cusinf/withdraw', // TODO -
 				// 待修改为后端取款URL
 				contentType : 'application/json',
 			},
 			findMasters : {
 				// 对应queryrelativelist.js，发送户主身份证信息，返回受助人列表
 				type : 'POST',
-				url : 'api/rest/uancon/findMasters', // TODO-
+				url : getPath()+'api/rest/uancon/findMasters', // TODO-
 														// 待修改为后端帮助人列表URL
 				contentType : 'application/json',
 			},
 			inquireAssets : {
 				// 对应checkinfo.js，发送签约账户和互助人信息，返回签约结果
 				type : 'POST',
-				url : 'api/rest/cusinf/inquireAssets', // TODO-
+				url : getPath()+'api/rest/cusinf/inquireAssets', // TODO-
 				// 待修改为后端某帮助人的资产情况（卡列表）URL
 				contentType : 'application/json',
 			},
 			findByIdCard : {
 				// 对应checkinfo.js，发送签约账户和互助人信息，返回签约结果
 				type : 'POST',
-				url : 'api/rest/uancon/findBindingCards', // TODO-
+				url : getPath()+'api/rest/uancon/findBindingCards', // TODO-
 				// 待修改为后端某帮助人的卡列表URL
 				contentType : 'application/json',
 			},
 			reportLoss : {
 				// 对应checkinfo.js，发送签约账户和互助人信息，返回签约结果
 				type : 'POST',
-				url : 'api/rest/cusinf/reportLoss', // TODO-
+				url : getPath()+'api/rest/cusinf/reportLoss', // TODO-
 													// 待修改为后端挂失卡URL
 				contentType : 'application/json',
 			},

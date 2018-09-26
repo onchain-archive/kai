@@ -34,8 +34,8 @@ public class BlockChainService implements IService {
 		headers.add("Accept", MediaType.APPLICATION_JSON.toString());
 		String reqJson = reqObj.toString();
 		HttpEntity<String> httpEntity = new HttpEntity<String>(reqJson, headers);
-		LogWriter.info(BlockChainService.class, "区块链请求地址：" + cfgValueHandler.getBlockChainUrl() + trCode + "/" + key);
-		LogWriter.info(BlockChainService.class, "区块链请求参数：" + reqJson);
+		LogWriter.info(BlockChainService.class, "区块链put请求地址：" + cfgValueHandler.getBlockChainUrl() + trCode + "/" + key);
+		LogWriter.info(BlockChainService.class, "区块链put请求参数：" + reqJson);
 		String url = cfgValueHandler.getBlockChainUrl() + trCode;
 		if (key != null) {
 			url = url + "/" + key;
@@ -51,11 +51,11 @@ public class BlockChainService implements IService {
 		headers.add("Accept", MediaType.APPLICATION_JSON.toString());
 		String reqJson = reqObj.toString();
 		HttpEntity<String> httpEntity = new HttpEntity<String>(reqJson, headers);
-		LogWriter.info(BlockChainService.class, "区块链请求地址：" + cfgValueHandler.getBlockChainUrl() + trCode);
-		LogWriter.info(BlockChainService.class, "区块链请求参数：" + reqJson);
+		LogWriter.info(BlockChainService.class, "区块链post请求地址：" + cfgValueHandler.getBlockChainUrl() + trCode);
+		LogWriter.info(BlockChainService.class, "区块链post请求参数：" + reqJson);
 		String result = restTemplate.postForObject(cfgValueHandler.getBlockChainUrl() + trCode, httpEntity,
 				String.class);
-		LogWriter.info(BlockChainService.class, "区块链响应：" + result);
+		LogWriter.info(BlockChainService.class, "区块链post响应：" + result);
 		return jsonConvertor.toObject(result, respCls);
 	}
 
@@ -64,8 +64,8 @@ public class BlockChainService implements IService {
 		Map<String, Object> uriVariables = new HashMap<String, Object>();
 		uriVariables.put("filter", jsonConvertor.toJson(filter));
 
-		LogWriter.info(BlockChainService.class, "区块链请求地址：" + cfgValueHandler.getBlockChainUrl() + trCode + "/" + key);
-		LogWriter.info(BlockChainService.class, "区块链请求参数：" + jsonConvertor.toJson(uriVariables));
+		LogWriter.info(BlockChainService.class, "区块链delete请求地址：" + cfgValueHandler.getBlockChainUrl() + trCode + "/" + key);
+		LogWriter.info(BlockChainService.class, "区块链delete请求参数：" + jsonConvertor.toJson(uriVariables));
 		String url = cfgValueHandler.getBlockChainUrl() + trCode;
 		if (key != null) {
 			url = url + "/" + key;
@@ -74,7 +74,7 @@ public class BlockChainService implements IService {
 		try {
 			restTemplate.delete(url, uriVariables);
 		} catch (RestClientException e) {
-			// TODO Auto-generated catch block
+			LogWriter.info(BlockChainService.class, "清理失败。" + url + " >< " + jsonConvertor.toJson(uriVariables));
 			e.printStackTrace();
 		}
 
@@ -99,8 +99,8 @@ public class BlockChainService implements IService {
 		RestTemplate restTemplate = new RestTemplate();
 		Map<String, Object> uriVariables = new HashMap<String, Object>();
 		uriVariables.put("filter", jsonConvertor.toJson(filter));
-		LogWriter.info(BlockChainService.class, "区块链请求地址：" + cfgValueHandler.getBlockChainUrl() + trCode + "/" + key);
-		LogWriter.info(BlockChainService.class, "区块链请求参数：" + jsonConvertor.toJson(uriVariables));
+		LogWriter.info(BlockChainService.class, "区块链get请求地址：" + cfgValueHandler.getBlockChainUrl() + trCode + "/" + key);
+		LogWriter.info(BlockChainService.class, "区块链get请求参数：" + jsonConvertor.toJson(uriVariables));
 		String url = cfgValueHandler.getBlockChainUrl() + trCode;
 		if (key != null) {
 			url = url + "/" + key;
@@ -115,7 +115,7 @@ public class BlockChainService implements IService {
 				throw e;
 			}
 		}
-		LogWriter.info(BlockChainService.class, "区块链响应：" + result);
+		LogWriter.info(BlockChainService.class, "区块链get响应：" + result);
 		return result;
 	}
 

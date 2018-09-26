@@ -1,237 +1,296 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>UAN - United Aid Net</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
-  <link rel='shortcut icon' href='./favicon.ico' type="image/vnd.microsoft.icon">
-  <link rel="stylesheet" href="../vendor/bootswatch/3.3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../vendor/font-awesome/4.6.3/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../vendor/kendoui/2016.2.504/styles/kendo.bootstrap.min.css">
-  <link rel="stylesheet" href="../vendor/kendoui/2016.2.504/styles/kendo.common-bootstrap.min.css">
+<meta charset="UTF-8">
+<title>UAN - United Aid Net</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name='viewport'
+	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
+<link rel='shortcut icon' href='./favicon.ico'
+	type="image/vnd.microsoft.icon">
+<link rel="stylesheet"
+	href="../vendor/bootswatch/3.3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="../vendor/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="../vendor/kendoui/2016.2.504/styles/kendo.bootstrap.min.css">
+<link rel="stylesheet"
+	href="../vendor/kendoui/2016.2.504/styles/kendo.common-bootstrap.min.css">
 
-  <link rel="stylesheet" href="../framework/3.4.0/udesk.min.css">
-  <link rel="stylesheet" href="../framework/3.4.0/udesk.portal.min.css">
-  <link rel="stylesheet" href="../framework/3.4.0/skins/skin-blue.min.css" id="styleLink">
+<link rel="stylesheet" href="../framework/3.4.0/udesk.min.css">
+<link rel="stylesheet" href="../framework/3.4.0/udesk.portal.min.css">
+<link rel="stylesheet" href="../framework/3.4.0/skins/skin-blue.min.css"
+	id="styleLink">
 
-  <style> 
-    body {
-     font-family: Microsoft Yahei,SJSONG, 'Times New Roman', Times, serif;
-    }
-  </style>
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
+<style>
+body {
+	font-family: Microsoft Yahei, SJSONG, 'Times New Roman', Times, serif;
+}
+
+.main-header .sidebar-toggle {
+	background-image: url(./favicon.ico);
+	background-repeat: no-repeat;
+	width: 50px;
+	height: 50px;
+	padding: 0;
+}
+
+.main-header .sidebar-toggle::before {
+	content: '';
+}
+</style>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
     <script src="../vendor/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="../vendor/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
 <body>
-  
-<!--Header zone begins-->
 
-  <div class="main-header">
+	<!--Header zone begins-->
 
-    <!--Header Menu zone begins-->
-    <div class="navbar-header fl">
-      <a class="sidebar-toggle pointer" data-toggle="offcanvas" style="position: absolute; left: 0; top: 0;">
-        <span class="sr-only"></span>
-      </a>
-      <a class="logo" href="">United Aid Net</a>
-    </div>
-    <!--Header icon zone ends-->
+	<div class="main-header">
 
-    <div class="navbar navbar-static-top">
-      <div class="navbar-collapse">
+		<!--Header Menu zone begins-->
+		<div class="navbar-header fl">
+			<a class="sidebar-toggle pointer" data-toggle="offcanvas"
+				style="position: absolute; left: 0; top: 0;"> <span
+				class="sr-only"></span>
+			</a> <a class="logo" href="">United Aid Net</a>
+		</div>
+		<!--Header icon zone ends-->
 
-        <!--Header Menu zone begins-->
-        <ul class="navbar-nav navbar-right mr50">
+		<div class="navbar navbar-static-top">
+			<div class="navbar-collapse">
 
-          <li class="header-menu menu user user-menu">
-            <a class="clearfix fl">
-              <ul id="user-count">
-              <li>
-                <img id="userPortrait" src="./image/user1.jpg" class="user-image" alt="User Image"/>
-                <span id="userName" class="text-white displayInline mr10">John Snow</span>
-              </li>
-            </ul>
-            </a>
-          </li>
+				<!--Header Menu zone begins-->
+				<ul class="navbar-nav navbar-right mr50">
 
-          <li class="header-menu menu">
-            <a class="fl clearfix">
-              <ul class="k-widget k-reset k-header k-menu k-menu-horizontal">
-                <li class="k-item">
-                  <span class="k-link" id="iconSignout"><i class="icon-signout pointer fontSize20 text-white"></i></span>
-                </li>
-              </ul>
-            </a>
-          </li>
-        </ul>
+					<li class="header-menu menu user user-menu"><a
+						class="clearfix fl">
+							<ul id="user-count">
+								<li><img id="userPortrait" src="./image/user1.jpg"
+									class="user-image" alt="User Image" /> <span id="userName"
+									class="text-white displayInline mr10">John Snow</span></li>
+							</ul>
+					</a></li>
 
-        <!--Header Menu zone ends-->
+					<li class="header-menu menu"><a class="fl clearfix">
+							<ul class="k-widget k-reset k-header k-menu k-menu-horizontal">
+								<li class="k-item"><span class="k-link" id="iconSignout"><i
+										class="icon-signout pointer fontSize20 text-white"></i></span></li>
+							</ul>
+					</a></li>
+				</ul>
 
-      </div> <!-- end of div.navbar-collapse -->
-    </div> <!-- end of div.navbar-static-top -->
-  </div> <!-- end of div.main-header -->
+				<!--Header Menu zone ends-->
 
-<!--Header zone ends-->
+			</div>
+			<!-- end of div.navbar-collapse -->
+		</div>
+		<!-- end of div.navbar-static-top -->
+	</div>
+	<!-- end of div.main-header -->
+
+	<!--Header zone ends-->
 
 
-<!--Sidebar zone begins-->
-  <div class="main-sidebar" data-slide-open="true">
-    <div class="sidebar">
+	<!--Sidebar zone begins-->
+	<div class="main-sidebar" data-slide-open="true">
+		<div class="sidebar">
 
-      <!-- Sidebar Menu Search begins-->
-      <div class="menu-search-wrapper input-group">
-        <i class="search-icon fa fa-search"></i>
-        <input type="text" id="menuSearcher">
-      </div>
-      <!-- Sidebar Menu Search ends-->
+			<!-- Sidebar Menu Search begins-->
+			<div class="menu-search-wrapper input-group">
+				<i class="search-icon fa fa-search"></i> <input type="text"
+					id="menuSearcher">
+			</div>
+			<!-- Sidebar Menu Search ends-->
 
-      <ul class="sidebar-menu" id="mainSideBarMenu">
-        <!--other item begins-->
-        <!--other item ends-->
-      </ul> <!-- end of ul.sidebar-menu #mainSideBarMenu -->
-    </div> <!-- end of div.sidebar -->
+			<ul class="sidebar-menu" id="mainSideBarMenu">
+				<!--other item begins-->
+				<!--other item ends-->
+			</ul>
+			<!-- end of ul.sidebar-menu #mainSideBarMenu -->
+		</div>
+		<!-- end of div.sidebar -->
 
-  </div> <!-- end of div.main-sidebar -->
-<!--Sidebar zone ends-->
-
-
-<!--Tab zone begins-->
-
-  <div class="content-wrapper" style="position:relative;">
-    <!--Tab Header zone begins-->
-    <div class="content-header">
-      <ul class="tabsite clearfix">
-
-      </ul>
-    </div>
-    <!--Tab Header zone ends-->
-
-    <!--Tab body zone begins-->
-    <div class="content pt0 " id="mainApplyContent">
-
-    </div>
-    <!--Tab body zone ends-->
-  </div>
-
-<!--Tab zone ends-->
+	</div>
+	<!-- end of div.main-sidebar -->
+	<!--Sidebar zone ends-->
 
 
-  <!--[if lt IE 9]>
+	<!--Tab zone begins-->
+
+	<div class="content-wrapper" style="position: relative;">
+		<!--Tab Header zone begins-->
+		<div class="content-header">
+			<ul class="tabsite clearfix">
+
+			</ul>
+		</div>
+		<!--Tab Header zone ends-->
+
+		<!--Tab body zone begins-->
+		<div class="content pt0 " id="mainApplyContent"></div>
+		<!--Tab body zone ends-->
+	</div>
+
+	<!--Tab zone ends-->
+
+
+	<!--[if lt IE 9]>
   <script src="../vendor/JSON-js/2015.05.03/json2.js"></script>
   <![endif]-->
-  <script src="../vendor/jquery/1.11.2/jquery.min.js"></script>
-  <script src="../vendor/jquery-nicescroll/3.6.6/jquery.nicescroll.min.js"></script>
-  <script src="../vendor/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="../vendor/jquery/1.11.2/jquery.min.js"></script>
+	<script
+		src="../vendor/jquery-nicescroll/3.6.6/jquery.nicescroll.min.js"></script>
+	<script src="../vendor/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
-  <script src="../vendor/kendoui/2016.2.504/js/kendo.web.min.js"></script>
-  <script src="../framework/3.4.0/udesk.min.js"></script>
-  <script src="../framework/3.4.0/messages/udesk.messages.en-US.min.js"></script>
-  <script src="../framework/3.4.0/udesk.portal.min.js"></script>
+	<script src="../vendor/kendoui/2016.2.504/js/kendo.web.min.js"></script>
+	<script src="../framework/3.4.0/udesk.min.js"></script>
+	<script src="../framework/3.4.0/messages/udesk.messages.en-US.min.js"></script>
+	<script src="../framework/3.4.0/udesk.portal.min.js"></script>
 
-  <script>
-  $(document).ready(function() {
-    if($.fn.udeskMenuSearch) {
-      $.extend(true, $.fn.udeskMenuSearch.defaults, {
-        placeholder: 'search...',
-    });
-    }
+	<script>
+		function getPath() {
+			// 获取当前全量地址
+			var currentPath = window.document.location.href;
+			// 获取主机地址后的目录地址，如/test/test.html
+			var docPath = window.document.location.pathname;
+			var pos = currentPath.indexOf(docPath);
+			// 获取主机地址，如localhost:8080
+			var hostPath = currentPath.substring(0, pos);
 
+			// 获取第1个'/'与第二个'/'之间的字符串及两个'/'，如/test/
+			var projectName = docPath.substring(0, docPath.substr(1).indexOf(
+					'/') + 2);
+			return (hostPath + ((projectName == '/uan/') ? hostPath.indexOf('/')==(hostPath.length-1)?'':'/' : projectName));
+		}
+	</script>
+	<script>
+		$(document)
+				.ready(
+						function() {
+							if ($.fn.udeskMenuSearch) {
+								$.extend(true, $.fn.udeskMenuSearch.defaults, {
+									placeholder : 'search...',
+								});
+							}
 
+							// 框架初始化配置
+							udesk.init({
+								notice : {
+								//    autoHideAfter: 4000
+								},
+								modal : {
+									backdrop : 'static'
+								},
+								ajax : {
+									// 是否解析响应报文中的消息
+									showResponseNotice : {
+										errorDetail : false
+									}
+								}
+							}); // end of udesk.init
 
-    // 框架初始化配置
-    udesk.init({
-      notice: {
-    //    autoHideAfter: 4000
-      },
-      modal: {
-        backdrop: 'static'
-      },
-      ajax: {
-        // 是否解析响应报文中的消息
-        showResponseNotice: {
-          errorDetail: false
-        }
-      }
-    }); // end of udesk.init
+							// 新建一个udeskTab组件
+							var instanceTab = $('.content-wrapper').udeskTab({
+								tabWidth : 190,
+								// 设置是否显示关闭确认框
+								// showCloseConfirm: true,
+								// 设置是否在页签头显示刷新按钮
+								showRefreshButton : true,
+								onTabsFull : function(e) {
+									udesk.showWarning('Too many tabs!');
+								} // end of onTabsFull
+							}).data('udeskTab');
 
-    // 新建一个udeskTab组件
-    var instanceTab = $('.content-wrapper').udeskTab({
-      tabWidth: 190,
-      // 设置是否显示关闭确认框
-      showCloseConfirm: true,
-      // 设置是否在页签头显示刷新按钮
-      showRefreshButton: true,
-      onTabsFull: function(e) {
-        udesk.showWarning('Too many tabs!');
-      } // end of onTabsFull
-    }).data('udeskTab');
+							// 新建一个udeskSidebar组件
+							var instanceSidebar = $('.main-sidebar')
+									.udeskSidebar(
+											{
+												// 树形菜单配置项
+												treeMenu : {
+													url : getPath()+'uan/web/json/menu.json',
+													// 树形区域相对窗口底部需要减去的高度：header高度+新建按钮高度+menuSearch高度
+													heightReduced : 50 + 48, //50+44+48,
+													// 树形菜单-菜单项点击事件
+													onClick : function($e) {
+														if ($e.data('tabUrl')) {
+															instanceTab
+																	.openTab({
+																		url : $e
+																				.data('tabUrl'),
+																		mode : $e
+																				.data('mode'),
+																		title : $e
+																				.children(
+																						'a')
+																				.children(
+																						'span[data-treemenu-type="title"]')
+																				.text(),
+																		menuId : $e
+																				.data('menuId'),
+																		sysId : $e
+																				.data('sysId'),
+																		tdId : 'null'
+																	});
+														} // end of if
+													}, // end of onClick
+													// 初始化事件回调方法，打开第一个一级菜单，并触发Tab打开事件
+													onInit : function($e) {
+														if ($e) {
+															$e.children('a')
+																	.click();
+														}
+													}
+												}, // end of 'treeMenu'
+												// 树形菜单搜索组件配置项
+												menuSearch : {
+													onSelect : function($e) {
+														if ($e.data('tabUrl')) {
+															instanceTab
+																	.openTab({
+																		url : $e
+																				.data('tabUrl'),
+																		mode : $e
+																				.data('mode'),
+																		title : $e
+																				.data('tabTitle'),
+																		menuId : $e
+																				.data('menuId'),
+																		sysId : $e
+																				.data('sysId'),
+																		tdId : 'null'
+																	});
+														}
+													} // end of OnSelect
+												}, // end of menuSearch
+												// dom选择器
+												selector : {
+													// 侧边栏伸缩切换按钮
+													toggle : '.sidebar-toggle'
+												},
 
-    // 新建一个udeskSidebar组件
-    var instanceSidebar = $('.main-sidebar').udeskSidebar({
-      // 树形菜单配置项
-      treeMenu: {
-        url: './uan/web/json/menu.json',
-        // 树形区域相对窗口底部需要减去的高度：header高度+新建按钮高度+menuSearch高度
-        heightReduced: 50+48,  //50+44+48,
-        // 树形菜单-菜单项点击事件
-        onClick: function($e) {
-          if ($e.data('tabUrl')) {
-            instanceTab.openTab({
-              url:$e.data('tabUrl'),
-              mode:$e.data('mode'),
-              title:$e.children('a').children('span[data-treemenu-type="title"]').text(),
-              menuId:$e.data('menuId'),
-              sysId:$e.data('sysId'),
-              tdId:'null'});
-          } // end of if
-        }, // end of onClick
-        // 初始化事件回调方法，打开第一个一级菜单，并触发Tab打开事件
-        onInit: function($e) {
-          if($e) {
-            $e.children('a').click();
-          }
-        }
-      }, // end of 'treeMenu'
-      // 树形菜单搜索组件配置项
-      menuSearch: {
-        onSelect: function($e) {
-          if ($e.data('tabUrl')) {
-            instanceTab.openTab({
-              url:$e.data('tabUrl'),
-              mode:$e.data('mode'),
-              title:$e.data('tabTitle'),
-              menuId:$e.data('menuId'),
-              sysId:$e.data('sysId'),
-              tdId:'null'});
-          }
-        } // end of OnSelect
-      }, // end of menuSearch
-      // dom选择器
-      selector: {
-        // 侧边栏伸缩切换按钮
-        toggle: '.sidebar-toggle'
-      },
+												// 侧边栏伸缩切换事件
+												onToggleClick : function($e) {
+													// 调整Tab页签头部宽度和间距      
+													instanceTab
+															.adjustTabsWidth();
+												}
 
-      // 侧边栏伸缩切换事件
-      onToggleClick: function($e) {
-        // 调整Tab页签头部宽度和间距      
-        instanceTab.adjustTabsWidth();
-      }
+											}).data('udeskSidebar');
 
-    }).data('udeskSidebar');
+							// 给侧边栏加入滚动条美化效果，需要配合jquery.nicescroll.min.js
+							if (jQuery.fn.niceScroll) {
+								$('.sidebar-menu').niceScroll({
+									cursorcolor : '#7f7f7f'
+								});
+							}
 
-    // 给侧边栏加入滚动条美化效果，需要配合jquery.nicescroll.min.js
-    if(jQuery.fn.niceScroll) {
-      $('.sidebar-menu').niceScroll({cursorcolor:'#7f7f7f'});
-    }
-
-  });
-  </script>
+						});
+	</script>
 
 
 </body>

@@ -1,79 +1,104 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
-  <link rel='shortcut icon' href='./favicon.ico' type="image/vnd.microsoft.icon">
-  <link rel="stylesheet" href="../vendor/bootswatch/3.3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../vendor/font-awesome/4.6.3/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../vendor/kendoui/2016.2.504/styles/kendo.bootstrap.min.css">
-  <link rel="stylesheet" href="../vendor/kendoui/2016.2.504/styles/kendo.common-bootstrap.min.css">
-  <link rel="stylesheet" href="../framework/3.4.0/udesk.min.css">
-  <link rel="stylesheet" href="../framework/3.4.0/udesk.app.min.css">
-  <link rel="stylesheet" href="../framework/3.4.0/skins/skin-lightcyan.min.css" id="styleLink">
-  <!-- 自定义CSS区域开始 -->
-  <link rel="stylesheet" href="css/index.css">
-  <!-- 自定义CSS区域结束 -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name='viewport'
+	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
+<link rel='shortcut icon' href='./favicon.ico'
+	type="image/vnd.microsoft.icon">
+<link rel="stylesheet"
+	href="../vendor/bootswatch/3.3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="../vendor/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="../vendor/kendoui/2016.2.504/styles/kendo.bootstrap.min.css">
+<link rel="stylesheet"
+	href="../vendor/kendoui/2016.2.504/styles/kendo.common-bootstrap.min.css">
+<link rel="stylesheet" href="../framework/3.4.0/udesk.min.css">
+<link rel="stylesheet" href="../framework/3.4.0/udesk.app.min.css">
+<link rel="stylesheet"
+	href="../framework/3.4.0/skins/skin-lightcyan.min.css" id="styleLink">
+<!-- 自定义CSS区域开始 -->
+<link rel="stylesheet" href="css/index.css">
+<!-- 自定义CSS区域结束 -->
 
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
     <script src="../vendor/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="../vendor/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-  <title>中国农业银行ABC ATM</title>
+<title>中国农业银行ABC ATM</title>
 </head>
 
 <body>
-  <!-- 应用界面开始 -->
-  <div id="app"></div>
-  <!-- 应用界面结束 -->
+	<!-- 应用界面开始 -->
+	<div id="app"></div>
+	<!-- 应用界面结束 -->
 
-  <!--[if lt IE 9]>
+	<!--[if lt IE 9]>
     <script src="../vendor/JSON-js/2015.05.03/json2.js"></script>
   <![endif]-->
-  <script src="../vendor/jquery/1.11.2/jquery.min.js"></script>
-  <script src="../vendor/jquery-nicescroll/3.6.6/jquery.nicescroll.min.js"></script>
-  <script src="../vendor/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <script src="../vendor/kendoui/2016.2.504/js/kendo.web.min.js"></script>
-  <script src="../framework/3.4.0/udesk.min.js"></script>
-  <script src="../framework/3.4.0/messages/udesk.messages.en-US.min.js"></script>
-  <!-- 加载单页应用视图  -->
-  <script src="js/index.js"></script>
-  <!-- 登录业务 -->
-  <script src="js/faceidlogin.js"></script>
-  <script src="js/idcardlogin.js"></script>
-  <script src="js/uanindex.js"></script>
-  <!-- 小额免密取款业务 -->
-  <script src="js/withdraw.js"></script>
-  <script src="js/withdrawcheckinfo.js"></script>
-  <script src="js/withdrawresult.js"></script>
-  <!-- 查询授权人业务 -->
-  <script src="js/queryrelativelist.js"></script>
-  <script src="js/queryrelativeasset.js"></script>
-  <script src="js/queryrelativedetail.js"></script>
-  <!-- 挂失卡业务 -->
-  <script src="js/reportlosslist.js"></script>
-  <script src="js/reportlossasset.js"></script>
-  <script src="js/reportlosscheckinfo.js"></script>
-  <script src="js/reportlossresult.js"></script>
+	<script src="../vendor/jquery/1.11.2/jquery.min.js"></script>
+	<script
+		src="../vendor/jquery-nicescroll/3.6.6/jquery.nicescroll.min.js"></script>
+	<script src="../vendor/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="../vendor/kendoui/2016.2.504/js/kendo.web.min.js"></script>
+	<script src="../framework/3.4.0/udesk.min.js"></script>
+	<script src="../framework/3.4.0/messages/udesk.messages.en-US.min.js"></script>
+	<!-- 加载单页应用视图  -->
+	<script>
+		function getPath() {
+			// 获取当前全量地址
+			var currentPath = window.document.location.href;
+			// 获取主机地址后的目录地址，如/test/test.html
+			var docPath = window.document.location.pathname;
+			var pos = currentPath.indexOf(docPath);
+			// 获取主机地址，如localhost:8080
+			var hostPath = currentPath.substring(0, pos);
 
-  <script>
-    $(document).ready(function () {
-      // 开启路由
-      window.app.router.start();
+			// 获取第1个'/'与第二个'/'之间的字符串及两个'/'，如/test/
+			var projectName = docPath.substring(0, docPath.substr(1).indexOf(
+					'/') + 2);
+			return (hostPath + ((projectName == '/uan/') ? hostPath.indexOf('/')==(hostPath.length-1)?'':'/' : projectName));
+			
+		}
+	</script>
+	<script src="js/index.js"></script>
+	<!-- 登录业务 -->
+	<script src="js/faceidlogin.js"></script>
+	<script src="js/idcardlogin.js"></script>
+	<script src="js/uanindex.js"></script>
+	<!-- 小额免密取款业务 -->
+	<script src="js/withdraw.js"></script>
+	<script src="js/withdrawcheckinfo.js"></script>
+	<script src="js/withdrawresult.js"></script>
+	<!-- 查询授权人业务 -->
+	<script src="js/queryrelativelist.js"></script>
+	<script src="js/queryrelativeasset.js"></script>
+	<script src="js/queryrelativedetail.js"></script>
+	<!-- 挂失卡业务 -->
+	<script src="js/reportlosslist.js"></script>
+	<script src="js/reportlossasset.js"></script>
+	<script src="js/reportlosscheckinfo.js"></script>
+	<script src="js/reportlossresult.js"></script>
 
-      // udesk框架初始化配置
-      udesk.init({
-        notice: {
-          autoHideAfter: 0
-        }
-      }); // end of udesk.init
+	<script>
+		$(document).ready(function() {
+			// 开启路由
+			window.app.router.start();
 
-    });
-  </script>
+			// udesk框架初始化配置
+			udesk.init({
+				notice : {
+					autoHideAfter : 0
+				}
+			}); // end of udesk.init
+
+		});
+	</script>
 
 </body>
 

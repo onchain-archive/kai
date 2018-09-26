@@ -8,7 +8,7 @@
  *  后一路由 /addaccount
  *  输出变量 window.app.agreementV
  * 
- * Copyright Agriculture Bank of China.
+ * Copyright Agricultural Bank of China.
  */
 ;(function(factory) {
   if (typeof define === 'function' && define.amd) {
@@ -39,37 +39,34 @@
   // 构造视图DOM模板
   var domTemplate = '<header>\
   <div class="prev-btn" data-bind="click: prevPage"><i class="fa fa-chevron-left"></i></div>\
-  <div class="header-title">License Agreement</div>\
+  <div class="header-title">Terms of Use</div>\
 </header>\
 \
   <div class="container-fluid with-bottom with-checkbox"  style="padding-top: 15px;"> \
 <div class="article-horizontal"> \
   <p> \
-    Welcome to UAN Emergency Service! Your information is as follows:<br> \
+    Welcome to UAN Emergency Service! Your information is as follows:<br>\
 <br>\
-Full Name：<span data-bind="text: name"></span> <br> \
-ID Card No.：<span data-bind="text: idCard"></span> <br> \
-Phone：<span data-bind="text: phone"></span><br> \
-  \
-    <br>为使用UAN服务（简称为：本服务），您应当阅读并遵守《UAN服务协议》（简称为：本协议）。请您务必审慎阅读、充分理解各条款内容，特别是免除或限制责任的相应条款，以及开通或使用某项服务的单独协议，并选择接受或不接受。免除或限制责任条款可能以加粗形式提示您注意。\
-除非您已阅读并接受本协议所有条款，否则您无权使用本服务。<br>\
-  \ 您对本服务的任何购买或接受赠与等获取行为及登录、查看等任何使用行为即视为您已阅读并同意本协议的约束。\
-如果您未满18周岁，请在法定监护人的陪同下阅读本协议，并特别注意未成年人使用条款。<br>\
-  \
-一、【协议的范围】<br>\
-　　1.1【协议适用主体范围】<br>\
-　　     本协议是您与中国农业银行UAN应急服务之间关于您使用本服务所订立的协议。<br> \
-  \
-二、【关于本服务】<br>\
-　　 UAN服务，本服务能会根据不同的产品及服务类型，推出不同的包月增值服务，目前，腾讯提供QQ会员、超级会员、黄钻、红钻等不同种类的包月增值服务，同时，腾讯也可能会根据用户的需求、产品及服务类型的变化等，对现有包月增值服务种类进行调整以及不断推出新的包月增值服务种类。腾讯也可能会在不同时间推出具体不同的服务内容，以不断完善、优化本服务。具体包月增值服务种类及服务内容以相关服务页面公布、实际提供的内容为准。您可以自行根据需要选择相应服务。<br>\
-　　 您所享有的本服务的具体内容可能会因为级别、是否年费、开通期限、您选择的具体服务类别等因素而有不同，通常高级别、开通年费服务、开通期限较长等情况下，您将会享有更多的服务，具体以相关服务页面公布、实际提供的内容为准。<br>\
-  \
+Full Name：<span data-bind="text: name"></span><br>\
+ID Card No.：<span data-bind="text: idCard"></span><br>\
+Phone：<span data-bind="text: phone"></span><br>\
+<br>\
+PLEASE READ THESE TERMS AND CONDITIONS CAREFULLY. BY ACCEPTING THIS PAGE YOU AGREE TO BE BOUND BY THE TERMS AND CONDITIONS BELOW. THESE TERMS AND CONDITIONS ARE SUBJECT TO CHANGE. ANY CHANGES WILL BE INCORPORATED INTO THE TERMS AND CONDITIONS POSTED TO THIS PAGE FROM TIME TO TIME. IF YOU DO NOT AGREE WITH THESE TERMS AND CONDITIONS, PLEASE DO NOT ACCESS THIS PAGE.<br>\
+<br>\
+Unauthorized use of Agricultural Bank of China\'s APPs, Websites and systems, including but not limited to unauthorized entry into Agricultural Bank of China\'s systems, misuse of passwords, posting of objectionable or offensive content or your unauthorized use of legally protected third party content, or misuse of any information posted to a site, is strictly prohibited.<br>\
+<br>\
+You acknowledge that Agricultural Bank of China may disclose and transfer any information that you provide through this Page to (i) any company within the Agricultural Bank of China, its affiliates agents or information providers; (ii) to any other person or entity with your consent; or (iii) if we have a right or duty to disclose or are permitted or compelled to so disclose such information by law. You consent to the transmission, transfer or processing of such information to, or through, any country in the world, as we deem necessary or appropriate (including to countries outside the EEA), and by using and providing information through this Page you agree to such transfers. Use of this Page, including any patterns or characteristics concerning your interaction with it, may be monitored, tracked and recorded. Anyone using this Page expressly consents to such monitoring, tracking and recording.<br>\
+<br>\
+You agree not to attempt to log on to the Page from any country under sanctions by the Office of Foreign Assets Control (OFAC). Information regarding which countries are under sanctions may be obtained on the U.S. Department of the Treasury website. Any attempt to log on to the Page from one of these countries may result in your access being restricted and/or terminated.<br>\
+<br>\
+If you use Agricultural Bank of China\'s Page or systems to access data related to any account(s) of which you are not the owner or authorized user as reflected in Agricultural Bank of China\'s systems, you shall indemnify, defend, and hold harmless Agricultural Bank of China and all of its direct and indirect subsidiaries, officers, directors, employees, agents, successors, and assigns from any and all losses, liabilities, damages, and all related costs and expenses, arising from, relating to, or resulting (directly or indirectly) from such access. Further, without limiting Agricultural Bank of China\'s rights or your obligations under any other provision of these Terms and Conditions, and notwithstanding the same, in the event of any actual or reasonably suspected unauthorized access to the personal information of a customer (including but not limited to customer names, addresses, phone numbers, bank and credit card account numbers, income and credit histories, and social security numbers) under your control or subsequent to and arising from your past exercise of control, direct damages in connection with any such breach will include the cost and expenses of investigation and analysis (including by law firms and forensic firms), correction or restoration of any destroyed, lost or altered data, notification to affected customers, offering and providing of credit monitoring, customers service, or other remediation services, and any related cost. Agricultural Bank of China\’s rights to indemnity under this section are in addition to all other rights and remedies available at Law or in equity. Any exercise by Agricultural Bank of China of its rights to indemnification shall be without prejudice to such other rights and remedies. You manifest your assent to this indemnity by accessing account data through Agricultural Bank of China\'s Website or systems, notwithstanding the terms of any agreement you have with a customer or an account owner stating otherwise. This indemnity includes but is not limited to losses associated with (1) a data breach of your system(s) and (2) a data breach of the system(s) of any person or entity with whom you provided or shared Agricultural Bank of China customer account data.<br>\
+<br>\
 </p>\
 </div>\
-</div>\
-<div class="checkbox-bar fix-bottom" style="bottom: 90px">\
-<input type="checkbox" name="isAgree" id="isAgreeCheckbox" data-bind="checked: agreeWithUan" autocomplete="off">\
-<label for="isAgreeCheckbox" style="float: initial;">I\'ve read through the Licence Agreement above.</label>\
+  <div class="checkbox-bar">\
+  <input type="checkbox" name="isAgree" id="isAgreeCheckbox" data-bind="checked: agreeWithUan" autocomplete="off">\
+  <label for="isAgreeCheckbox" style="float: initial;">I\'ve read through the Terms of Use above.</label>\
+  </div>\
 </div>\
 <div class="btn-bar fix-bottom">\
 <button class="btn btn-default" data-bind="click: prevPage">I don\'t agree.</button>\
@@ -122,7 +119,6 @@ Phone：<span data-bind="text: phone"></span><br> \
       }
     },
     // hide: function () {
-    //   console.log("view hide", this.customerName);
     // },
     updateData: function() {
       var data = window.app.loginV.model;

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.abc.common.AbstractController;
 import com.abc.common.servlet.NodeDeploymentDescriptor;
+import com.abc.common.util.LogWriter;
 
 @RestController
 @RequestMapping
@@ -17,6 +18,11 @@ public class HelloController extends AbstractController {
 		String str = NodeDeploymentDescriptor.getInstance().toString();
 		return str;
 
+	}
+
+	@RequestMapping(value = "/uan/*")
+	public void uan() {
+		LogWriter.info(HelloController.class, "一个uan的请求");
 	}
 
 }

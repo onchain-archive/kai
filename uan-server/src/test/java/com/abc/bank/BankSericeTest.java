@@ -57,6 +57,16 @@ public class BankSericeTest {
 	private BlockChainService blockChainService;
 
 	@Test
+	public void clear() {
+		Map<String, String> filter = new HashMap<String, String>();
+		filter.put("party", "110102200211112222");
+		blockChainService.delete("Agreement", "110102200211112222", filter);
+		filter = new HashMap<String, String>();
+		filter.put("idCard", "110102200211112222");
+		blockChainService.delete("Person", "110102200211112222", filter);
+	}
+
+	@Test
 	public void testUanContract() {
 		// try {
 		uanContractBCDAO.delete("110110200001011234");
@@ -66,8 +76,7 @@ public class BankSericeTest {
 		filter = new HashMap<String, String>();
 		filter.put("idCard", "110110200001011234");
 		blockChainService.delete("Person", "110110200001011234", filter);
-		
-		
+
 		UanContractPojo uanContractPojo = new UanContractPojo();
 		// 1、签阅合同
 		String hetong = uanContractService.generate();
@@ -153,7 +162,7 @@ public class BankSericeTest {
 
 		// 4、完善合同并提交
 		uanContractPojo.setState(UanContractPojo.STATE_SIGNED);
-		uanContractPojo.setTransactBank("abc");
+		uanContractPojo.setTransactBank("Agricultural Bank of China");
 		uanContractPojo.setTransactDate(new Date());
 		UanContractPojo res = uanContractService.contract(uanContractPojo);
 		System.out.println();
@@ -228,62 +237,77 @@ public class BankSericeTest {
 
 		// 初始化区块链上的银行准备金账户
 		Map<String, Object> filter = new HashMap<String, Object>();
-		filter.put("bank", "abc");
-		BankReserveAccountPojo bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "abc", filter,
-				BankReserveAccountPojo.class);
+		filter.put("bank", "Agricultural-Bank-of-China");
+		BankReserveAccountPojo bankReserveAccountPojo = blockChainService.get("BankReserveAccount",
+				"Agricultural-Bank-of-China", filter, BankReserveAccountPojo.class);
 		if (bankReserveAccountPojo == null) {
 			bankReserveAccountPojo = new BankReserveAccountPojo();
 			bankReserveAccountPojo.setBalance(5555555d);
 			bankReserveAccountPojo.setDebit("5555555");
-			bankReserveAccountPojo.setDebitBank("abc");
+			bankReserveAccountPojo.setDebitBank("Agricultural-Bank-of-China");
 			bankReserveAccountPojo.setTrTime(ConvertUtils.timeToString(new Date()));
 			bankReserveAccountPojo.setTrType("init");
-			bankReserveAccountPojo.setBank("abc");
+			bankReserveAccountPojo.setBank("Agricultural-Bank-of-China");
 			blockChainService.post("BankReserveAccount", bankReserveAccountPojo, BankReserveAccountPojo.class);
 		}
 
 		filter = new HashMap<String, Object>();
-		filter.put("bank", "China Construction Bank");
-		bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "China Construction Bank", filter,
+		filter.put("bank", "China-Construction-Bank");
+		bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "China-Construction-Bank", filter,
 				BankReserveAccountPojo.class);
 		if (bankReserveAccountPojo == null) {
 			bankReserveAccountPojo = new BankReserveAccountPojo();
 			bankReserveAccountPojo.setBalance(8888888d);
 			bankReserveAccountPojo.setDebit("8888888");
-			bankReserveAccountPojo.setDebitBank("China Construction Bank");
+			bankReserveAccountPojo.setDebitBank("China-Construction-Bank");
 			bankReserveAccountPojo.setTrTime(ConvertUtils.timeToString(new Date()));
 			bankReserveAccountPojo.setTrType("init");
-			bankReserveAccountPojo.setBank("China Construction Bank");
+			bankReserveAccountPojo.setBank("China-Construction-Bank");
 			blockChainService.post("BankReserveAccount", bankReserveAccountPojo, BankReserveAccountPojo.class);
 		}
 
 		filter = new HashMap<String, Object>();
 		filter.put("bank", "Bank of China");
-		bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "Bank of China", filter,
+		bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "Bank-of-China", filter,
 				BankReserveAccountPojo.class);
 		if (bankReserveAccountPojo == null) {
 			bankReserveAccountPojo = new BankReserveAccountPojo();
 			bankReserveAccountPojo.setBalance(6666666d);
 			bankReserveAccountPojo.setDebit("6666666");
-			bankReserveAccountPojo.setDebitBank("Bank of China");
+			bankReserveAccountPojo.setDebitBank("Bank-of-China");
 			bankReserveAccountPojo.setTrTime(ConvertUtils.timeToString(new Date()));
 			bankReserveAccountPojo.setTrType("init");
-			bankReserveAccountPojo.setBank("Bank of China");
+			bankReserveAccountPojo.setBank("Bank-of-China");
 			blockChainService.post("BankReserveAccount", bankReserveAccountPojo, BankReserveAccountPojo.class);
 		}
 
 		filter = new HashMap<String, Object>();
 		filter.put("bank", "Industrial and Commercial Bank of China");
-		bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "Industrial and Commercial Bank of China", filter,
-				BankReserveAccountPojo.class);
+		bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "Industrial-and-Commercial-Bank-of-China",
+				filter, BankReserveAccountPojo.class);
 		if (bankReserveAccountPojo == null) {
 			bankReserveAccountPojo = new BankReserveAccountPojo();
 			bankReserveAccountPojo.setBalance(3333333d);
 			bankReserveAccountPojo.setDebit("3333333");
-			bankReserveAccountPojo.setDebitBank("Industrial and Commercial Bank of China");
+			bankReserveAccountPojo.setDebitBank("Industrial-and-Commercial-Bank-of-China");
 			bankReserveAccountPojo.setTrTime(ConvertUtils.timeToString(new Date()));
 			bankReserveAccountPojo.setTrType("init");
-			bankReserveAccountPojo.setBank("Industrial and Commercial Bank of China");
+			bankReserveAccountPojo.setBank("Industrial-and-Commercial-Bank-of-China");
+			blockChainService.post("BankReserveAccount", bankReserveAccountPojo, BankReserveAccountPojo.class);
+		}
+
+		filter = new HashMap<String, Object>();
+		filter.put("bank", "Bank of America");
+		bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "Bank-of-America", filter,
+				BankReserveAccountPojo.class);
+		if (bankReserveAccountPojo == null) {
+			bankReserveAccountPojo = new BankReserveAccountPojo();
+			bankReserveAccountPojo.setBalance(3333333d);
+			bankReserveAccountPojo.setDebit("4444444");
+			bankReserveAccountPojo.setDebitBank("Bank-of-America");
+			bankReserveAccountPojo.setTrTime(ConvertUtils.timeToString(new Date()));
+			bankReserveAccountPojo.setTrType("init");
+			bankReserveAccountPojo.setBank("Bank-of-America");
 			blockChainService.post("BankReserveAccount", bankReserveAccountPojo, BankReserveAccountPojo.class);
 		}
 	}

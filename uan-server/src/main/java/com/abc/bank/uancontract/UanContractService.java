@@ -87,9 +87,9 @@ public class UanContractService implements IService {
 				if (!visualRecognitionService.detectFace(base64.decode(p.getIdPhoto()))) {
 					throw new UanException("亲友[" + p.getSlaveName() + "]提交证件照中未发现人脸。");
 				}
+				p.setIdPhoto(null);// 超过区块链存储上限
 			}
 		}
-		LogWriter.info(UanContractService.class, "签订合同：" + uanContractPojo);
 
 		// UanContractBCPojo bc = new UanContractBCPojo();
 		// bc.setMasterId(uanContractPojo.getCustomerInformation().getIdCard());
@@ -97,7 +97,7 @@ public class UanContractService implements IService {
 		// uanContractBCDAO.insert(bc);
 
 		contract2BlockChain(uanContractPojo);
-
+		LogWriter.info(UanContractService.class, "签订合同：" + uanContractPojo);
 		return uanContractPojo;
 	}
 
@@ -133,11 +133,16 @@ public class UanContractService implements IService {
 		postPerson(uanContractPojo.getCustomerInformation().getIdCard(),
 				uanContractPojo.getCustomerInformation().getName(), null);
 		for (PersonnelRelationshipPojo p : uanContractPojo.getPersonnelRelationships()) {
-			postPerson(p.getSlaveId(), p.getSlaveName(), p.getIdPhoto());
+			postPerson(p.getSlaveId(), p.getSlaveName(), null);
 		}
 
-		// 3.提交卡信息
-		for (BankCardPojo b : uanContractPojo.getBindingCards()) {
+		// 3.提交卡信息，先进行排序。
+		List<BankCardPojo> tmp = new ArrayList<BankCardPojo>();
+		for (int i = uanContractPojo.getBindingCards().size() - 1; i >= 0; i--) {
+			tmp.add(uanContractPojo.getBindingCards().get(i));
+		}
+
+		for (BankCardPojo b : tmp) {
 			postCardAccount(b);
 		}
 
@@ -153,7 +158,7 @@ public class UanContractService implements IService {
 			cardAccountPojo.setIdCard(bankCardPojo.getIdCard());
 			cardAccountPojo.setBankOfDeposit(bankCardPojo.getBankOfDeposit());
 			cardAccountPojo.setCardNum(bankCardPojo.getCode());
-			cardAccountPojo.setAmtLeft(bankCardPojo.getAmt().compareTo(new BigDecimal(1000)) >= 0 ? 50000D
+			cardAccountPojo.setAmtLeft(bankCardPojo.getAmt() == null ? 50000D
 					: ConvertUtils.stringToDoubleObject((ConvertUtils.bigDecimalToString(bankCardPojo.getAmt()))));
 			cardAccountPojo.setState(bankCardPojo.getState());
 			cardAccountPojo.setSerialNumber("abc-card-account-" + uuidNumberGenerator.generate());

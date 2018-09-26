@@ -30,7 +30,6 @@ public class VisualRecognitionTest {
 			e.printStackTrace();
 			Assert.fail(e.getMessage());
 		}
-
 		System.out.println(visualRecognitionService.detectFace(faceImg));
 
 	}
@@ -39,7 +38,9 @@ public class VisualRecognitionTest {
 	public void test1() {
 		try {
 			String path = this.getClass().getResource("").getPath() + "/face.jpg";
+			System.out.println();
 			System.out.println(FileUtils.file2Base64(path));
+			System.out.println();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -58,8 +58,8 @@
         <div class="en-US">Please contact the issuing bank for possible charges<br> related to off-site or inter-bank transactions.</div>\
       </div>\
       <div class="text" style="margin-top:60px;">\
-        <div class="zh-CN">本机只提供面额  100  元人民币<br>且单笔最多取 3000 元</div>\
-        <div class="en-US">This machine only provides banknotes of CNY 100, <br>and a maximum of CNY 3,000 per transaction.</div>\
+        <div class="zh-CN">本机只提供面额  100  元人民币<br>且单笔最多取 500 元</div>\
+        <div class="en-US">This machine only provides banknotes of CNY 100, <br>and a maximum of CNY 500 per transaction.</div>\
       </div>\
     </div>';
   
