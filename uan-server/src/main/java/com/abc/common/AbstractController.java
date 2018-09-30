@@ -22,9 +22,10 @@ import com.abc.common.util.LogWriter;
 import com.abc.common.util.UUIDNumberGenerator;
 
 /**
- * 
- * @author liubo
- * 
+ * Title: AbstractController
+ * @Description: AbstractController
+ * @author Bo Liu
+ * @date 2018-09-20
  */
 public abstract class AbstractController {
 

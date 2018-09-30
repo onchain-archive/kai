@@ -1,3 +1,11 @@
+/**  
+ * Title: BankCardService.java
+ * Description: BankCardService
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.bank.bankcard;
 
 import java.math.BigDecimal;
@@ -12,12 +20,23 @@ import com.abc.common.bus.RequestBus;
 import com.abc.common.bus.ThreadContext;
 import com.abc.common.util.ConvertUtils;
 
+/**
+ * Title: BankCardService
+ * @Description: BankCardService
+ * @author Bo Liu
+ * @date 2018-09-20
+*/
 @Component
-public class BankCardService implements IService {
+public class BankCardServiceImpl implements IService {
 
 	@Autowired
 	private BankCardDAO bankCardDAO;
 
+	/** 
+	 * @Description: findMyCard
+	 * @return List<BankCardPojo>
+	 * @throws 
+	 */ 
 	public List<BankCardPojo> findMyCard() {
 		String idCard = (String) ((RequestBus) ThreadContext.getContext().getAttribute(RequestBus.REQUEST_BUS))
 				.getAttributes().get(RequestBus.USER);
@@ -25,12 +44,25 @@ public class BankCardService implements IService {
 		return list;
 	}
 
+	/** 
+	 * @Description: findByIdCard
+	 * @param idCard
+	 * @return List<BankCardPojo>
+	 * @throws 
+	 */ 
 	public List<BankCardPojo> findByIdCard(String idCard) {
 		
 		List<BankCardPojo> list = bankCardDAO.findByIdCard(idCard);
 		return list;
 	}
 
+	/** 
+	 * @Description: withdraw
+	 * @param bankCode
+	 * @param amount
+	 * @return void
+	 * @throws UanException
+	 */ 
 	public void withdraw(String bankCode, Double amount) {
 		BankCardPojo bankCardPojo = bankCardDAO.loadByCode(bankCode);
 		if (bankCardPojo == null) {
@@ -49,6 +81,12 @@ public class BankCardService implements IService {
 
 	}
 
+	/** 
+	 * @Description: reportLoss
+	 * @param bankCardPojo 
+	 * @return void
+	 * @throws UanException
+	 */ 
 	public void reportLoss(BankCardPojo bankCardPojo) {
 		BankCardPojo tmp = bankCardDAO.loadByCode(bankCardPojo.getCode());
 		if (tmp == null) {

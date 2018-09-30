@@ -1,3 +1,11 @@
+/**  
+ * Title: CatastropheTest.java
+ * Description: CatastropheTest
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.uan;
 
 import java.text.ParseException;
@@ -16,16 +24,26 @@ import com.abc.common.starter.UanApplication;
 import com.abc.common.util.ConvertUtils;
 import com.abc.common.util.JsonConvertor;
 import com.abc.uan.catastrophe.CatastrophePojo;
-import com.abc.uan.catastrophe.CatastropheService;
+import com.abc.uan.catastrophe.CatastropheServiceImpl;
 
+/**
+ * Title: CatastropheTest
+ * @Description: CatastropheTest
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = UanApplication.class)
 public class CatastropheTest {
 	@Autowired
 	private JsonConvertor jsonConvertor;
 	@Autowired
-	private CatastropheService catastropheService;
+	private CatastropheServiceImpl catastropheService;
 
+	/** 
+	 * @Description: test
+	 * @throws ParseException
+	 */ 
 	@Test
 	public void test() throws ParseException {
 		List<CatastrophePojo> catastrophePojos = catastropheService.findAll();
@@ -56,8 +74,6 @@ public class CatastropheTest {
 		System.out.println("新的全部巨灾：");
 		System.out.println(catastrophePojos);
 		System.out.println();
-
-		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		System.out.println();
 		System.out.println();
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");

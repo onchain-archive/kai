@@ -1,16 +1,26 @@
+/**  
+ * Title: WithdrawCommondPojo.java
+ * Description: WithdrawCommondPojo
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.bank.customerinformation;
 
 import java.util.Date;
 
 import com.abc.common.AbstractPojo;
 
+/**
+ * Title: WithdrawCommondPojo
+ * @Description: WithdrawCommondPojo
+ * @author Bo Liu
+ * @date 2018-09-20
+*/
 public class WithdrawCommondPojo extends AbstractPojo {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 2220244440907081535L;
-
 	private String customer;
 	private String cardNum;
 	private String party;

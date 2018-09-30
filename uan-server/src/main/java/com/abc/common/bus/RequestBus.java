@@ -65,7 +65,7 @@ public class RequestBus {
 		useTime = ((end != null) && (start != null)) ? (end.getTime() - start.getTime()) : -1;
 		LogWriter.trace(RequestBus.class, "访问请求完成。上下文如下\n[{}]", toString());
 
-		if (!state.equals("EXCEPTION")) {
+		if (!"EXCEPTION".equals(state)) {
 			if (error) {
 				state = "EXCEPTION";
 			} else if (rejection) {

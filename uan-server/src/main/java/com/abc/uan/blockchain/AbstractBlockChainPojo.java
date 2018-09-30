@@ -1,14 +1,25 @@
+/**  
+ * Title: AbstractBlockChainPojo.java
+ * Description: AbstractBlockChainPojo
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.uan.blockchain;
 
 import com.abc.common.AbstractPojo;
 import com.abc.common.util.BeanFactoryUtils;
 import com.abc.common.util.UUIDNumberGenerator;
 
+/**
+ * Title: AbstractBlockChainPojo
+ * @Description: AbstractBlockChainPojo
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 public abstract class AbstractBlockChainPojo extends AbstractPojo {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4217343769872941022L;
 
 	private String serialNumber = BeanFactoryUtils.getBean(UUIDNumberGenerator.class).generate();

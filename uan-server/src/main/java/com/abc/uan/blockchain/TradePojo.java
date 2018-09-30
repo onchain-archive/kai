@@ -1,18 +1,27 @@
+/**  
+ * Title: TradePojo.java
+ * Description: TradePojo
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.uan.blockchain;
 
+/**
+ * Title: TradePojo
+ * @Description: TradePojo
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 public class TradePojo extends AbstractBlockChainPojo {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 465073818860060640L;
 
 	private String customer = "None";
 	private String cardNum = "None";
 	private String party = "None";
 	private Double amt = -99D;
-	// private String account = "resource:org.acme.mynetwork.CardAccount#" +
-	// cardNum;
 
 	public String getCustomer() {
 		return customer;
@@ -51,7 +60,7 @@ public class TradePojo extends AbstractBlockChainPojo {
 	}
 
 	public void setAccount(String account) {
-//		this.account = account;
+
 	}
 
 }

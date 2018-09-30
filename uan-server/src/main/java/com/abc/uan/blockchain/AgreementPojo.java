@@ -1,17 +1,26 @@
+/**  
+ * Title: AgreementPojo.java
+ * Description: AgreementPojo
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.uan.blockchain;
 
+/**
+ * Title: AgreementPojo
+ * @Description: AgreementPojo
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 public class AgreementPojo extends AbstractBlockChainPojo {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3681912757975870845L;
 
 	private String[] personnelIdCards= {"None"};
 	private String[] bindingCardNums= {"None"};
 	private String party="None";
-
-//	private String owner = "resource:org.acme.mynetwork.Person#0000000";
 
 	public String[] getPersonnelIdCards() {
 		return personnelIdCards;
@@ -36,13 +45,5 @@ public class AgreementPojo extends AbstractBlockChainPojo {
 	public void setParty(String party) {
 		this.party = party;
 	}
-
-	// public String getOwner() {
-	// return owner;
-	// }
-	//
-	// public void setOwner(String owner) {
-	// this.owner = owner;
-	// }
 
 }

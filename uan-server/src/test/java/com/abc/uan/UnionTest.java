@@ -1,3 +1,11 @@
+/**  
+ * Title: UnionTest.java
+ * Description: UnionTest
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.uan;
 
 import java.util.List;
@@ -15,19 +23,28 @@ import com.abc.common.util.JsonConvertor;
 import com.abc.uan.union.UnionDAO;
 import com.abc.uan.union.UnionPojo;
 import com.abc.uan.union.UnionQuery;
-import com.abc.uan.union.UnionService;
+import com.abc.uan.union.UnionServiceImpl;
 
+/**
+ * Title: UnionTest
+ * @Description: UnionTest
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = UanApplication.class)
 public class UnionTest {
 
 	@Autowired
-	private UnionService unionService;
+	private UnionServiceImpl unionService;
 	@Autowired
 	private UnionDAO unionDAO;
 	@Autowired
 	private JsonConvertor jsonConvertor;
 
+	/** 
+	 * @Description: test
+	 */ 
 	@Test
 	public void test() {
 		unionDAO.delete("bhd");
@@ -65,7 +82,6 @@ public class UnionTest {
 		System.out.println(unionPojos);
 		System.out.println();
 
-		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		System.out.println();
 		System.out.println();
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");

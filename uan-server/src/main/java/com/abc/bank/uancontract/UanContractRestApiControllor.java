@@ -1,3 +1,11 @@
+/**  
+ * Title: UanContractRestApiControllor.java
+ * Description: UanContractRestApiControllor
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.bank.uancontract;
 
 import java.io.IOException;
@@ -20,13 +28,26 @@ import com.abc.common.Response;
 import com.abc.common.UanException;
 import com.abc.common.util.FileUtils;
 
+/**
+ * Title: UanContractRestApiControllor
+ * @Description: UanContractRestApiControllor
+ * @author Bo Liu
+ * @date 2018-09-20
+*/
 @RestController
 @RequestMapping(value = AbstractController.REST_API_PREFIX + "/uancon")
 public class UanContractRestApiControllor extends AbstractController {
 
 	@Autowired
-	private UanContractService uanContractService;
+	private UanContractServiceImpl uanContractService;
 
+	/** 
+	 * @Description: contract
+	 * @param reqJson
+	 * @param req
+	 * @return  String
+	 * @throws 
+	 */ 
 	@RequestMapping(value = "/contract", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String contract(@RequestBody String reqJson, HttpServletRequest req) {
 		Request<UanContractPojo> request = Request.create(reqJson, req, UanContractPojo.class);
@@ -35,6 +56,13 @@ public class UanContractRestApiControllor extends AbstractController {
 		return resp.createSuccessJson(uanContractPojo, request);
 	}
 
+	/** 
+	 * @Description: generate
+	 * @param reqJson
+	 * @param req
+	 * @return  String
+	 * @throws 
+	 */ 
 	@RequestMapping(value = "/generate", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String generate(@RequestBody String reqJson, HttpServletRequest req) {
 		Request request = Request.create(reqJson, req, null);
@@ -43,6 +71,13 @@ public class UanContractRestApiControllor extends AbstractController {
 		return resp.createSuccessJson(str, request);
 	}
 
+	/** 
+	 * @Description: findMasters
+	 * @param reqJson
+	 * @param req
+	 * @return  String
+	 * @throws 
+	 */ 
 	@RequestMapping(value = "/findMasters", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String findMasters(@RequestBody String reqJson, HttpServletRequest req) {
 		Request<String> request = Request.create(reqJson, req, String.class);
@@ -52,6 +87,13 @@ public class UanContractRestApiControllor extends AbstractController {
 		return resp.createSuccessJson(personnelRelationshipPojos, request);
 	}
 
+	/** 
+	 * @Description: findBindingCards
+	 * @param reqJson
+	 * @param req
+	 * @return  String
+	 * @throws 
+	 */ 
 	@RequestMapping(value = "/findBindingCards", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String findBindingCards(@RequestBody String reqJson, HttpServletRequest req) {
 		Request<String> request = Request.create(reqJson, req, String.class);
@@ -60,6 +102,12 @@ public class UanContractRestApiControllor extends AbstractController {
 		return resp.createSuccessJson(bankCardPojos, request);
 	}
 
+	/** 
+	 * @Description: mockFaceID
+	 * @param req
+	 * @return  String
+	 * @throws 
+	 */ 
 	@RequestMapping(value = "/mockFaceID")
 	public String mockFaceID(HttpServletRequest req) {
 		String faceidStr = null;

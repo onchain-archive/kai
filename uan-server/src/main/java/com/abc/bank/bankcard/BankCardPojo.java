@@ -1,3 +1,11 @@
+/**  
+ * Title: BankCardPojo.java
+ * Description: BankCardPojo
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.bank.bankcard;
 
 import java.math.BigDecimal;
@@ -5,11 +13,14 @@ import java.math.BigDecimal;
 import com.abc.bank.customerinformation.CustomerInformationPojo;
 import com.abc.common.AbstractPojo;
 
+/**
+ * Title: BankCardPojo
+ * @Description: BankCardPojo
+ * @author Bo Liu
+ * @date 2018-09-20
+*/
 public class BankCardPojo extends AbstractPojo {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2507762584677732090L;
 
 	public static final String STATE_NORMAL = "NORMAL";

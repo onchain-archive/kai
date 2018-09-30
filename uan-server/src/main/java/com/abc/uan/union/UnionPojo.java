@@ -1,9 +1,23 @@
+/**  
+ * Title: UnionPojo.java
+ * Description: UnionPojo
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.uan.union;
 
 import java.util.Date;
 
 import com.abc.common.AbstractPojo;
 
+/**
+ * Title: UnionPojo
+ * @Description: UnionPojo
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 public class UnionPojo extends AbstractPojo {
 
 	public static final String STATE_OPEN = "OPEN";

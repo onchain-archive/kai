@@ -1,14 +1,25 @@
+/**  
+ * Title: CatastrophePojo.java
+ * Description: CatastrophePojo
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.uan.catastrophe;
 
 import java.util.Date;
 
 import com.abc.common.AbstractPojo;
 
+/**
+ * Title: CatastrophePojo
+ * @Description: CatastrophePojo
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 public class CatastrophePojo extends AbstractPojo {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6803911185834285873L;
 
 	private String id;

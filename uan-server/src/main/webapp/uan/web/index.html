@@ -178,6 +178,45 @@ body {
 								});
 							}
 
+							var local = {
+							  "data":[
+							  {
+								"shortName":"Union Members",
+								"pinyin": "Union Membesr",
+								"sysId":null,
+								"menuId":"0100000000",
+								"submenuUrl": null,
+								"tabUrl":"union-members.html",
+								"tabMode": "iframe",
+								"icon":"fa fa-group",
+								"items": null
+							  }, {
+								"shortName":"Public Accounts",
+								"pinyin": "Public Accounts",
+								"sysId": null,
+								"menuId":"0200000000",
+								"submenuUrl": null,
+								"tabUrl": "public-accounts.html",
+								"tabMode": "iframe",
+								"icon":"fa fa-archive",
+								"items": null
+							  }, {
+								"shortName":"Catastrophe Model",
+								"pinyin": "Catastrophe Model",
+								"sysId": null,
+								"menuId":"0300000000",
+								"submenuUrl": null,
+								"tabUrl": "catastrophe-model.html",
+								"tabMode": "iframe",
+								"icon":"fa fa-sitemap",
+								"items": null
+							  }],
+							  "success": true,
+							  "message": null,
+							  "detail": null
+							};
+							
+							
 							// 框架初始化配置
 							udesk.init({
 								notice : {
@@ -212,7 +251,8 @@ body {
 											{
 												// 树形菜单配置项
 												treeMenu : {
-													url : getPath()+'uan/web/json/menu.json',
+													localData: local, // 20180927修改为加载本地数据
+													// url : getPath()+'uan/web/json/menu.json',
 													// 树形区域相对窗口底部需要减去的高度：header高度+新建按钮高度+menuSearch高度
 													heightReduced : 50 + 48, //50+44+48,
 													// 树形菜单-菜单项点击事件

@@ -1,4 +1,12 @@
-package com.abc.bank.uancontract;
+
+/**  
+ * Title: UanContractPojo.java
+ * Description: UanContractPojo
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ package com.abc.bank.uancontract;
 
 import java.util.Date;
 import java.util.List;
@@ -7,11 +15,14 @@ import com.abc.bank.bankcard.BankCardPojo;
 import com.abc.bank.customerinformation.CustomerInformationPojo;
 import com.abc.common.AbstractPojo;
 
+/**
+ * Title: UanContractPojo
+ * @Description: UanContractPojo
+ * @author Bo Liu
+ * @date 2018-09-20
+*/
 public class UanContractPojo extends AbstractPojo {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2322048537911447436L;
 
 	public static final String STATE_SIGNED = "SIGNED";

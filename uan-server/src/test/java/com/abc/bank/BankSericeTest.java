@@ -1,3 +1,11 @@
+/**  
+ * Title: BankSericeTest.java
+ * Description: BankSericeTest
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.bank;
 
 import java.math.BigDecimal;
@@ -16,9 +24,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.abc.bank.bankcard.BankCardPojo;
-import com.abc.bank.bankcard.BankCardService;
+import com.abc.bank.bankcard.BankCardServiceImpl;
 import com.abc.bank.customerinformation.CustomerInformationPojo;
-import com.abc.bank.customerinformation.CustomerInformationService;
+import com.abc.bank.customerinformation.CustomerInformationServiceImpl;
 import com.abc.bank.customerinformation.FaceIDPojo;
 import com.abc.bank.customerinformation.InquireAssetsCommondPojo;
 import com.abc.bank.customerinformation.ReportLossCommondPojo;
@@ -27,7 +35,7 @@ import com.abc.bank.customerinformation.WithdrawCommondPojo;
 import com.abc.bank.uancontract.PersonnelRelationshipPojo;
 import com.abc.bank.uancontract.UanContractBCDAO;
 import com.abc.bank.uancontract.UanContractPojo;
-import com.abc.bank.uancontract.UanContractService;
+import com.abc.bank.uancontract.UanContractServiceImpl;
 import com.abc.common.Request;
 import com.abc.common.Response;
 import com.abc.common.bus.RequestBus;
@@ -37,25 +45,34 @@ import com.abc.common.util.ConvertUtils;
 import com.abc.common.util.JsonConvertor;
 import com.abc.uan.blockchain.AgreementPojo;
 import com.abc.uan.blockchain.BankReserveAccountPojo;
-import com.abc.uan.blockchain.BlockChainService;
+import com.abc.uan.blockchain.BlockChainServiceImpl;
 
+/**
+ * Title: BankSericeTest
+ * @Description: BankSericeTest
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = UanApplication.class)
 public class BankSericeTest {
 
 	@Autowired
-	private UanContractService uanContractService;
+	private UanContractServiceImpl uanContractService;
 	@Autowired
-	private BankCardService bankCardService;
+	private BankCardServiceImpl bankCardService;
 	@Autowired
 	private UanContractBCDAO uanContractBCDAO;
 	@Autowired
 	private JsonConvertor jsonConvertor;
 	@Autowired
-	private CustomerInformationService customerInformationService;
+	private CustomerInformationServiceImpl customerInformationService;
 	@Autowired
-	private BlockChainService blockChainService;
+	private BlockChainServiceImpl blockChainService;
 
+	/** 
+	 * @Description: clear
+	 */ 
 	@Test
 	public void clear() {
 		Map<String, String> filter = new HashMap<String, String>();
@@ -66,9 +83,11 @@ public class BankSericeTest {
 		blockChainService.delete("Person", "110102200211112222", filter);
 	}
 
+	/** 
+	 * @Description: testUanContract
+	 */ 
 	@Test
 	public void testUanContract() {
-		// try {
 		uanContractBCDAO.delete("110110200001011234");
 		Map<String, String> filter = new HashMap<String, String>();
 		filter.put("party", "110110200001011234");
@@ -169,8 +188,6 @@ public class BankSericeTest {
 		System.out.println("合约成功：");
 		System.out.println(res);
 		System.out.println();
-
-		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		System.out.println();
 		System.out.println();
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -221,12 +238,11 @@ public class BankSericeTest {
 		System.out.println("contract应答报文：");
 		System.out.println(respJson);
 		System.out.println();
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// Assert.fail(e.getMessage());
-		// }
 	}
 
+	/** 
+	 * @Description: login
+	 */ 
 	@Before
 	public void login() {
 		RequestBus bus = new RequestBus("uan-server");
@@ -267,7 +283,7 @@ public class BankSericeTest {
 		}
 
 		filter = new HashMap<String, Object>();
-		filter.put("bank", "Bank of China");
+		filter.put("bank", "Bank-of-China");
 		bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "Bank-of-China", filter,
 				BankReserveAccountPojo.class);
 		if (bankReserveAccountPojo == null) {
@@ -282,7 +298,7 @@ public class BankSericeTest {
 		}
 
 		filter = new HashMap<String, Object>();
-		filter.put("bank", "Industrial and Commercial Bank of China");
+		filter.put("bank", "Industrial-and-Commercial-Bank-of-China");
 		bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "Industrial-and-Commercial-Bank-of-China",
 				filter, BankReserveAccountPojo.class);
 		if (bankReserveAccountPojo == null) {
@@ -297,7 +313,7 @@ public class BankSericeTest {
 		}
 
 		filter = new HashMap<String, Object>();
-		filter.put("bank", "Bank of America");
+		filter.put("bank", "Bank-of-America");
 		bankReserveAccountPojo = blockChainService.get("BankReserveAccount", "Bank-of-America", filter,
 				BankReserveAccountPojo.class);
 		if (bankReserveAccountPojo == null) {
@@ -312,6 +328,9 @@ public class BankSericeTest {
 		}
 	}
 
+	/** 
+	 * @Description: testWithdraw
+	 */ 
 	@Test
 	public void testWithdraw() {
 		// 1.扫脸
@@ -334,8 +353,6 @@ public class BankSericeTest {
 		System.out.println("取款结果：");
 		System.out.println(uanTrResultPojo.toString());
 		System.out.println();
-
-		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		System.out.println();
 		System.out.println();
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -377,6 +394,9 @@ public class BankSericeTest {
 		System.out.println();
 	}
 
+	/** 
+	 * @Description: testReportLoss
+	 */ 
 	@Test
 	public void testReportLoss() {
 		// 1.扫脸
@@ -418,8 +438,6 @@ public class BankSericeTest {
 		System.out.println("挂失：");
 		System.out.println(res);
 		System.out.println();
-
-		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		System.out.println();
 		System.out.println();
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -526,8 +544,6 @@ public class BankSericeTest {
 		System.out.println("资产明细：");
 		System.out.println(bankCardPojos.toString());
 		System.out.println();
-
-		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		System.out.println();
 		System.out.println();
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");

@@ -1,14 +1,25 @@
+/**  
+ * Title: RegisteredResidencePojo.java
+ * Description: RegisteredResidencePojo
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.gov.residence;
 
 import java.util.List;
 
 import com.abc.common.AbstractPojo;
 
+/**
+ * Title: RegisteredResidencePojo
+ * @Description: RegisteredResidencePojo
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 public class RegisteredResidencePojo extends AbstractPojo {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8170023796410635151L;
 
 	private String id;

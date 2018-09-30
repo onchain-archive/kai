@@ -1,3 +1,11 @@
+/**  
+ * Title: UanConfiguration.java
+ * Description: UanConfiguration
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.common.configuration;
 
 import org.mybatis.spring.annotation.MapperScan;
@@ -19,6 +27,12 @@ import com.abc.common.servlet.NodeDeploymentDescriptorListener;
 import com.abc.common.servlet.ThreadContextCleanerFilter;
 import com.abc.common.springmvc.RequestInterceptor;
 
+/**
+ * Title: UanConfiguration
+ * @Description: UanConfiguration
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 @Configuration
 @ComponentScan(basePackages = "com.abc.*")
 @MapperScan("com.abc")
@@ -27,12 +41,18 @@ public class UanConfiguration extends WebMvcConfigurerAdapter {
 	public RequestInterceptor requestInterceptor() {
 		return new RequestInterceptor();
 	}
-
+	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(requestInterceptor());
 		super.addInterceptors(registry);
 	}
 
+	/** 
+	 * @Description: dispatcherServletRegistrationBean
+	 * @param dispatcherServlet
+	 * @return  ServletRegistrationBean
+	 * @throws 
+	 */ 
 	@Bean
 	public ServletRegistrationBean dispatcherServletRegistrationBean(DispatcherServlet dispatcherServlet) {
 		ServletRegistrationBean bean = new ServletRegistrationBean(dispatcherServlet);
@@ -42,6 +62,11 @@ public class UanConfiguration extends WebMvcConfigurerAdapter {
 		return bean;
 	}
 
+	/** 
+	 * @Description: nodeDeploymentDescriptorListener
+	 * @return  ServletListenerRegistrationBean
+	 * @throws 
+	 */ 
 	@Bean
 	public ServletListenerRegistrationBean nodeDeploymentDescriptorListener() {
 		ServletListenerRegistrationBean bean = new ServletListenerRegistrationBean();
@@ -49,6 +74,11 @@ public class UanConfiguration extends WebMvcConfigurerAdapter {
 		return bean;
 	}
 
+	/** 
+	 * @Description: threadContextCleanerFilter
+	 * @return  FilterRegistrationBean
+	 * @throws 
+	 */ 
 	@Bean
 	@Order(998)
 	public FilterRegistrationBean threadContextCleanerFilter() {
@@ -58,11 +88,17 @@ public class UanConfiguration extends WebMvcConfigurerAdapter {
 		return bean;
 	}
 
+	/** (non-Javadoc)
+	 * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter#configureDefaultServletHandling(org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer)
+	 */
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
 
+	/** (non-Javadoc)
+	 * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter#addViewControllers(org.springframework.web.servlet.config.annotation.ViewControllerRegistry)
+	 */
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("forward:/hello");

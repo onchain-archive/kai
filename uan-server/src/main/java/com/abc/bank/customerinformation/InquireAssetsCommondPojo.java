@@ -1,16 +1,26 @@
+/**  
+ * Title: InquireAssetsCommondPojo.java
+ * Description: InquireAssetsCommondPojo
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.bank.customerinformation;
 
 import java.util.Date;
 
 import com.abc.common.AbstractPojo;
 
+/**
+ * Title: InquireAssetsCommondPojo
+ * @Description: InquireAssetsCommondPojo
+ * @author Bo Liu
+ * @date 2018-09-20
+*/
 public class InquireAssetsCommondPojo extends AbstractPojo {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8992883287302022354L;
-
 	private String customer;
 	private String party;
 	private String deviceNum;

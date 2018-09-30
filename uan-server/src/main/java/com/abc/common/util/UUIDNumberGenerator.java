@@ -45,7 +45,8 @@ public class UUIDNumberGenerator {
 
 	private static UUIDNumberGenerator instance = new UUIDNumberGenerator();
 
-	private InetAddress id = null;// 缓存IP地址
+	private InetAddress id = null;
+	// 缓存IP地址
 
 	public UUIDNumberGenerator() {
 	}

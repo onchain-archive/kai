@@ -1,3 +1,11 @@
+/**  
+ * Title: VisualRecognitionTest.java
+ * Description: VisualRecognitionTest
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.uan;
 
 import java.io.IOException;
@@ -13,6 +21,12 @@ import com.abc.bank.VisualRecognitionService;
 import com.abc.common.starter.UanApplication;
 import com.abc.common.util.FileUtils;
 
+/**
+ * Title: VisualRecognitionTest
+ * @Description: VisualRecognitionTest
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = UanApplication.class)
 public class VisualRecognitionTest {
@@ -20,6 +34,9 @@ public class VisualRecognitionTest {
 	@Autowired
 	private VisualRecognitionService visualRecognitionService;
 
+	/** 
+	 * @Description: testConnection
+	 */ 
 	@Test
 	public void testConnection() {
 		byte[] faceImg = null;
@@ -34,6 +51,9 @@ public class VisualRecognitionTest {
 
 	}
 
+	/** 
+	 * @Description: test1
+	 */ 
 	@Test
 	public void test1() {
 		try {

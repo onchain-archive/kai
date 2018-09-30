@@ -1,3 +1,11 @@
+/**  
+ * Title: UanContractService.java
+ * Description: UanContractService
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.bank.uancontract;
 
 import java.io.BufferedOutputStream;
@@ -23,9 +31,9 @@ import org.springframework.stereotype.Component;
 
 import com.abc.bank.VisualRecognitionService;
 import com.abc.bank.bankcard.BankCardPojo;
-import com.abc.bank.bankcard.BankCardService;
+import com.abc.bank.bankcard.BankCardServiceImpl;
 import com.abc.bank.customerinformation.CustomerInformationPojo;
-import com.abc.bank.customerinformation.CustomerInformationService;
+import com.abc.bank.customerinformation.CustomerInformationServiceImpl;
 import com.abc.common.IService;
 import com.abc.common.UanException;
 import com.abc.common.bus.RequestBus;
@@ -37,7 +45,7 @@ import com.abc.common.util.LogWriter;
 import com.abc.common.util.UUIDNumberGenerator;
 import com.abc.common.util.XMLConvertor;
 import com.abc.uan.blockchain.AgreementPojo;
-import com.abc.uan.blockchain.BlockChainService;
+import com.abc.uan.blockchain.BlockChainServiceImpl;
 import com.abc.uan.blockchain.CardAccountPojo;
 import com.abc.uan.blockchain.PersonPojo;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
@@ -45,10 +53,16 @@ import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.DetectFacesOptions;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.DetectedFaces;
 
+/**
+ * Title: UanContractService
+ * @Description: UanContractService
+ * @author Bo Liu
+ * @date 2018-09-20
+*/
 @Component
-public class UanContractService implements IService {
+public class UanContractServiceImpl implements IService {
 	@Autowired
-	private CustomerInformationService customerInformationService;
+	private CustomerInformationServiceImpl customerInformationService;
 	@Autowired
 	private XMLConvertor xmlConvertor;
 	@Autowired
@@ -56,7 +70,7 @@ public class UanContractService implements IService {
 	@Autowired
 	private UanContractBCDAO uanContractBCDAO;
 	@Autowired
-	private BlockChainService blockChainService;
+	private BlockChainServiceImpl blockChainService;
 
 	@Autowired
 	private VisualRecognitionService visualRecognitionService;
@@ -64,6 +78,11 @@ public class UanContractService implements IService {
 	@Autowired
 	private UUIDNumberGenerator uuidNumberGenerator;
 
+	/** 
+	 * @Description: generate
+	 * @return  String
+	 * @throws 
+	 */ 
 	public String generate() {
 		String idCard = (String) ((RequestBus) ThreadContext.getContext().getAttribute(RequestBus.REQUEST_BUS))
 				.getAttributes().get(RequestBus.USER);
@@ -74,6 +93,12 @@ public class UanContractService implements IService {
 		return str;
 	}
 
+	/** 
+	 * @Description: contract
+	 * @param uanContractPojo
+	 * @return  UanContractPojo
+	 * @throws 
+	 */ 
 	public UanContractPojo contract(UanContractPojo uanContractPojo) {
 		String idCard = (String) ((RequestBus) ThreadContext.getContext().getAttribute(RequestBus.REQUEST_BUS))
 				.getAttributes().get(RequestBus.USER);
@@ -87,20 +112,20 @@ public class UanContractService implements IService {
 				if (!visualRecognitionService.detectFace(base64.decode(p.getIdPhoto()))) {
 					throw new UanException("亲友[" + p.getSlaveName() + "]提交证件照中未发现人脸。");
 				}
-				p.setIdPhoto(null);// 超过区块链存储上限
+				p.setIdPhoto(null);
+				// 超过区块链存储上限
 			}
 		}
-
-		// UanContractBCPojo bc = new UanContractBCPojo();
-		// bc.setMasterId(uanContractPojo.getCustomerInformation().getIdCard());
-		// bc.setContent(xmlConvertor.toXml(uanContractPojo));
-		// uanContractBCDAO.insert(bc);
-
 		contract2BlockChain(uanContractPojo);
-		LogWriter.info(UanContractService.class, "签订合同：" + uanContractPojo);
+		LogWriter.info(UanContractServiceImpl.class, "签订合同：" + uanContractPojo);
 		return uanContractPojo;
 	}
 
+	/** 
+	 * @Description: contract2BlockChain
+	 * @param uanContractPojo 
+	 * @throws 
+	 */ 
 	private void contract2BlockChain(UanContractPojo uanContractPojo) {
 		// 1.提交主合约
 		Map<String, String> filter = new HashMap<String, String>();
@@ -148,6 +173,11 @@ public class UanContractService implements IService {
 
 	}
 
+	/** 
+	 * @Description: postCardAccount
+	 * @param bankCardPojo
+	 * @throws 
+	 */ 
 	private void postCardAccount(BankCardPojo bankCardPojo) {
 		Map<String, String> filter = new HashMap<String, String>();
 		filter.put("cardNum", bankCardPojo.getCode());
@@ -169,6 +199,13 @@ public class UanContractService implements IService {
 		}
 	}
 
+	/** 
+	 * @Description: postPerson
+	 * @param idCard
+	 * @param name
+	 * @param idPhoto
+	 * @throws 
+	 */ 
 	private void postPerson(String idCard, String name, String idPhoto) {
 		Map<String, String> filter;
 		filter = new HashMap<String, String>();
@@ -187,17 +224,25 @@ public class UanContractService implements IService {
 		}
 	}
 
+	/** 
+	 * @Description: loadMy2
+	 * @param idCard
+	 * @return  UanContractPojo
+	 * @throws 
+	 */ 
 	public UanContractPojo loadMy2(String idCard) {
 		UanContractBCPojo bc = uanContractBCDAO.load(idCard);
 		UanContractPojo uanContractPojo = (UanContractPojo) xmlConvertor.toObject(bc.getContent());
 		return uanContractPojo;
 	}
 
+	/** 
+	 * @Description: loadMy
+	 * @param idCard
+	 * @return  AgreementPojo
+	 * @throws 
+	 */ 
 	public AgreementPojo loadMy(String idCard) {
-		// UanContractBCPojo bc = uanContractBCDAO.load(idCard);
-		// UanContractPojo uanContractPojo = (UanContractPojo)
-		// xmlConvertor.toObject(bc.getContent());
-
 		Map<String, Object> filter = new HashMap<String, Object>();
 		filter.put("party", idCard);
 		AgreementPojo agreementPojo = blockChainService.get("Agreement", idCard, filter, AgreementPojo.class);
@@ -205,6 +250,12 @@ public class UanContractService implements IService {
 		return agreementPojo;
 	}
 
+	/** 
+	 * @Description: findMasterPojos
+	 * @param slaveId
+	 * @return  List<PersonnelRelationshipPojo>
+	 * @throws 
+	 */ 
 	public List<PersonnelRelationshipPojo> findMasterPojos(String slaveId) {
 		List<PersonnelRelationshipPojo> res = new ArrayList<PersonnelRelationshipPojo>();
 		String[] ids = findMasters(slaveId);
@@ -228,6 +279,12 @@ public class UanContractService implements IService {
 		}
 	}
 
+	/** 
+	 * @Description: findMasters
+	 * @param slaveId
+	 * @return  String[]
+	 * @throws 
+	 */ 
 	public String[] findMasters(String slaveId) {
 		Map<String, Object> filter = new HashMap<String, Object>();
 		Map<String, String> where = new HashMap<String, String>();
@@ -241,12 +298,13 @@ public class UanContractService implements IService {
 		return ss;
 	}
 
+	/** 
+	 * @Description: findBindingCards
+	 * @param masterId
+	 * @return  List<BankCardPojo>
+	 * @throws 
+	 */ 
 	public List<BankCardPojo> findBindingCards(String masterId) {
-		// UanContractBCPojo bc = uanContractBCDAO.load(masterId);
-		// UanContractPojo uanContractPojo = (UanContractPojo)
-		// xmlConvertor.toObject(bc.getContent());
-		// return uanContractPojo.getBindingCards();
-
 		List<BankCardPojo> bankCardPojos = new ArrayList<BankCardPojo>();
 		Map<String, String> filter = new HashMap<String, String>();
 		filter.put("party", masterId);
@@ -279,18 +337,14 @@ public class UanContractService implements IService {
 
 	}
 
+	/** 
+	 * @Description: loadBankCard
+	 * @param cardNum
+	 * @param masterId
+	 * @return  BankCardPojo
+	 * @throws 
+	 */ 
 	public BankCardPojo loadBankCard(String cardNum, String masterId) {
-		// UanContractBCPojo bc = uanContractBCDAO.load(masterId);
-		// UanContractPojo uanContractPojo = (UanContractPojo)
-		// xmlConvertor.toObject(bc.getContent());
-		//
-		// List<BankCardPojo> bankCardPojos = uanContractPojo.getBindingCards();
-		// for (BankCardPojo b : bankCardPojos) {
-		// if (b.getCode().equals(cardNum)) {
-		// return b;
-		// }
-		// }
-
 		Map<String, Object> filter = new HashMap<String, Object>();
 		filter.put("cardNum", cardNum);
 		filter.put("idCard", masterId);

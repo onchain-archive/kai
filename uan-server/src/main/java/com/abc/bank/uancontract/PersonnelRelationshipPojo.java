@@ -1,14 +1,25 @@
+/**  
+ * Title: PersonnelRelationshipPojo.java
+ * Description: PersonnelRelationshipPojo
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.bank.uancontract;
 
 import com.abc.common.AbstractPojo;
 
+/**
+ * Title: PersonnelRelationshipPojo
+ * @Description: PersonnelRelationshipPojo
+ * @author Bo Liu
+ * @date 2018-09-20
+*/
 public class PersonnelRelationshipPojo extends AbstractPojo {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8685551051470216812L;
-
+	
 	private String id;
 	private String masterId;
 	private String masterName;
@@ -17,7 +28,7 @@ public class PersonnelRelationshipPojo extends AbstractPojo {
 	private String slaveName;
 	private String relationship;
 	private String phone;
-	private String IdPhoto;
+	private String idPhoto;
 
 	public String getId() {
 		return id;
@@ -84,11 +95,11 @@ public class PersonnelRelationshipPojo extends AbstractPojo {
 	}
 
 	public String getIdPhoto() {
-		return IdPhoto;
+		return idPhoto;
 	}
 
 	public void setIdPhoto(String idPhoto) {
-		IdPhoto = idPhoto;
+		idPhoto = idPhoto;
 	}
 
 }

@@ -1,16 +1,33 @@
+/**  
+ * Title: BankReserveAccountPojo.java
+ * Description: BankReserveAccountPojo
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.uan.blockchain;
 
+/**
+ * Title: BankReserveAccountPojo
+ * @Description: BankReserveAccountPojo
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 public class BankReserveAccountPojo extends AbstractBlockChainPojo {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -806741968534217166L;
 
 	private String bank = "None";
 	private String reference = "None";
-	private String debit = "None";// 借，存
-	private String credit = "None";// 贷，取
+	private String debit = "None";
+	/**
+	 * 	借，存
+	 */
+	private String credit = "None";
+	/**
+	 * 	// 贷，取
+	 */
 	private Double balance = -99D;
 	private String debitBank = "None";
 	private String creditBank = "None";

@@ -41,9 +41,8 @@ public class ThreadContext {
 		return (ThreadContext) context.get();
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
-	 * 
 	 * @see plantix.core.context.Context#getAttribute(java.lang.String)
 	 */
 	public Object getAttribute(String key) {
@@ -58,7 +57,7 @@ public class ThreadContext {
 		return map;
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see plantix.core.context.Context#setAttribute(java.lang.String,
@@ -68,7 +67,7 @@ public class ThreadContext {
 		map.put(key, value);
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see plantix.core.context.Context#removeAttribute(java.lang.String)
@@ -77,7 +76,7 @@ public class ThreadContext {
 		map.remove(key);
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see plantix.core.context.Context#getAttributeNames()
@@ -86,7 +85,7 @@ public class ThreadContext {
 		return map.keySet();
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see plantix.core.context.Context#clear()
@@ -94,10 +93,11 @@ public class ThreadContext {
 	public void clear() {
 		map.clear();
 	}
-
-	/**
-	 * 
-	 */
+	
+	/** 
+	 * @Description: print
+	 * @return
+	 */ 
 	public static String print() {
 		return BeanFactoryUtils.getBean(JsonConvertor.class).toJson(ThreadContext.getContext().getAttributeNames());
 	}

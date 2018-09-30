@@ -1,10 +1,21 @@
+/**  
+ * Title: CardAccountPojo.java
+ * Description: CardAccountPojo
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.uan.blockchain;
 
+/**
+ * Title: CardAccountPojo
+ * @Description: CardAccountPojo
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 public class CardAccountPojo extends AbstractBlockChainPojo {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1488102802975878268L;
 
 	private String cardNum="None";

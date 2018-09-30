@@ -1,12 +1,23 @@
+/**  
+ * Title: CustomerInformationPojo.java
+ * Description: CustomerInformationPojo
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.bank.customerinformation;
 
 import com.abc.common.AbstractPojo;
 
+/**
+ * Title: CustomerInformationPojo
+ * @Description: CustomerInformationPojo
+ * @author Bo Liu
+ * @date 2018-09-20
+*/
 public class CustomerInformationPojo extends AbstractPojo {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7074995157715860919L;
 
 	public static final String STATE_ON = "ON";
@@ -22,6 +33,10 @@ public class CustomerInformationPojo extends AbstractPojo {
 	private String type;
 	private String pwd;
 
+	/** 
+	 * @Description: getId
+	 * @return  String
+	 */ 
 	public String getId() {
 		return id;
 	}

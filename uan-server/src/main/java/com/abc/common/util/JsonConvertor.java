@@ -1,3 +1,11 @@
+/**  
+ * Title: JsonConvertor.java
+ * Description: JsonConvertor
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.common.util;
 
 import java.util.Map;
@@ -8,6 +16,12 @@ import com.abc.common.UanException;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 
+/**
+ * Title: JsonConvertor
+ * @Description: JsonConvertor
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 @Component
 public class JsonConvertor {
 	public String toJson(Object source) {
@@ -21,6 +35,13 @@ public class JsonConvertor {
 		}
 	}
 
+	/** 
+	 * @Description: toObject
+	 * @param source
+	 * @param cls
+	 * @return T
+	 * @throws UanException
+	 */ 
 	public <T> T toObject(String source, Class<T> cls) {
 		try {
 			return JSON.parseObject(source, cls);
@@ -29,6 +50,14 @@ public class JsonConvertor {
 		}
 	}
 
+	/** 
+	 * @Description: toObject
+	 * @param source
+	 * @param cls
+	 * @param elementCls
+	 * @return T
+	 * @throws UanException
+	 */ 
 	public <T> T toObject(String source, Class<T> cls, Class elementCls) {
 		if (elementCls == null) {
 			return toObject(source, cls);

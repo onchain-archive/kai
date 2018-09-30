@@ -1,8 +1,22 @@
+/**  
+ * Title: CfgValueHandler.java
+ * Description: CfgValueHandler
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.common.util;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+/**
+ * Title: CfgValueHandler
+ * @Description: CfgValueHandler
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 @Component
 public class CfgValueHandler {
 

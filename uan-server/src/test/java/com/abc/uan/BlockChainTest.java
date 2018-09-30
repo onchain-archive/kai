@@ -1,3 +1,11 @@
+/**  
+ * Title: BlockChainTest.java
+ * Description: BlockChainTest
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.uan;
 
 import org.junit.Test;
@@ -11,10 +19,19 @@ import org.springframework.web.client.RestTemplate;
 
 import com.abc.common.starter.UanApplication;
 
+/**
+ * Title: BlockChainTest
+ * @Description: BlockChainTest
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = UanApplication.class)
 public class BlockChainTest {
 
+	/** 
+	 * @Description: testConnection
+	 */ 
 	@Test
 	public void testConnection() {
 		RestTemplate restTemplate = new RestTemplate();

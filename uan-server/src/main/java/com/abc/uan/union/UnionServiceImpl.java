@@ -1,3 +1,11 @@
+/**  
+ * Title: UnionService.java
+ * Description: UnionService
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.uan.union;
 
 import java.util.Date;
@@ -11,8 +19,14 @@ import com.abc.common.IService;
 import com.abc.common.UanException;
 import com.abc.common.util.UUIDNumberGenerator;
 
+/**
+ * Title: UnionService
+ * @Description: UnionService
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 @Component
-public class UnionService implements IService {
+public class UnionServiceImpl implements IService {
 
 	@Autowired
 	private UnionDAO unionDAO;
@@ -31,6 +45,11 @@ public class UnionService implements IService {
 		return unionDAO.load(code);
 	}
 
+	/** 
+	 * @Description: create
+	 * @param unionPojo
+	 * @throws UanException
+	 */ 
 	public void create(UnionPojo unionPojo) {
 		unionPojo.setId(uuidNumberGenerator.generate());
 		unionPojo.setState(UnionPojo.STATE_OPEN);

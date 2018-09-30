@@ -1,3 +1,11 @@
+/**  
+ * Title: UnionRestApiControllor.java
+ * Description: UnionRestApiControllor
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.uan.union;
 
 import java.util.List;
@@ -16,13 +24,25 @@ import com.abc.common.AbstractController;
 import com.abc.common.Request;
 import com.abc.common.Response;
 
+/**
+ * Title: UnionRestApiControllor
+ * @Description: UnionRestApiControllor
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 @RestController
 @RequestMapping(value = AbstractController.REST_API_PREFIX + "/uni")
 public class UnionRestApiControllor extends AbstractController {
 
 	@Autowired
-	private UnionService unionService;
+	private UnionServiceImpl unionService;
 
+	/** 
+	 * @Description: findAll
+	 * @param reqJson
+	 * @param req
+	 * @return String
+	 */ 
 	@RequestMapping(value = "/findAll", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String findAll(@RequestBody String reqJson, HttpServletRequest req) {
 		Request request = Request.create(reqJson, req, null);
@@ -31,6 +51,13 @@ public class UnionRestApiControllor extends AbstractController {
 		return resp.createSuccessJson(unionPojos, request);
 	}
 
+	/** 
+	 * @Description: findByWhere
+	 * @param unionQuery
+	 * @param request
+	 * @param req
+	 * @return resp.createSuccessJson
+	 */ 
 	@RequestMapping(value = "/findByWhere", method = RequestMethod.GET)
 	public String findByWhere(UnionQuery unionQuery, Request<UnionQuery> request,
 			HttpServletRequest req) {
@@ -40,16 +67,12 @@ public class UnionRestApiControllor extends AbstractController {
 		return resp.createSuccessJson(unionPojos, request);
 	}
 
-	// @RequestMapping(value = "/findByWhere", method = RequestMethod.POST, produces
-	// = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	// public String findByWhere(@RequestBody String reqJson, HttpServletRequest
-	// req) {
-	// Request<UnionQuery> request = Request.create(reqJson, req, UnionQuery.class);
-	// List<UnionPojo> unionPojos = unionService.findByWhere(request.getData());
-	// Response<List> resp = new Response<List>();
-	// return resp.createSuccessJson(unionPojos, request);
-	// }
-
+	/** 
+	 * @Description: loadByCode
+	 * @param reqJson
+	 * @param req
+	 * @return resp.createSuccessJson(unionPojo, request)
+	 */ 
 	@RequestMapping(value = "/loadByCode", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String loadByCode(@RequestBody String reqJson, HttpServletRequest req) {
 		Request<String> request = Request.create(reqJson, req, String.class);
@@ -58,6 +81,12 @@ public class UnionRestApiControllor extends AbstractController {
 		return resp.createSuccessJson(unionPojo, request);
 	}
 
+	/** 
+	 * @Description: create
+	 * @param reqJson
+	 * @param req
+	 * @return resp.createSuccessJson(null, request)
+	 */ 
 	@RequestMapping(value = "/create", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String create(@RequestBody String reqJson, HttpServletRequest req) {
 		Request<UnionPojo> request = Request.create(reqJson, req, UnionPojo.class);

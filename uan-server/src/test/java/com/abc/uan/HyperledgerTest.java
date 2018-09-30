@@ -1,3 +1,11 @@
+/**  
+ * Title: HyperledgerTest.java
+ * Description: HyperledgerTest
+ * Copyright Agriculture Bank of China
+ * @author Bo Liu
+ * @date 2018-09-20
+ * @version 1.0
+ */ 
 package com.abc.uan;
 
 import java.text.ParseException;
@@ -16,8 +24,14 @@ import com.abc.common.util.JsonConvertor;
 import com.abc.uan.blockchain.BankReserveAccountPojo;
 import com.abc.uan.blockchain.TradePojo;
 import com.abc.uan.catastrophe.CatastrophePojo;
-import com.abc.uan.hyperledger.HyperledgerService;
+import com.abc.uan.hyperledger.HyperledgerServiceImpl;
 
+/**
+ * Title: HyperledgerTest
+ * @Description: HyperledgerTest
+ * @author Bo Liu
+ * @date 2018-09-20
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = UanApplication.class)
 public class HyperledgerTest {
@@ -25,8 +39,12 @@ public class HyperledgerTest {
 	@Autowired
 	private JsonConvertor jsonConvertor;
 	@Autowired
-	private HyperledgerService hyperledgerService;
+	private HyperledgerServiceImpl hyperledgerService;
 
+	/** 
+	 * @Description: test
+	 * @throws ParseException
+	 */ 
 	@Test
 	public void test() throws ParseException {
 		List<BankReserveAccountPojo> bankReserveAccountPojos = hyperledgerService.getBankReserveAccounts();
@@ -40,8 +58,6 @@ public class HyperledgerTest {
 		System.out.println("全部交易信息：");
 		System.out.println(tradePojos);
 		System.out.println();
-
-		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		System.out.println();
 		System.out.println();
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
