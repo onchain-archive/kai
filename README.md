@@ -65,3 +65,11 @@ UAN’s benefits: <br>
 
 ## Getting Started
 [Getting Started](https://github.com/cellchip/uan/blob/master/resources/Getting%20Started.md)
+
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## License
+
+This project is licensed under the Apache 2 License - see the [LICENSE.md](LICENSE.md) file for details
