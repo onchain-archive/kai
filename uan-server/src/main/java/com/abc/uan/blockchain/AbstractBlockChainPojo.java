@@ -12,15 +12,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
-
-/**  
- * Title: AbstractBlockChainPojo.java
- * Description: AbstractBlockChainPojo
- * Copyright Agriculture Bank of China
- * @author Bo Liu
- * @date 2018-09-20
- * @version 1.0
  */ 
 package com.abc.uan.blockchain;
 

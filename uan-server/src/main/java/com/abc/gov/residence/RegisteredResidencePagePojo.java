@@ -13,15 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/**  
- * Title: RegisteredResidencePagePojo.java
- * Description: RegisteredResidencePagePojo
- * Copyright Agriculture Bank of China
- * @author Bo Liu
- * @date 2018-09-20
- * @version 1.0
- */ 
 package com.abc.gov.residence;
 
 import com.abc.common.AbstractPojo;

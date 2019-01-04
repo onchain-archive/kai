@@ -14,14 +14,6 @@
  * limitations under the License.
  */
 
-/**  
- * Title: CustomerInformationDAO.java
- * Description: CustomerInformationDAO
- * Copyright Agriculture Bank of China
- * @author Bo Liu
- * @date 2018-09-20
- * @version 1.0
- */ 
 package com.abc.bank.customerinformation;
 
 import org.apache.ibatis.annotations.Mapper;
