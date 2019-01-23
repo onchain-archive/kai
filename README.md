@@ -11,12 +11,12 @@
 ## Introduction To UAN
 
 ### Financial Challenges After Natural Disasters
-Over the past ten years, there have been more than 30 devastating earthquakes worldwide. During the Sichuan earthquake in 2008, one of the largest earthquakes in human history, Agricultural Bank of China (ABC) offered immediate aid and financial services to victims. To better understand their needs, we interviewed employees who experienced the disaster, and learned about 4 pain points:
+Over the past ten years, there have been more than 30 devastating earthquakes worldwide. During the Sichuan earthquake in 2008, one of the largest earthquakes in human history, the Agricultural Bank of China (ABC) offered immediate aid and financial services to victims. To better understand their needs, we interviewed employees who survived the disaster, and discovered 4 pain points:
 
-1. Cash and cards are often lost during the earthquake, which leaves them unable to meet daily needs.
+1. Cash and cards are often lost during the earthquake, which leaves people unable to meet their daily needs.
 2. People have concerns about their account security, so they want to inquire and report the loss as soon as possible. 
-3. Their Photo IDs are lost, which leaves them unable to provide authentication. 
-4. They have lost touch with relatives, and therefore can’t access financial support. 
+3. Photo IDs are lost, which leaves people unable to provide authentication and access help. 
+4. People have lost touch with their relatives, and therefore can’t access financial support. 
 
 <br>
 <div align=center><img width="531" height="300" title="Financial Challenges After Natural Disaster" src="https://github.com/cellchip/uan/blob/master/resources/幻灯片3.PNG"/></div>
